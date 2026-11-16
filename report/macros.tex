@@ -1,31 +1,28 @@
 % ==============================================================================
-% SocialMirror-AI Preparatory Report - Custom Macros and Notation
+% SocialMirror-AI Preparatory Report - Custom Macros (Bilingual)
 % University of Haifa - AI Agents Course (Assignment 2)
 % ==============================================================================
 
 % Project & Institutional Metadata
-\newcommand{\projectname}{\textbf{SocialMirror-AI}}
-\newcommand{\projectacronym}{\textsc{SocialMirror}}
-\newcommand{\institution}{University of Haifa}
-\newcommand{\coursename}{AI Agents (Assignment 2)}
-\newcommand{\authorname}{Shams Sabbagh}
+\newcommand{\projectname}{\textenglish{\textbf{SocialMirror-AI}}}
+\newcommand{\projectacronym}{\textenglish{\textsc{SocialMirror}}}
+\newcommand{\institution}{אוניברסיטת חיפה}
+\newcommand{\coursename}{סוכני בינה מלאכותית (\textenglish{AI Agents}) -- מטלה 2}
+\newcommand{\authorsnames}{שאמס סבאע' (\textenglish{Shams Sabbagh}) \ וּמלאק (\textenglish{Malak})}
 
 % Agent Architecture Role Designators
-\newcommand{\agentObserver}{\texttt{Observer\-Agent}}
-\newcommand{\agentAnalyst}{\texttt{Analyst\-Agent}}
-\newcommand{\agentReflector}{\texttt{Reflector\-Agent}}
-\newcommand{\agentInterventionist}{\texttt{Intervention\-Agent}}
-\newcommand{\agentSimulationUser}{\texttt{Synthetic\-User\-Agent}}
+\newcommand{\agentObserver}{\textenglish{\texttt{ObserverAgent}}}
+\newcommand{\agentAnalyst}{\textenglish{\texttt{AnalystAgent}}}
+\newcommand{\agentReflector}{\textenglish{\texttt{ReflectorAgent}}}
+\newcommand{\agentInterventionist}{\textenglish{\texttt{InterventionAgent}}}
+\newcommand{\agentSimulationUser}{\textenglish{\texttt{SyntheticUserAgent}}}
 
-% Theoretical / Metric Notation
+% Mathematical State Notation (Always evaluated in standard LTR math mode)
 \newcommand{\wellbeingVector}{\mathbf{w}_t}
 \newcommand{\comparisonScore}{\mathcal{S}_{\text{comp}}}
 \newcommand{\exposureIndex}{\mathcal{E}_{\text{inf}}}
 \newcommand{\sentimentScore}{\mathcal{V}_{\text{sent}}}
 
-% Formatting shortcuts
+% Linguistic helpers
 \newcommand{\latin}[1]{\textit{#1}}
-\newcommand{\ie}{\latin{i.e.},~}
-\newcommand{\eg}{\latin{e.g.},~}
-\newcommand{\etal}{\latin{et al.}~}
-\newcommand{\cf}{\latin{cf.}~}
+\newcommand{\engterm}[1]{\textenglish{#1}}

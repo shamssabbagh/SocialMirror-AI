@@ -1,47 +1,58 @@
 % ==============================================================================
-% SocialMirror-AI Preparatory Report - Preamble
+% SocialMirror-AI Preparatory Report - Preamble (Hebrew & English Multilingual)
 % University of Haifa - AI Agents Course (Assignment 2)
 % ==============================================================================
 
-% Character encoding & typography
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{microtype}
+% Page Geometry & Margins
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.8cm,
+    right=2.8cm,
+    headheight=15pt
+}
 
-% Geometry & Page Layout (Standard Academic Margins)
-\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.8cm, right=2.8cm, headheight=14pt]{geometry}
 \usepackage{setspace}
-\onehalfspacing % Standard 1.5 line spacing for academic reports
+\onehalfspacing % 1.5 Line Spacing for Academic Readability
 
-% Mathematics & Symbols
+% Mathematics & Equations (Rendered in Standard LTR Math Mode)
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{mathtools}
 
-% Graphics & Figures
+% Graphics & Tables
 \usepackage{graphicx}
 \usepackage{float}
-\usepackage{caption}
-\usepackage{subcaption}
-\captionsetup{font=small, labelfont=bf, margin=10pt}
-
-% Tables
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{environ}
 
-% Colors
+% Colors & Themes
 \usepackage[dvipsnames, table]{xcolor}
 \definecolor{NavyBlueDark}{RGB}{10, 40, 95}
 \definecolor{AccentTeal}{RGB}{0, 128, 128}
+\definecolor{AccentCyan}{RGB}{0, 168, 204}
 \definecolor{SlateGray}{RGB}{80, 90, 100}
+\definecolor{SilverAccent}{RGB}{218, 224, 233}
 \definecolor{LightBoxBg}{RGB}{245, 247, 250}
-\definecolor{CodeBg}{RGB}{248, 249, 250}
+\definecolor{LightBlueBg}{RGB}{238, 244, 252}
+\definecolor{BorderGray}{RGB}{200, 210, 225}
 
-% Hyperlinks & Navigation
+% TikZ Vector Graphics
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, shadows, fit, backgrounds, calc}
+
+% Captions Formatting
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{font=small, labelfont=bf, margin=10pt}
+
+% Hyperref & Navigation (Loaded BEFORE polyglossia so bidi handles RTL links properly)
 \usepackage{hyperref}
 \hypersetup{
     colorlinks=true,
@@ -50,62 +61,63 @@
     filecolor=magenta,
     urlcolor=MidnightBlue,
     pdfstartview={FitH},
-    pdfauthor={Shams Sabbagh},
-    pdftitle={SocialMirror-AI: Preparatory Project Report},
+    pdfauthor={Shams Sabbagh and Malak},
+    pdftitle={SocialMirror-AI: דוח הכנה אקדמי לפרויקט מחקר},
     pdfsubject={AI Agents - University of Haifa},
     plainpages=false,
     pdfpagelabels=true
 }
-\usepackage[capitalize, noabbrev]{cleveref}
 
-% Headers and Footers
+% Font & Multilingual Support for XeLaTeX
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{hebrew}
+\setotherlanguage{english}
+
+% Hebrew and English Fonts (Standard Windows TrueType/OpenType Fonts)
+\newfontfamily\hebrewfont{Arial}[Script=Hebrew]
+\newfontfamily\hebrewfontsf{Arial}[Script=Hebrew]
+\newfontfamily\hebrewfonttt{Courier New}[Script=Hebrew]
+\newfontfamily\englishfont{Arial}
+
+% Keep Hebrew heading for Bibliography even in English environment
+\addto\captionsenglish{\renewcommand{\bibname}{\texthebrew{ביבליוגרפיה}}}
+
+% Running Headers & Footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\nouppercase{\leftmark}}
-\fancyhead[R]{\small\textsc{SocialMirror-AI}}
+\fancyhead[R]{\small\nouppercase{\leftmark}}
+\fancyhead[L]{\small\textenglish{\textsc{SocialMirror-AI}}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Code Listings
-\usepackage{listings}
-\lstset{
-    backgroundcolor=\color{CodeBg},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    commentstyle=\color{SlateGray}\itshape,
-    frame=single,
-    keepspaces=true,
-    keywordstyle=\color{NavyBlueDark}\bfseries,
-    numbers=left,
-    numbersep=7pt,
-    numberstyle=\tiny\color{gray},
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    stringstyle=\color{OliveGreen},
-    tabsize=2
+% Clean, Robust Callout Boxes (XeLaTeX RTL / bidi Compatible)
+\NewEnviron{agentbox}[1]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.2pt}%
+    \fcolorbox{NavyBlueDark}{LightBlueBg}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{NavyBlueDark} #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
 }
 
-% Visual callout boxes (for Agent logs, Ethical considerations, Case studies)
-\usepackage{tcolorbox}
-\newtcolorbox{agentbox}[2][]{
-    colback=LightBoxBg,
-    colframe=NavyBlueDark,
-    arc=2mm,
-    fonttitle=\bfseries\sffamily,
-    title={#2},
-    #1
-}
-
-\newtcolorbox{ethicsbox}[1][]{
-    colback=LightBoxBg,
-    colframe=BrickRed,
-    arc=2mm,
-    fonttitle=\bfseries\sffamily,
-    title={Ethical \& Privacy Consideration},
-    #1
+\NewEnviron{ethicsbox}[1][הערת אתיקה וממשל אחראי בבינה מלאכותית]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.2pt}%
+    \fcolorbox{BrickRed}{LightBoxBg}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{BrickRed} #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
 }

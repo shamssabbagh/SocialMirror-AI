@@ -7,125 +7,209 @@
 \begin{document}
 
 % ==============================================================================
-% Title Page
+% עמוד שער אקדמי מעוצב ויוקרתי (Premium Academic Cover Page)
 % ==============================================================================
 \begin{titlepage}
     \hypersetup{pageanchor=false}
     \centering
-    \vspace*{1.0cm}
+    \vspace*{-0.6cm}
     
-    {\scshape\LARGE \institution \par}
-    \vspace{0.4cm}
-    {\scshape\Large Department of Information Systems / Computer Science \par}
-    \vspace{0.3cm}
-    {\large \coursename \par}
+    % 1. שם האוניברסיטה
+    {\scshape\Large\bfseries\color{NavyBlueDark} אוניברסיטת חיפה \par}
     
-    \vspace{1.8cm}
-    \rule{\linewidth}{1.2pt} \\[0.4cm]
-    {\huge \bfseries \projectname \\[0.3cm]}
-    {\Large \itshape An AI-Powered Agentic Platform Exploring Social Media Exposure, Influencer Marketing, Social Comparison, and Psychological Well-Being \par}
-    \rule{\linewidth}{1.2pt} \\[1.5cm]
+    \vspace{0.45cm}
     
-    \vspace{1.5cm}
+    % 2. שם הפרויקט
+    {\fontsize{32pt}{38pt}\selectfont\bfseries\color{NavyBlueDark} \textenglish{SocialMirror-AI} \par}
     
-    \begin{minipage}[t]{0.48\textwidth}
-        \flushleft
-        \textbf{Author:}\\
-        {\large \authorname}\\
-        Student ID / Contact: University of Haifa
+    \vspace{0.25cm}
+    
+    % 3. כותרת משנה
+    {\Large\bfseries\color{AccentTeal} מראה חברתית בעידן הבינה המלאכותית \par}
+    
+    \vspace{0.35cm}
+    
+    % עיטור גרפי עדין ומודרני (Subtle accent divider)
+    \begin{center}
+    \begin{tikzpicture}
+        \draw[line width=1.0pt, color=SilverAccent] (-4.5, 0) -- (4.5, 0);
+        \draw[line width=2.0pt, color=AccentCyan] (-1.4, 0) -- (1.4, 0);
+        \fill[color=NavyBlueDark] (0, 0) circle (2.2pt);
+    \end{tikzpicture}
+    \end{center}
+    
+    \vspace{0.25cm}
+    
+    % 4. פירוט המטלה
+    {\large\bfseries\color{NavyBlueDark} מטלה 2 – דוח מכין לפרויקט עתידי \par}
+    
+    \vspace{0.15cm}
+    
+    % 5. שם הקורס
+    {\normalsize\bfseries\color{SlateGray} קורס: סוכני \textenglish{AI} ו־\textenglish{Vibe Coding} \par}
+    
+    \vspace{0.55cm}
+    
+    % 6. מגישות
+    {\large\bfseries\color{NavyBlueDark} מגישות: \par}
+    
+    \vspace{0.25cm}
+    
+    % 7 + 8. שמות המגישות ותחומי הלימוד (Two balanced columns in RTL)
+    \begin{center}
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        {\large\bfseries\color{NavyBlueDark} שמס סבאג \par}
+        \vspace{0.1cm}
+        {\small\color{SlateGray} סטודנטית לפסיכולוגיה \par}
     \end{minipage}
     \hfill
-    \begin{minipage}[t]{0.48\textwidth}
-        \flushright
-        \textbf{Course Project:} Assignment 2\\
-        \textbf{Target Scope:} Comprehensive Preparatory Report (40 Pages)\\
-        \textbf{Date:} November 2026
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        {\large\bfseries\color{NavyBlueDark} מלאק פרוג׳ה \par}
+        \vspace{0.1cm}
+        {\small\color{SlateGray} סטודנטית לתקשורת ושיווק \par}
     \end{minipage}
+    \end{center}
+    
+    \vspace{0.55cm}
+    
+    % תמונת השער הרשמית (Official Cover Image - centered, large, framed)
+    \begin{center}
+        \setlength{\fboxsep}{3pt}%
+        \setlength{\fboxrule}{1.2pt}%
+        \fcolorbox{BorderGray}{white}{%
+            \includegraphics[width=0.92\linewidth, keepaspectratio]{assets/socialmirror-cover.png}%
+        }%
+    \end{center}
     
     \vfill
-    {\small University of Haifa $\cdot$ Mount Carmel, Haifa, Israel \par}
 \end{titlepage}
 \hypersetup{pageanchor=true}
 
 % ==============================================================================
-% Front Matter (Roman Numerals)
+% עמוד 2: מבוא לפרויקט ותמצית מנהלים (Chapter 1: Introduction & Motivation)
 % ==============================================================================
-\pagenumbering{roman}
-\setcounter{page}{1}
+\chapter{מבוא ומסגרת תיאורטית}
 
-% Abstract & Executive Summary
-\input{chapters/00_abstract}
+\section{תמצית מנהלים ומוטיבציה}
+דוח זה מציג את התשתית התיאורטית, המחקרית וההנדסית של פלטפורמת \projectname{} -- מערכת חדשנית מבוססת סוכני בינה מלאכותית אוטונומיים (\textenglish{Multi-Agent System - MAS}), המיועדת למדל, לנתח ולשקף למשתמשים צעירים את ההשפעות הפסיכולוגיות והקוגניטיביות הנובעות מצריכת תוכן בפידים אלגוריתמיים מותאמים אישית. בעוד שכלי הרווחה הדיגיטלית המסורתיים (כדוגמת \textenglish{Apple Screen Time} או \textenglish{One Sec}) מתמקדים בהגבלת זמן מסך כמותית גרידא, \projectname{} מציעה שינוי פרדיגמה עמוק: מעבר ממדידת זמן שטחית לניתוח סמנטי-איכותני של אינטראקציות, עירור תהליכי השוואה חברתית (\textenglish{Social Comparison}), וחשיפה לשיווק משפיענים (\textenglish{Influencer Marketing}).
+
+\subsection{רקע והגדרת הבעיה}
+התפתחותן המואצת של פלטפורמות חברתיות מודרניות (כגון אינסטגרם וטיקטוק) חוללה שינוי יסודי במרחב הדיגיטלי -- מעבר מרשתות חברתיות המבוססות על שיתוף אורגני בין עמיתים (\textenglish{Peer Networks}), למנועי המלצה אלגוריתמיים המונעים על ידי מקסום זמן שהייה (\textenglish{Engagement Optimization}). בפידים אלו, נחשפים מתבגרים וצעירים לזרם רציף של ייצוגי סגנון חיים אידיאליים, יופי מלוטש ומוצרים ממומנים.
+
+ספרות מחקרית ענפה מהשנים האחרונות מצביעה על קשר מתאמי מובהק בין חשיפה רציפה לתכנים מסוג זה לבין עלייה במדדי דיכאון, חרדה, חוסר שביעות רצון מדימוי הגוף (\textenglish{Body Image Dissatisfaction}) וירידה בערך העצמי הרגעי~\cite{twenge2018increases, primack2017social}. הבעיה המרכזית נעוצה ב"אטימות הקוגניטיבית" של הפיד: המשתמש חווה תהליכי השוואה חברתית כלפי מעלה מבלי שיהיה מודע למנגנוני השיווק והאופטימיזציה המניעים את החשיפה, מה שמייצר מעגל שחיקה רגשי פסיבי.
+
+\begin{agentbox}{עקרון הליבה של \projectname{}}
+המערכת אינה פועלת ככלי חסימה פטרנליסטי, אלא כ"מראה קוגניטיבית" מודעת ומעצימה.
+באמצעות ארבעה סוכנים ייעודיים הפועלים בתיאום מלא -- סוכן התצפית (\agentObserver{}), סוכן הניתוח (\agentAnalyst{}), סוכן הרפלקציה (\agentReflector{}) וסוכן ההתערבות (\agentInterventionist{}) -- הפלטפורמה מודדת ומבודדת אירועי השוואה חברתית ומספקת למשתמש תובנות מטא-קוגניטיביות מותאמות אישית.
+\end{agentbox}
+
+% ==============================================================================
+% עמוד 3: מסגרת תיאורטית ותרשים מושגי ב-TikZ (Theoretical Model & Diagram)
+% ==============================================================================
 \newpage
+\section{מסגרת תיאורטית: תיאוריית ההשוואה החברתית של פסטינגר}
+הבסיס הפסיכולוגי של \projectname{} מושתת על תיאוריית ההשוואה החברתית (\textenglish{Social Comparison Theory - SCT}) שנוסחה במקורה על ידי פסטינגר~\cite{festinger1954theory}. על פי פסטינגר, לבני אדם קיים דחף מולד להעריך את יכולותיהם, הישגיהם ומעמדם ביחס לאחרים. בסביבות דיגיטליות, השוואה זו מתרחשת באופן כמעט בלעדי "כלפי מעלה" (\textenglish{Upward Comparison}) מול דמויות משפיענים ויוצרי תוכן הנתפסים כמוצלחים, מושכים או עשירים יותר.
 
-% Table of Contents
-\tableofcontents
+מחקרים אמפיריים מודרניים, בייחוד מטא-אנליזות מובילות מאת אפל וחוב'~\cite{appels2020social} ומחקרי תיווך מאת פראדוליי וחוב'~\cite{fardouly2018instagram}, ממחישים כי השוואה כלפי מעלה מעוררת אפקט ניגוד (\textenglish{Contrast Effect}), הגורר פער עצמי חריף (\textenglish{Self-Discrepancy}). תרשים~\ref{fig:conceptual_framework} ממחיש את מעגל ההשוואה הדיגיטלי ואת אופן ההשתלבות של סוכני \projectname{} לשבירת מעגל זה.
+
+\vspace{0.2cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.85, every node/.style={transform shape},
+    box/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1pt, align=center, inner sep=7pt, text width=3.1cm, font=\small\sffamily},
+    agent/.style={rectangle, draw=AccentTeal, fill=white, rounded corners=2mm, line width=1.1pt, align=center, inner sep=5pt, text width=2.8cm, font=\footnotesize\sffamily},
+    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=NavyBlueDark},
+    dasharrow/.style={-{Latex[length=2.2mm]}, dashed, line width=1.0pt, draw=AccentTeal}
+]
+
+% Cycle Nodes
+\node[box] (feed) {\textbf{Algorithmic Feed}\\\scriptsize High-Idealization Lifestyle \& Sponsored Content};
+\node[box, right=2.4cm of feed] (comparison) {\textbf{Upward Comparison}\\\scriptsize Contrast Effect \& Self-Discrepancy (Festinger 1954)};
+\node[box, below=1.8cm of comparison] (distress) {\textbf{Affective Distress}\\\scriptsize $\downarrow$ State Self-Esteem (RSES)\\\scriptsize $\uparrow$ Negative Affect (PANAS)};
+\node[box, below=1.8cm of feed] (consumption) {\textbf{Passive Scrolling}\\\scriptsize Compensatory Digital Consumption};
+
+% Cycle Arrows
+\draw[arrow] (feed) -- node[above, font=\scriptsize\sffamily] {Exposure} (comparison);
+\draw[arrow] (comparison) -- node[right, font=\scriptsize\sffamily] {Elicits} (distress);
+\draw[arrow] (distress) -- node[below, font=\scriptsize\sffamily] {Triggers} (consumption);
+\draw[arrow] (consumption) -- node[left, font=\scriptsize\sffamily] {Feeds} (feed);
+
+% Agent Interventions
+\node[agent, above=0.6cm of comparison] (analyst) {\textbf{\texttt{AnalystAgent}}\\\scriptsize Computes Salience $\comparisonScore$};
+\node[agent, left=0.5cm of consumption] (observer) {\textbf{\texttt{ObserverAgent}}\\\scriptsize Monitors Exposure $\exposureIndex$};
+\node[agent, right=0.5cm of distress] (reflector) {\textbf{\texttt{ReflectorAgent}}\\\scriptsize Updates State $\wellbeingVector$};
+
+\draw[dasharrow] (comparison) -- (analyst);
+\draw[dasharrow] (consumption) -- (observer);
+\draw[dasharrow] (distress) -- (reflector);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{תרשים מושגי: מעגל ההשוואה החברתית הדיגיטלי ומנגנון הניטור של סוכני \projectname{}}
+\label{fig:conceptual_framework}
+\end{figure}
+
+בתרשים זה מומחש אופן הפעולה: סוכן \agentObserver{} דוגם את שטף התוכן, סוכן \agentAnalyst{} מבודד גירויי השוואה באמצעות ציון בולטות $\comparisonScore{}$, וסוכן \agentReflector{} מעדכן את וקטור המצב הנפשי $\wellbeingVector{}$ לצורך ייצור רפלקציה מעצימה למשתמש.
+
+% ==============================================================================
+% עמוד 4: טבלה השוואתית מקצועית (Comparative Table & Ethics Note)
+% ==============================================================================
 \newpage
+\section{סקירה השוואתית של ספרות אמפירית מרכזית}
+כדי לבסס את הפיתוח על ממצאים מדעיים מוצקים ולמנוע הנחות בלתי מבוססות, טבלה~\ref{tab:literature_matrix} מרכזת מחקרי מפתח בתחום, תוך הבחנה חמורה בין מתאמים אמפיריים לקשרים סיבתיים.
 
-% List of Figures and Tables
-\listoffigures
-\vspace{1cm}
-\listoftables
-\newpage
-
-% List of Abbreviations / Acronyms
-\chapter*{List of Acronyms and Notations}
-\addcontentsline{toc}{chapter}{List of Acronyms and Notations}
 \begin{table}[H]
-    \centering
-    \begin{tabularx}{\textwidth}{lX}
-        \toprule
-        \textbf{Acronym / Symbol} & \textbf{Definition} \\
-        \midrule
-        \textbf{AI}   & Artificial Intelligence \\
-        \textbf{LLM}  & Large Language Model \\
-        \textbf{MAS}  & Multi-Agent System \\
-        \textbf{HAI}  & Human-Agent Interaction \\
-        \textbf{SCT}  & Social Comparison Theory (Festinger) \\
-        \textbf{PWB}  & Psychological Well-Being \\
-        \textbf{PANAS}& Positive and Negative Affect Schedule \\
-        \textbf{RSES} & Rosenberg Self-Esteem Scale \\
-        \textbf{NLP}  & Natural Language Processing \\
-        \textbf{IRB}  & Institutional Review Board \\
-        $\wellbeingVector$ & Multidimensional Psychological Well-Being State Vector at time $t$ \\
-        $\comparisonScore$ & Upward / Downward Social Comparison Salience Index \\
-        $\exposureIndex$   & Commercial Influencer Exposure and Persuasion Salience \\
-        \bottomrule
-    \end{tabularx}
+\centering
+\caption{מטריצת ניתוח ספרות מחקרית אמפירית בתחום השוואה חברתית, משפיענים ורווחה נפשית}
+\label{tab:literature_matrix}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.7cm} >{\raggedleft\arraybackslash}p{2.2cm} X >{\raggedleft\arraybackslash}p{3.2cm}}
+\toprule
+\textbf{מחקר ומקור} & \textbf{מתודולוגיה ומדגם} & \textbf{ממצאים אמפיריים מרכזיים} & \textbf{תרומה ישירה ל-\projectname{}} \\
+\midrule
+\textbf{\textenglish{Festinger (1954)}}~\cite{festinger1954theory} \newline {\scriptsize \textenglish{\textit{Human Relations}}} &
+תיאורטי-מושגי \newline {\scriptsize קלאסיקה מקוננת} &
+ניסוח תיאוריית ההשוואה החברתית (\textenglish{SCT}); זיהוי דחף הערכה מולד והבחנה בין כיווני השוואה. &
+הגדרת מדד בולטות ההשוואה $\comparisonScore{}$ עבור סוכן הניתוח. \\
+\midrule
+\textbf{\textenglish{Twenge et al. (2018)}}~\cite{twenge2018increases} \newline {\scriptsize \textenglish{\textit{Clin. Psych. Sci.}}} &
+סקר אורכי רחב היקף \newline {\scriptsize $N > 500{,}000$ מתבגרים} &
+מתאם חיובי מובהק בין שימוש במסכי מגע וברשתות לעלייה בדיכאון ובדידות החל משנת 2010. &
+תיקוף המוטיבציה החברתית ומדדי הפגיעות של משתמשים צעירים. \\
+\midrule
+\textbf{\textenglish{Fardouly et al. (2018)}}~\cite{fardouly2018instagram} \newline {\scriptsize \textenglish{\textit{New Media \& Soc.}}} &
+סקר חתך כמותי \newline {\scriptsize $N = 276$ נשים צעירות} &
+השוואה לתמונות סגנון חיים ומשפיענים מהווה גורם מתווך מרכזי לפגיעה בדימוי הגוף ובערך העצמי. &
+שקלול פערי סטטוס ומשפיעני מאקרו בתוך משוואות סוכן הניתוח (\agentAnalyst{}). \\
+\midrule
+\textbf{\textenglish{Appel et al. (2020)}}~\cite{appels2020social} \newline {\scriptsize \textenglish{\textit{Pers. Soc. Psychol.}}} &
+מטא-אנליזה מקיפה \newline {\scriptsize עשרות מחקרים} &
+אישוש אפקט הניגוד: השוואה כלפי מעלה ברשתות מנבאת באופן יציב ירידה בערך העצמי (\textenglish{RSES}). &
+כיול פונקציית הירידה של וקטור המצב הנפשי $\wellbeingVector{}$. \\
+\midrule
+\textbf{\textenglish{Park et al. (2023)}}~\cite{park2023generative} \newline {\scriptsize \textenglish{\textit{ACM UIST '23}}} &
+ניסוי סימולציה מבוסס \textenglish{LLM} \newline {\scriptsize 25 סוכנים בסביבה סגורה} &
+הוכחת היתכנות של סוכנים גנרטיביים בעלי זיכרון רפלקטיבי ויכולת תכנון התנהגותי אמינה. &
+השראה ישירה למבנה הזיכרון והרפלקציה של סוכן הרפלקציה (\agentReflector{}). \\
+\bottomrule
+\end{tabularx}
 \end{table}
-\newpage
+
+\begin{ethicsbox}
+\textbf{אחריות מדעית והגנת הפרטיות:} כל ניתוחי המצב והרפלקציות ב-\projectname{} מתבצעים מקומית על גבי וקטורי שיכון (\textenglish{Local Embeddings}) ללא שמירת מידע מזהה. המערכת נועדה להעצמת מודעות מטא-קוגניטיבית ואינה מתיימרת להוות כלי אבחון קליני או טיפול רפואי.
+\end{ethicsbox}
 
 % ==============================================================================
-% Main Matter (Arabic Numerals)
+% עמוד 5: רשימת מקורות אקדמיים (Bibliography - Typeset in English LTR)
 % ==============================================================================
-\pagenumbering{arabic}
-\setcounter{page}{1}
-
-% Chapter 1: Introduction & Problem Formulation
-\input{chapters/01_introduction}
-
-% Chapter 2: Literature Review & Theoretical Foundations
-\input{chapters/02_literature_review}
-
-% Chapter 3: System Architecture & Agent Design
-\input{chapters/03_system_architecture}
-
-% Chapter 4: Methodological Framework & Simulation Design
-\input{chapters/04_methodology}
-
-% Chapter 5: Implementation Roadmap & Technical Feasibility
-\input{chapters/05_implementation_roadmap}
-
-% Chapter 6: Conclusion & Future Outlook
-\input{chapters/06_conclusion}
-
-% ==============================================================================
-% Back Matter: Bibliography & Appendices
-% ==============================================================================
-\nocite{*}
+\begin{english}
+\nocite{festinger1954theory, twenge2018increases, fardouly2018instagram, appels2020social, park2023generative, primack2017social}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
-
-\appendix
-\input{chapters/07_appendices}
+\end{english}
 
 \end{document}
