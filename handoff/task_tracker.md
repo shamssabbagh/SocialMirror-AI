@@ -18,6 +18,7 @@
 | **T06** | Compilation audit & warning resolution | Shams / LaTeX Agent | Resolved pageanchors, BibTeX, & hbox | 16-page base PDF |
 | **T07** | Coordinator Agent & dedicated skill creation | Shams / Coordinator Agent | `.agents/agents/academic-coordinator.md`, `coordinator-workflow` | Active & registered |
 | **T08** | Academic Research Agent & dedicated skill creation | Shams / Academic Researcher | `.agents/agents/academic-researcher.md`, `academic-research` | Active & verified |
+| **T09** | Academic Writing Agent & dedicated skill creation | Shams / Academic Writer | `.agents/agents/academic-writer.md`, `academic-writing` | Active & verified |
 
 ---
 
@@ -25,7 +26,7 @@
 
 | ID | Task Description | Assignee / Agent | Target File | Status / Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **T09** | Multi-agent team expansion (remaining 5 agents) | Shams / Coordinator | `.agents/` | Writing, Architecture, LaTeX, Verification, QA |
+| **T10** | Multi-agent team expansion (remaining 4 agents) | Shams / Coordinator | `.agents/` | Architecture, LaTeX, Verification, QA |
 
 ---
 
