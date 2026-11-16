@@ -1,0 +1,51 @@
+# LaTeX Build Artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.run.xml
+*-blx.bib
+*.bcf
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.xdv
+
+# Output files
+# (Uncomment the line below if you prefer not to track generated PDFs in Git)
+# report/*.pdf
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python (future agent implementation)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# Node / Web (if any future dashboard)
+node_modules/
+dist/
+.next/

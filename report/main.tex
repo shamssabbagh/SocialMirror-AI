@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper,oneside]{report}
+
+% Load Preamble and Macros
+\input{preamble}
+\input{macros}
+
+\begin{document}
+
+% ==============================================================================
+% Title Page
+% ==============================================================================
+\begin{titlepage}
+    \hypersetup{pageanchor=false}
+    \centering
+    \vspace*{1.0cm}
+    
+    {\scshape\LARGE \institution \par}
+    \vspace{0.4cm}
+    {\scshape\Large Department of Information Systems / Computer Science \par}
+    \vspace{0.3cm}
+    {\large \coursename \par}
+    
+    \vspace{1.8cm}
+    \rule{\linewidth}{1.2pt} \\[0.4cm]
+    {\huge \bfseries \projectname \\[0.3cm]}
+    {\Large \itshape An AI-Powered Agentic Platform Exploring Social Media Exposure, Influencer Marketing, Social Comparison, and Psychological Well-Being \par}
+    \rule{\linewidth}{1.2pt} \\[1.5cm]
+    
+    \vspace{1.5cm}
+    
+    \begin{minipage}[t]{0.48\textwidth}
+        \flushleft
+        \textbf{Author:}\\
+        {\large \authorname}\\
+        Student ID / Contact: University of Haifa
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \flushright
+        \textbf{Course Project:} Assignment 2\\
+        \textbf{Target Scope:} Comprehensive Preparatory Report (40 Pages)\\
+        \textbf{Date:} November 2026
+    \end{minipage}
+    
+    \vfill
+    {\small University of Haifa $\cdot$ Mount Carmel, Haifa, Israel \par}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+
+% ==============================================================================
+% Front Matter (Roman Numerals)
+% ==============================================================================
+\pagenumbering{roman}
+\setcounter{page}{1}
+
+% Abstract & Executive Summary
+\input{chapters/00_abstract}
+\newpage
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% List of Figures and Tables
+\listoffigures
+\vspace{1cm}
+\listoftables
+\newpage
+
+% List of Abbreviations / Acronyms
+\chapter*{List of Acronyms and Notations}
+\addcontentsline{toc}{chapter}{List of Acronyms and Notations}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{lX}
+        \toprule
+        \textbf{Acronym / Symbol} & \textbf{Definition} \\
+        \midrule
+        \textbf{AI}   & Artificial Intelligence \\
+        \textbf{LLM}  & Large Language Model \\
+        \textbf{MAS}  & Multi-Agent System \\
+        \textbf{HAI}  & Human-Agent Interaction \\
+        \textbf{SCT}  & Social Comparison Theory (Festinger) \\
+        \textbf{PWB}  & Psychological Well-Being \\
+        \textbf{PANAS}& Positive and Negative Affect Schedule \\
+        \textbf{RSES} & Rosenberg Self-Esteem Scale \\
+        \textbf{NLP}  & Natural Language Processing \\
+        \textbf{IRB}  & Institutional Review Board \\
+        $\wellbeingVector$ & Multidimensional Psychological Well-Being State Vector at time $t$ \\
+        $\comparisonScore$ & Upward / Downward Social Comparison Salience Index \\
+        $\exposureIndex$   & Commercial Influencer Exposure and Persuasion Salience \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+\newpage
+
+% ==============================================================================
+% Main Matter (Arabic Numerals)
+% ==============================================================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Chapter 1: Introduction & Problem Formulation
+\input{chapters/01_introduction}
+
+% Chapter 2: Literature Review & Theoretical Foundations
+\input{chapters/02_literature_review}
+
+% Chapter 3: System Architecture & Agent Design
+\input{chapters/03_system_architecture}
+
+% Chapter 4: Methodological Framework & Simulation Design
+\input{chapters/04_methodology}
+
+% Chapter 5: Implementation Roadmap & Technical Feasibility
+\input{chapters/05_implementation_roadmap}
+
+% Chapter 6: Conclusion & Future Outlook
+\input{chapters/06_conclusion}
+
+% ==============================================================================
+% Back Matter: Bibliography & Appendices
+% ==============================================================================
+\nocite{*}
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\appendix
+\input{chapters/07_appendices}
+
+\end{document}
