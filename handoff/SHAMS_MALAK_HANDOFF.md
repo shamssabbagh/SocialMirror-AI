@@ -21,22 +21,29 @@
 3. **Compilation Audit**:
    - Installed all required MiKTeX packages locally.
    - Resolved all compilation errors and hyperref warnings. Verified that `report/compile.ps1` produces a valid 16-page base PDF.
-4. **Coordinator Agent & Skill Setup**:
+4. **Coordinator & Research Agent Setup**:
    - Established the `.agents/` workspace structure in accordance with Google Antigravity conventions.
-   - Created the **Coordinator Agent** specification (`.agents/agents/coordinator.md`) and dedicated workflow skill (`.agents/skills/coordinator-workflow/SKILL.md`).
+   - Created the **Academic Coordinator Agent** (`.agents/agents/academic-coordinator.md`) and dedicated workflow skill (`.agents/skills/coordinator-workflow/SKILL.md`).
+   - Created the **Academic Research Agent** (`.agents/agents/academic-researcher.md`) and dedicated research skill (`.agents/skills/academic-research/SKILL.md`).
+   - Successfully ran a functional verification test invoking the Research Agent to generate a verified evidence dossier (Fardouly et al., 2018 on upward social comparison on Instagram).
    - Set up the active handoff tracking board (`handoff/task_tracker.md`) and this handoff document.
 
 ---
 
 ## 2. Current State of the Workspace
-- **Git Status**: Clean working tree on `main`. No files pushed.
+- **Git Status**: Clean working tree on `main`. No files committed or pushed.
 - **LaTeX Compilation**: Fully passing (`pdflatex` + `bibtex` $\rightarrow$ Exit Code 0).
+- **Active Agents Available**:
+  - `academic-coordinator`: Orchestrator, evidence gatekeeper, Shams-Malak handoff manager.
+  - `academic-researcher`: Literature finder, correlation/causation auditor, BibTeX curator.
 - **Core Files Ready for Inspection**:
   - `README.md`: Overall project overview and LaTeX compilation guide.
   - `report/main.tex`: Master LaTeX report document.
   - `report/references.bib`: Seed bibliography.
-  - `.agents/agents/coordinator.md`: Coordinator agent definition.
+  - `.agents/agents/academic-coordinator.md`: Coordinator agent definition.
   - `.agents/skills/coordinator-workflow/SKILL.md`: Coordinator skill runbook.
+  - `.agents/agents/academic-researcher.md`: Research agent definition.
+  - `.agents/skills/academic-research/SKILL.md`: Research skill runbook.
 
 ---
 
@@ -45,13 +52,12 @@ When Malak begins the next session, here is the suggested sequence of tasks:
 
 ### Task A: Review & Initialize Remaining Specialized Agents
 - **Target Location**: `.agents/agents/` and `.agents/skills/`
-- **Scope**: Create the remaining 6 specialized agent specifications and their dedicated skills:
-  1. `research-agent` (Literature discovery & BibTeX curation)
-  2. `academic-writing-agent` (Scholarly narrative drafting)
-  3. `system-architecture-agent` (MAS topology, state vectors, sequence flows)
-  4. `latex-agent` (Typesetting & layout management)
-  5. `requirements-verification-agent` (Assignment 2 rubric & checklist audit)
-  6. `independent-qa-agent` (Adversarial review & citation verification)
+- **Scope**: Create the remaining 5 specialized agent specifications and their dedicated skills:
+  1. `academic-writing-agent` (Scholarly narrative drafting)
+  2. `system-architecture-agent` (MAS topology, state vectors, sequence flows)
+  3. `latex-agent` (Typesetting & layout management)
+  4. `requirements-verification-agent` (Assignment 2 rubric & checklist audit)
+  5. `independent-qa-agent` (Adversarial review & citation verification)
 - **Coordinator Rule**: Ensure each agent definition adheres to the Antigravity frontmatter conventions (`subagent: true`, `tools`, `name`, `description`).
 
 ### Task B: First Drafting Phase — Chapter 1 (Introduction) & Chapter 2 (Literature Review)

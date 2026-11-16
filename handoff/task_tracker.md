@@ -16,7 +16,8 @@
 | **T04** | Initial BibTeX literature database | Shams / Research Agent | `report/references.bib` | 13 seed citations |
 | **T05** | MiKTeX package dependency resolution | Shams / LaTeX Agent | Installed all missing packages | Exit code 0 |
 | **T06** | Compilation audit & warning resolution | Shams / LaTeX Agent | Resolved pageanchors, BibTeX, & hbox | 16-page base PDF |
-| **T07** | Coordinator Agent & dedicated skill creation | Shams / Coordinator Agent | `.agents/agents/coordinator.md`, `coordinator-workflow` | Active & registered |
+| **T07** | Coordinator Agent & dedicated skill creation | Shams / Coordinator Agent | `.agents/agents/academic-coordinator.md`, `coordinator-workflow` | Active & registered |
+| **T08** | Academic Research Agent & dedicated skill creation | Shams / Academic Researcher | `.agents/agents/academic-researcher.md`, `academic-research` | Active & verified |
 
 ---
 
@@ -24,7 +25,7 @@
 
 | ID | Task Description | Assignee / Agent | Target File | Status / Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| **T08** | Multi-agent team specification | Shams / Coordinator | `.agents/` | Defining remaining 6 specialized agents |
+| **T09** | Multi-agent team expansion (remaining 5 agents) | Shams / Coordinator | `.agents/` | Writing, Architecture, LaTeX, Verification, QA |
 
 ---
 
