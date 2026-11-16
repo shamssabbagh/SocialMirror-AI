@@ -11,7 +11,7 @@
     bottom=2.5cm,
     left=2.8cm,
     right=2.8cm,
-    headheight=15pt
+    headheight=20pt
 }
 
 \usepackage{setspace}
@@ -42,6 +42,7 @@
 \definecolor{LightBoxBg}{RGB}{245, 247, 250}
 \definecolor{LightBlueBg}{RGB}{238, 244, 252}
 \definecolor{BorderGray}{RGB}{200, 210, 225}
+\definecolor{BrickRed}{RGB}{180, 40, 40}
 
 % TikZ Vector Graphics
 \usepackage{tikz}
@@ -93,6 +94,46 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% Master Academic Editorial Styling for Headings
+\makeatletter
+\def\@makechapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \ifnum \c@secnumdepth >\m@ne
+        {\Large\bfseries\color{AccentTeal} \@chapapp\space \thechapter}
+        \par\nobreak
+        \vskip 6\p@
+    \fi
+    \interlinepenalty\@M
+    {\Huge \bfseries \color{NavyBlueDark} #1\par\nobreak}
+    \vskip 6\p@
+    {\color{AccentCyan}\rule{\linewidth}{1.6pt}\par\nobreak}
+    \vskip 18\p@
+  }}
+\def\@makeschapterhead#1{%
+  \vspace*{10\p@}%
+  {\parindent \z@ \raggedright \normalfont
+    \interlinepenalty\@M
+    {\Huge \bfseries \color{NavyBlueDark} #1\par\nobreak}
+    \vskip 6\p@
+    {\color{AccentTeal}\rule{\linewidth}{1.6pt}\par\nobreak}
+    \vskip 18\p@
+  }}
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.2ex \@plus -1ex \@minus -.2ex}%
+                                   {1.8ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries\color{NavyBlueDark}}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-2.8ex\@plus -1ex \@minus -.2ex}%
+                                     {1.2ex \@plus .2ex}%
+                                     {\normalfont\large\bfseries\color{AccentTeal}}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-2.5ex\@plus -1ex \@minus -.2ex}%
+                                     {1.0ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\color{SlateGray}}}
+\makeatother
+
 % Clean, Robust Callout Boxes (XeLaTeX RTL / bidi Compatible)
 \NewEnviron{agentbox}[1]{%
     \par\vspace{0.35cm}\noindent
@@ -100,6 +141,34 @@
     \setlength{\fboxsep}{10pt}%
     \setlength{\fboxrule}{1.2pt}%
     \fcolorbox{NavyBlueDark}{LightBlueBg}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{NavyBlueDark} #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
+}
+
+\NewEnviron{conceptbox}[1]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.2pt}%
+    \fcolorbox{AccentTeal}{LightBlueBg}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{AccentTeal} #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
+}
+
+\NewEnviron{insightbox}[1]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.2pt}%
+    \fcolorbox{NavyBlueDark}{LightBoxBg}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             {\large\bfseries\color{NavyBlueDark} #1}\par\vspace{0.2cm}%
             \BODY

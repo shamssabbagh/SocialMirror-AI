@@ -1,54 +1,198 @@
 % ==============================================================================
-% Chapter 1: Introduction & Problem Formulation
-% Target Page Budget: ~5 pages
+% פרק 1: מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי
 % ==============================================================================
-\chapter{Introduction \& Problem Formulation}
+\chapter{מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי}
 \label{chap:introduction}
 
-\section{Background and Societal Context}
+\section{רקע והקשר חברתי-טכנולוגי: מעבר מרשתות עמיתים למנועי המלצה}
 \label{sec:intro_background}
-% [Drafting Guidance: ~1.5 pages]
-% - Pervasiveness of digital media platforms (Instagram, TikTok, YouTube).
-% - Transition from organic social networking to algorithmic recommendation engines.
-% - The hyper-curation of lifestyle imagery and its cognitive footprint.
-% - Initial citations: \cite{twenge2018increases, primack2017social}.
+התפתחותו של המרחב המקוון בשני העשורים האחרונים מסמנת תמורה מבנית עמוקה באופי התקשורת והסוציאליזציה האנושית. בעוד שבראשית דרכן שימשו פלטפורמות חברתיות (כדוגמת ראשית ימיה של פייסבוק) כרשתות עמיתים אורגניות (\textenglish{Peer-to-Peer Networks}) שמטרתן העיקרית הייתה שימור קשרים בינאישיים קיימים ושיתוף חוויות הדדיות, העשור האחרון אופיין במעבר גורף ל"פלטפורמות תוכן והמלצה" (\textenglish{Algorithmic Recommendation Platforms}), ובראשן אינסטגרם, טיקטוק ויוטיוב.
 
-\section{The Mechanics of Digital Comparison and Influencer Culture}
-\label{sec:intro_influencer_comparison}
-% [Drafting Guidance: ~1.0 page]
-% - The rise of commercial influencer marketing and parasocial relationship formation.
-% - Blurring boundaries between authentic peer sharing and sponsored commercial messaging \cite{lou2019influencer, deveirman2017marketing}.
-% - Unconscious upward social comparison triggers in algorithmic feeds.
+בפלטפורמות אלו, הפיד המוצג למשתמש אינו מורכב עוד מתכנים כרונולוגיים של מכריו הקרובים, אלא מעוצב על ידי מנועי המלצה אלגוריתמיים רבי-עוצמה המבוססים על למידת חיזוק עמוקה (\textenglish{Deep Reinforcement Learning}). מנועים אלו מכוילים למטרה עסקית יחידה ומוגדרת היטב: \textbf{מקסום זמן שהייה ומעורבות רגעית} (\textenglish{Engagement Optimization}). על מנת ללכוד את קשב המשתמש ולמנוע נטישה, האלגוריתם מזהה העדפות רגשיות סמויות ומזרים באופן רציף תכנים בעלי פוטנציאל עוררות גבוה (\textenglish{High-Arousal Content}). בקרב משתמשים צעירים, תכנים אלו מתמקדים באופן מובהק בייצוגי סגנון חיים אידיאליים, סטנדרטים אסתטיים בלתי מציאותיים, הישגים חומריים ומוצרים ממומנים המוצגים על ידי יוצרי תוכן ומשפיענים בעלי תפוצה רחבה~\cite{lou2019influencer, deveirman2017marketing}.
 
-\section{Problem Statement and Core Research Challenges}
+השלכותיו של שינוי מבני זה חורגות מעבר לדיון טכנולוגי גרידא; הן מעצבות מחדש את הסוציאליזציה, את תפיסת העצמי ואת בריאות הנפש של דור שלם. מתבגרים וצעירים מקדישים כיום בממוצע בין שלוש לחמש שעות ביום לצריכת תוכן מסוג זה, כאשר האינטראקציה מתאפיינת ברובה ב"גלילה פסיבית" (\textenglish{Passive Scrolling}) -- צפייה שקטה ללא תגובה או שיתוף אקטיבי. מחקרים אורכיים רחבי היקף מראים כי החל משנת 2010, במקביל לחדירתם המסיבית של מכשירי הסמארטפון והפידים המותאמים אישית, נרשם זינוק דרמטי ומטריד בדיווחים על תסמיני דיכאון, חרדה, בדידות וירידה ברווחה הנפשית הכללית בקרב מתבגרים~\cite{twenge2018increases, primack2017social}.
+
+\section{הגדרת הבעיה: אטימות קוגניטיבית ותרבות ההשוואה הדיגיטלית}
 \label{sec:intro_problem_statement}
-% [Drafting Guidance: ~1.0 page]
-% - Core challenge: Lack of cognitive transparency in how feeds impact individual well-being in real-time.
-% - Passive scrolling vs. active engagement dilemma.
-% - The limitations of existing digital detox tools (crude screen-time limits vs. cognitive awareness).
+הבעיה המרכזית אותה מבקש פרויקט \projectname{} לחקור ולהגדיר אינה נעוצה אך ורק במשך הזמן המוקדש למסכים, אלא בראש ובראשונה בתופעה המוגדרת במסמך זה כ\textbf{אטימות קוגניטיבית} (\textenglish{Cognitive Opacity}) של חוויית המשתמש.
 
-\section{Research Questions and Guiding Hypotheses}
+בעת גלילה בפיד אלגוריתמי, המשתמש מוצף בזרם תכנים מבלי שתהיה לו נגישות למטא-נתונים המניעים את החשיפה:
+\begin{enumerate}
+    \item \textbf{עיוות שכיחות וייצוג אידיאלי} -- התכנים המוצגים משקפים את "רגעי השיא" המלוטשים והמבוימים ביותר של אחרים, תוך שימוש תכוף במסננים דיגיטליים (\textenglish{Filters}) ועיבוד תמונה מקצועי. המשתמש, החווה את חייו על כל מורכבותם היומיומית והבלתי-מושלמת, משווה את מציאותו הפנימית לחיצוניות המלאכותית של האחר.
+    \item \textbf{טשטוש הגבולות בשיווק משפיענים} -- משפיענים מובילים מייצרים תחושת קרבה ואותנטיות מדומה (קשר פארא-סוציאלי, \textenglish{Parasocial Interaction}), בעוד שבפועל התוכן מונע על ידי חוזי חסות מסחריים ואסטרטגיות שיווק מתוחכמות~\cite{lou2019influencer}. המשתמש תופס את החשיפה כעדות לאורח חיים נגיש, מה שמעצים את תחושת החסך והפער הכלכלי-חברתי.
+    \item \textbf{היעדר מודעות לרפלקציה עצמית} -- תהליך ההשוואה החברתית מתרחש באופן אוטומטי, בלתי-מודע ומהיר במיוחד. בעוד שהמשתמש מרגיש ירידה הדרגתית במצב הרוח וערעור בביטחון העצמי, הוא מתקשה לקשור סיבתית בין התכנים הספציפיים בהם צפה לבין המועקה הרגשית שחווה.
+\end{enumerate}
+
+שילוב גורמים אלו מייצר \textbf{"מעגל שחיקה רגשי פסיבי"}: ככל שהמשתמש חווה פגיעה בערך העצמי, כך גוברת נטייתו להמשיך בגלילה מתוך ניסיון לא מודע לפצות על חוסר הוודאות, מה שחושף אותו לתכנים מעוררי השוואה נוספים ומעמיק את המצוקה הרגשית~\cite{verduyn2017social, kross2013facebook}.
+
+\section{אוכלוסיית היעד ומחזיקי עניין מערכתיים}
+\label{sec:intro_stakeholders}
+פלטפורמת \projectname{} תוכננה לתת מענה לאקוסיסטם מורכב של מחזיקי עניין, כאשר במרכזו ניצבת אוכלוסיית הצעירים.
+
+\subsection{אוכלוסיית היעד הישירה: מתבגרים וצעירים (גילאי 15 עד 26)}
+צעירים ומתבגרים מהווים את פלח האוכלוסייה הפגיע ביותר להשפעות שליליות של השוואה חברתית. בשלב התפתחותי זה, גיבוש הזהות האישית, הדימוי הגופני והערכת המעמד החברתי תלויים במידה מכרעת במשוב מהסביבה ובהשוואה לקבוצת השווים (\textenglish{Peers}). הזמינות התמידית של אידיאלים בלתי-מושגים ברשתות מייצרת לחץ חברתי חסר תקדים, המתבטא בחרדת החמצה (\textenglish{FOMO - Fear of Missing Out}) ובחרדות ביצועיות.
+
+\subsection{מחזיקי עניין עקיפים ומערכתיים}
+\begin{itemize}
+    \item \textbf{הורים ואנשי חינוך} -- עומדים כיום חסרי אונים מול "קופסה שחורה" דיגיטלית. הכלים העומדים לרשותם מתמצים בהגבלות גסות של זמן מסך, מה שמוביל לעימותים מתמידים מול המתבגר. \projectname{} מציעה תשתית לשיח מושכל המבוסס על הבנת איכות התוכן ולא על כמות השעות.
+    \item \textbf{חוקרי פסיכולוגיה חברתית ומדעי ההתנהגות} -- קהילת המחקר סובלת כיום מהיעדר מתודולוגיות מחקר המסוגלות לחבר בין נתוני חשיפה בזמן אמת לבין תנודות במצב הרוח. כלי מחקר מבוסס סוכנים יאפשר סימולציה וניתוח של דינמיקות אלו ברזולוציה חסרת תקדים.
+    \item \textbf{קובעי מדיניות ובריאות הציבור} -- רשויות רגולטוריות וארגוני בריאות עולמיים מזהירים מפני משבר בריאות הנפש הדיגיטלי. תובנות הפרויקט עשויות להוות בסיס להנחיות אתיות עבור חברות הטכנולוגיה.
+\end{itemize}
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.86, every node/.style={transform shape},
+    stakeholder/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.4cm, font=\small\sffamily},
+    platform/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, rounded corners=3mm, line width=1.4pt, align=center, inner sep=9pt, text width=4.0cm, font=\bfseries\sffamily, text=white},
+    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=AccentTeal},
+    feedback/.style={-{Latex[length=2.8mm]}, dashed, line width=1.1pt, draw=AccentCyan}
+]
+
+\node[platform] (platform) {\projectname{}\\Platform Core\\\scriptsize Multi-Agent Perception \& Reflection};
+
+\node[stakeholder, above left=1.5cm and 0.9cm of platform] (youth) {\textbf{Youth \& Young Adults}\\\scriptsize \textenglish{Age 15--26}\\Primary Beneficiaries};
+\node[stakeholder, above right=1.5cm and 0.9cm of platform] (parents) {\textbf{Parents \& Educators}\\\scriptsize Constructive Mediation\\Non-Intrusive Guidance};
+\node[stakeholder, below left=1.5cm and 0.9cm of platform] (researchers) {\textbf{Behavioral Researchers}\\\scriptsize Social Comparison Modeling\\Ecological Telemetry};
+\node[stakeholder, below right=1.5cm and 0.9cm of platform] (policy) {\textbf{Public Health \& Policy}\\\scriptsize Responsible AI Standards\\Digital Well-Being Policy};
+
+\draw[arrow] (youth) -- node[right, font=\scriptsize\sffamily] {Interactions} (platform);
+\draw[feedback] (platform) -- node[left, font=\scriptsize\sffamily] {Insights} (youth);
+\draw[arrow] (platform) -- node[above, font=\scriptsize\sffamily] {Mediation} (parents);
+\draw[arrow] (platform) -- node[below, font=\scriptsize\sffamily] {Data Streams} (researchers);
+\draw[arrow] (platform) -- node[below, font=\scriptsize\sffamily] {Evidence} (policy);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{אקוסיסטם מחזיקי העניין ויחסי הגומלין בפלטפורמת \projectname{}}
+\label{fig:stakeholder_ecosystem}
+\end{figure}
+
+\section{המסלול המושגי המתווך: מחשיפה דיגיטלית לשחיקה רגשית}
+\label{sec:intro_pathway}
+כדי להבין את אופן הפעולה הפסיכולוגי של הפלטפורמה, יש למפות את המסלול הסיבתי-מתווך המקשר בין חשיפה לתכנים אידיאליים לבין התפתחות מצוקה רגשית. איור~\ref{fig:conceptual_pathway} ממחיש את ארבעת שלבי המסלול הקוגניטיבי המתווך, ואת נקודת ההתערבות המדויקת של פלטפורמת \projectname{}.
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.80, every node/.style={transform shape},
+    box/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=3mm, line width=1.1pt, align=center, inner sep=8pt, text width=3.2cm, font=\small\sffamily},
+    mirrorbox/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, rounded corners=3mm, line width=1.3pt, align=center, inner sep=8pt, text width=3.4cm, font=\bfseries\sffamily, text=white},
+    arrow/.style={-{Latex[length=3mm]}, line width=1.2pt, draw=NavyBlueDark},
+    reflarrow/.style={-{Latex[length=3mm]}, dashed, line width=1.2pt, draw=AccentTeal},
+    cyclearrow/.style={-{Latex[length=3mm]}, line width=1.1pt, draw=BrickRed, dashed}
+]
+
+% Process Flow Nodes
+\node[box] (n1) {\textbf{\textenglish{Stage 1}}\\\textbf{\textenglish{Exposure}}\\\scriptsize Curated Lifestyle,\\Beauty Filters \&\\Sponsored Content};
+\node[box, right=1.6cm of n1] (n2) {\textbf{\textenglish{Stage 2}}\\\textbf{\textenglish{Comparison}}\\\scriptsize Upward Social\\Comparison Triggered\\(Festinger 1954)};
+\node[box, right=1.6cm of n2] (n3) {\textbf{\textenglish{Stage 3}}\\\textbf{\textenglish{Discrepancy}}\\\scriptsize Actual vs. Ideal Self\\Gap Expansion\\(Higgins 1987)};
+\node[box, right=1.6cm of n3] (n4) {\textbf{\textenglish{Stage 4}}\\\textbf{\textenglish{Depletion}}\\\scriptsize State Self-Esteem Drop\\Negative Affect Spike\\(RSES \& PANAS)};
+
+% Forward Flow Arrows
+\draw[arrow] (n1) -- (n2);
+\draw[arrow] (n2) -- (n3);
+\draw[arrow] (n3) -- (n4);
+
+% Compensatory Doomscrolling Loop
+\draw[cyclearrow] (n4.south) -- ++(0,-0.9cm) -| node[below, pos=0.25, font=\scriptsize\sffamily, text=BrickRed] {Compensatory Scrolling / Doomscrolling Loop (Passive Consumption)} (n1.south);
+
+% Cognitive Mirror Intervention
+\node[mirrorbox, above=1.5cm of $(n2)!0.5!(n3)$] (mirror) {\projectname{}\\Cognitive Mirror\\\scriptsize Semantic Disruption \& Scaffolding};
+
+\draw[reflarrow] (n2.north) -- (mirror.south west);
+\draw[reflarrow] (n3.north) -- (mirror.south east);
+\draw[reflarrow] (mirror.north) -- ++(0,0.5cm) -| node[above, near start, font=\scriptsize\sffamily, text=AccentTeal] {Metacognitive Insight (Breaks Loop)} (n4.north);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{המסלול המושגי המתווך: מחשיפה לתכנים מלוטשים ועד לשחיקה רגשית ומעגל גלילת הפיצוי}
+\label{fig:conceptual_pathway}
+\end{figure}
+
+כפי שמומחש בתרשים, השחיקה הרגשית הנובעת מפערי עצמי (שלב 4) אינה מובילה בדרך כלל לכיבוי המכשיר, אלא ל"גלילת פיצוי" (\textenglish{Compensatory Scrolling}): המשתמש מנסה להפיג את המועקה באמצעות המשך הגלילה, מה שמזין מחדש את החשיפה לתכנים מעוררי השוואה (שלב 1). התערבות \projectname{} חודרת בדיוק בצומת שבין שלבי ההשוואה והפער העצמי, ומציגה שיקוף מטא-קוגניטיבי המאפשר שבירה מודעת של הלולאה ההרסנית.
+
+\section{חשיבות הפרויקט, נחיצותו וחדשנותו המושגית}
+\label{sec:intro_significance}
+מדוע נדרש כלי מבוסס סוכני בינה מלאכותית, ומדוע הפתרונות הקיימים בשוק נכשלו?
+
+הכלים המסחריים המובילים כיום בתחום ה-"\textenglish{Digital Well-Being}" (דוגמת \textenglish{Apple Screen Time}, \textenglish{Google Digital Wellbeing}, או אפליקציות חסימה כגון \textenglish{One Sec} ו-\textenglish{Freedom}) מתבססים כולם על הנחת יסוד בעייתית: \textbf{שקילות כמותית של זמן מסך}. לפי גישה זו, שעה של צפייה בסרטוני מדע מעשירים שקולה לשעה של צפייה בפיד ממומן של משפיעני יופי ואופנה. גישה מכניסטית זו מתעלמת לחלוטין מאיכות התוכן, מהמטען הרגשי של האינטראקציה ומהתהליכים הקוגניטיביים המתעוררים במוחו של המשתמש. יתרה מזאת, חסימה פטרנליסטית מייצרת לעיתים קרובות "אפקט ריאקטנס" (\textenglish{Psychological Reactance}) -- התנגדות עזה מצד המשתמש המובילה לעקיפת המגבלות ולתחושת תסכול מוגברת.
+
+\begin{agentbox}{השינוי הפרדיגמטי שמציעה \projectname{}}
+בניגוד לכלי חסימה פטרנליסטיים, \projectname{} מגדירה מחדש את הטכנולוגיה כ\textbf{"מראה קוגניטיבית משקפת ומעצימה"}. במקום למנוע שימוש בכוח, המערכת מפרקת את האטימות האלגוריתמית של הרשת, מזהה בזמן אמת גירויי השוואה כלפי מעלה, ומציגה למשתמש שיקוף סמנטי-איכותני המאפשר לו לפתח \textbf{בחירה מודעת וחוסן פסיכולוגי פנימי}.
+\end{agentbox}
+
+החדשנות המושגית של הפרויקט מתבטאת בשלושה היבטים עיקריים:
+\begin{enumerate}
+    \item \textbf{ניתוח סמנטי-הקשרי} -- מעבר ממדידת דקות גולמיות למדידת עומק של גירויי השוואה, אידיאליזציה ושיווק משפיענים באמצעות מודלי שפה גדולים (\textenglish{LLMs}).
+    \item \textbf{ארכיטקטורה מרובת סוכנים מתואמת} -- חלוקת עומסים וקוגניציה בין סוכנים מומחים המנטרים, מנתחים ומשקפים את המידע ללא פגיעה בפרטיות המשתמש.
+    \item \textbf{התערבות מטא-קוגניטיבית עדינה} -- מתן פיגומים קוגניטיביים (\textenglish{Cognitive Scaffolding}) בזמן ובמינון הנכון, ללא שיפוטיות וללא חסימת ממשק אגרסיבית.
+\end{enumerate}
+
+\section{מטרות הפרויקט המרכזיות ושאלות המחקר}
 \label{sec:intro_research_questions}
-% [Drafting Guidance: ~0.75 pages]
-% Formulate primary research questions (RQ1-RQ4):
-% RQ1: How can multi-agent systems reliably detect and quantify upward social comparison triggers in multimodal social media streams?
-% RQ2: What cognitive state modeling techniques best capture longitudinal shifts in user well-being?
-% RQ3: Can autonomous reflection agents provide timely, non-intrusive cognitive scaffolding without triggering reactance?
-% RQ4: What ethical boundaries must govern autonomous affective monitoring agents?
+במסגרת עבודת ההכנה האקדמית של פרויקט \projectname{}, הוגדרו ארבע שאלות מחקר מנחות (\textenglish{Research Questions -- RQs}), הנגזרות ישירות מפערי הידע בספרות הקיימת:
 
-\section{Scope, Project Objectives, and Anticipated Contributions}
-\label{sec:intro_contributions}
-% [Drafting Guidance: ~0.5 pages]
-% - Delineate the scope for Assignment 2 (Preparatory System Specification).
-% - List of tangible contributions: Theoretical framework, Agent society specification, Simulation protocol, Ethical roadmap.
+\begin{itemize}
+    \item \textbf{\textenglish{RQ1 (Detection \& Quantification)}} -- כיצד ניתן למדל, לזהות ולכמת באופן חישובי גירויי השוואה חברתית כלפי מעלה ואינדקסי אידיאליזציה בתכנים רב-מודאליים (טקסט, תמונה ומטא-נתונים) המופיעים בפיד מותאם אישית?
+    \item \textbf{\textenglish{RQ2 (Affective State Modeling)}} -- מהו המודל החישובי המתאים ביותר לתיאור הדינמיקה הזמנית של וקטור המצב הנפשי $\wellbeingVector{}$ של המשתמש כפונקציה של רצפי חשיפה ממושכים, והאם מודל זה מסוגל לחזות ירידות חדות בערך העצמי הרגעי?
+    \item \textbf{\textenglish{RQ3 (Reflective Scaffolding \& Reactance)}} -- כיצד יכול סוכן רפלקציה אוטונומי לייצר תובנות מטא-קוגניטיביות מותאמות אישית המשפרות את המודעות הביקורתית של המשתמש מבלי לעורר התנגדות פסיכולוגית (\textenglish{Reactance}) או תחושת מעקב פולשנית?
+    \item \textbf{\textenglish{RQ4 (Ethical Boundaries \& Local Privacy)}} -- מהם הגבולות האתיים, הנורמטיביים והטכנולוגיים הנדרשים להבטחת פרטיות מקומית מוחלטת (\textenglish{Local-First Edge Computing}) של המשתמש במערכת AI המנטרת מדדים רגשיים רגישים?
+\end{itemize}
 
-\section{Structure of the Preparatory Report}
+איור~\ref{fig:rq_system_mapping} ממחיש את המיפוי בין שאלות המחקר, הנדבכים התיאורטיים ורכיבי הארכיטקטורה הרב-סוכנית של הפלטפורמה.
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.84, every node/.style={transform shape},
+    rqnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.3cm, font=\small\sffamily},
+    modulenode/.style={rectangle, draw=AccentTeal, fill=white, rounded corners=2.5mm, line width=1.2pt, align=center, inner sep=7pt, text width=3.4cm, font=\footnotesize\sffamily},
+    arrow/.style={-{Latex[length=2.5mm]}, line width=1.1pt, draw=NavyBlueDark}
+]
+
+% RQ Nodes
+\node[rqnode] (rq1) {\textbf{RQ1: Detection}\\\scriptsize Multimodal Salience\\$\comparisonScore$ \& Influencer $\exposureIndex$};
+\node[rqnode, below=1.4cm of rq1] (rq2) {\textbf{RQ2: Affective Dynamics}\\\scriptsize Temporal State Modeling\\Vector $\wellbeingVector$ (RSES, PANAS)};
+\node[rqnode, below=1.4cm of rq2] (rq3) {\textbf{RQ3: Scaffolding}\\\scriptsize Metacognitive Reflection\\Reactance Minimization};
+\node[rqnode, below=1.4cm of rq3] (rq4) {\textbf{RQ4: Ethics \& Privacy}\\\scriptsize Edge AI, Local Embeddings\\Non-Clinical Boundaries};
+
+% System Module Nodes
+\node[modulenode, right=3.0cm of rq1] (mod1) {\textbf{Perception \& Extraction}\\\scriptsize \agentObserver{} + \agentAnalyst{}\\\scriptsize Multimodal LLM Classifier};
+\node[modulenode, right=3.0cm of rq2] (mod2) {\textbf{Cognitive State Tracking}\\\scriptsize \agentReflector{}\\\scriptsize Differential Decay Dynamics};
+\node[modulenode, right=3.0cm of rq3] (mod3) {\textbf{Reflective Interaction}\\\scriptsize \agentInterventionist{}\\\scriptsize Behavioral Economics Nudges};
+\node[modulenode, right=3.0cm of rq4] (mod4) {\textbf{Governance \& Edge Core}\\\scriptsize Local-First Ingestion\\No External Server Leakage};
+
+% Connecting Arrows
+\draw[arrow] (rq1) -- node[above, font=\scriptsize\sffamily] {Informs} (mod1);
+\draw[arrow] (rq2) -- node[above, font=\scriptsize\sffamily] {Calibrates} (mod2);
+\draw[arrow] (rq3) -- node[above, font=\scriptsize\sffamily] {Guides} (mod3);
+\draw[arrow] (rq4) -- node[above, font=\scriptsize\sffamily] {Constrains} (mod4);
+
+% Inter-RQ Dependencies
+\draw[-{Latex[length=2.2mm]}, draw=AccentCyan, line width=1.1pt] (rq1) -- (rq2);
+\draw[-{Latex[length=2.2mm]}, draw=AccentCyan, line width=1.1pt] (rq2) -- (rq3);
+\draw[-{Latex[length=2.2mm]}, draw=BrickRed, dashed, line width=1.0pt] (rq4.west) to[bend left=40] (rq1.west);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{מיפוי שאלות המחקר (RQ1--RQ4) והתאמתן לרכיבי המערכת הרב-סוכנית ולמנגנוני הבקרה האתית}
+\label{fig:rq_system_mapping}
+\end{figure}
+
+\section{מבנה הדוח המכין ומפת הדרכים המחקרית}
 \label{sec:intro_outline}
-% [Drafting Guidance: ~0.25 pages]
-% - Brief chapter-by-chapter roadmap guiding the reader through Chapters 2 to 6.
-This report is organized into six primary chapters:
-\Cref{chap:literature_review} synthesizes foundational psychology and AI agent literature;
-\Cref{chap:system_architecture} details the system architecture and multi-agent roles of \projectname{};
-\Cref{chap:methodology} presents the experimental simulation framework and metrics;
-\Cref{chap:implementation_roadmap} outlines technical feasibility and implementation milestones; and
-\Cref{chap:conclusion} concludes with future perspectives and impact.
+דוח אקדמי זה בנוי במבנה שיטתי המגשר בין תיאוריה פסיכולוגית מעמיקה להתוויית מערכת בינה מלאכותית עתידית:
+
+\begin{itemize}
+    \item \textbf{פרק 1 (מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי)} -- מציג את הרקע המבני למעבר מפלטפורמות שיתוף למנועי המלצה אלגוריתמיים, מגדיר את בעיית "האטימות הקוגניטיבית", משרטט את אקוסיסטם מחזיקי העניין, ומנסח את שאלות המחקר המנחות.
+    \item \textbf{פרק 2 (סקירת ספרות ומסגרת תיאורטית)} -- סוקר באופן מעמיק את תיאוריית ההשוואה החברתית של פסטינגר, תיאוריית הפער העצמי של היגינס, תיאוריית ההחפצה העצמית, מחקרים אמפיריים מרכזיים (מגמות אפידמיולוגיות, גלילה פסיבית, שיווק משפיענים), וסולמות פסיכומטריים מתוקפים.
+    \item \textbf{פרק 3 (פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית)} -- מנתח את הפולמוס המדעי בין מתאם לסיבתיות (טוונגי מול אורבן), מציג השוואה כמותית של גודלי אפקט מתוך ספרות מאומתת, מבקר את כלי הרווחה הקיימים בשוק, מציג את הפרדיגמה הרב-סוכנית של \projectname{}, ומתווה את עקרונות האתיקה והפרטיות המקומית.
+    \item \textbf{שלבי הפיתוח המחקריים המתוכננים בהמשך} -- יוקדשו לניסוח מלא של הפרומפטים המערכתיים ופרוטוקולי התקשורת הבין-סוכניים, לפיתוח המשוואות המתמטיות המדויקות של הדינמיקה האפקטיבית, לתכנון ניסוי סימולציה מבוקר עם פרסונות גנרטיביות, ולבניית פרוטוקול הערכה אמפירית בעולם האמיתי.
+\end{itemize}

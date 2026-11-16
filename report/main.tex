@@ -88,126 +88,27 @@
 \hypersetup{pageanchor=true}
 
 % ==============================================================================
-% עמוד 2: מבוא לפרויקט ותמצית מנהלים (Chapter 1: Introduction & Motivation)
+% גוף הדוח המכין: פרקים 1–3
 % ==============================================================================
-\chapter{מבוא ומסגרת תיאורטית}
 
-\section{תמצית מנהלים ומוטיבציה}
-דוח זה מציג את התשתית התיאורטית, המחקרית וההנדסית של פלטפורמת \projectname{} -- מערכת חדשנית מבוססת סוכני בינה מלאכותית אוטונומיים (\textenglish{Multi-Agent System - MAS}), המיועדת למדל, לנתח ולשקף למשתמשים צעירים את ההשפעות הפסיכולוגיות והקוגניטיביות הנובעות מצריכת תוכן בפידים אלגוריתמיים מותאמים אישית. בעוד שכלי הרווחה הדיגיטלית המסורתיים (כדוגמת \textenglish{Apple Screen Time} או \textenglish{One Sec}) מתמקדים בהגבלת זמן מסך כמותית גרידא, \projectname{} מציעה שינוי פרדיגמה עמוק: מעבר ממדידת זמן שטחית לניתוח סמנטי-איכותני של אינטראקציות, עירור תהליכי השוואה חברתית (\textenglish{Social Comparison}), וחשיפה לשיווק משפיענים (\textenglish{Influencer Marketing}).
+% חלק מקדים: תקציר מנהלים, מילון מונחים, תוכן עניינים ורשימות
+\input{chapters/00_frontmatter}
 
-\subsection{רקע והגדרת הבעיה}
-התפתחותן המואצת של פלטפורמות חברתיות מודרניות (כגון אינסטגרם וטיקטוק) חוללה שינוי יסודי במרחב הדיגיטלי -- מעבר מרשתות חברתיות המבוססות על שיתוף אורגני בין עמיתים (\textenglish{Peer Networks}), למנועי המלצה אלגוריתמיים המונעים על ידי מקסום זמן שהייה (\textenglish{Engagement Optimization}). בפידים אלו, נחשפים מתבגרים וצעירים לזרם רציף של ייצוגי סגנון חיים אידיאליים, יופי מלוטש ומוצרים ממומנים.
+% פרק 1: מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי
+\input{chapters/01_introduction}
 
-ספרות מחקרית ענפה מהשנים האחרונות מצביעה על קשר מתאמי מובהק בין חשיפה רציפה לתכנים מסוג זה לבין עלייה במדדי דיכאון, חרדה, חוסר שביעות רצון מדימוי הגוף (\textenglish{Body Image Dissatisfaction}) וירידה בערך העצמי הרגעי~\cite{twenge2018increases, primack2017social}. הבעיה המרכזית נעוצה ב"אטימות הקוגניטיבית" של הפיד: המשתמש חווה תהליכי השוואה חברתית כלפי מעלה מבלי שיהיה מודע למנגנוני השיווק והאופטימיזציה המניעים את החשיפה, מה שמייצר מעגל שחיקה רגשי פסיבי.
+% פרק 2: סקירת ספרות ומסגרת תיאורטית: פסיכולוגיה חברתית במרחב הדיגיטלי
+\input{chapters/02_literature_review}
 
-\begin{agentbox}{עקרון הליבה של \projectname{}}
-המערכת אינה פועלת ככלי חסימה פטרנליסטי, אלא כ"מראה קוגניטיבית" מודעת ומעצימה.
-באמצעות ארבעה סוכנים ייעודיים הפועלים בתיאום מלא -- סוכן התצפית (\agentObserver{}), סוכן הניתוח (\agentAnalyst{}), סוכן הרפלקציה (\agentReflector{}) וסוכן ההתערבות (\agentInterventionist{}) -- הפלטפורמה מודדת ומבודדת אירועי השוואה חברתית ומספקת למשתמש תובנות מטא-קוגניטיביות מותאמות אישית.
-\end{agentbox}
+% פרק 3: פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית של SocialMirror-AI
+\input{chapters/03_research_gaps_and_conceptual_system}
 
 % ==============================================================================
-% עמוד 3: מסגרת תיאורטית ותרשים מושגי ב-TikZ (Theoretical Model & Diagram)
+% רשימת מקורות אקדמיים (Bibliography - Typeset in English LTR)
 % ==============================================================================
-\newpage
-\section{מסגרת תיאורטית: תיאוריית ההשוואה החברתית של פסטינגר}
-הבסיס הפסיכולוגי של \projectname{} מושתת על תיאוריית ההשוואה החברתית (\textenglish{Social Comparison Theory - SCT}) שנוסחה במקורה על ידי פסטינגר~\cite{festinger1954theory}. על פי פסטינגר, לבני אדם קיים דחף מולד להעריך את יכולותיהם, הישגיהם ומעמדם ביחס לאחרים. בסביבות דיגיטליות, השוואה זו מתרחשת באופן כמעט בלעדי "כלפי מעלה" (\textenglish{Upward Comparison}) מול דמויות משפיענים ויוצרי תוכן הנתפסים כמוצלחים, מושכים או עשירים יותר.
-
-מחקרים אמפיריים מודרניים, בייחוד מטא-אנליזות מובילות מאת אפל וחוב'~\cite{appels2020social} ומחקרי תיווך מאת פראדוליי וחוב'~\cite{fardouly2018instagram}, ממחישים כי השוואה כלפי מעלה מעוררת אפקט ניגוד (\textenglish{Contrast Effect}), הגורר פער עצמי חריף (\textenglish{Self-Discrepancy}). תרשים~\ref{fig:conceptual_framework} ממחיש את מעגל ההשוואה הדיגיטלי ואת אופן ההשתלבות של סוכני \projectname{} לשבירת מעגל זה.
-
-\vspace{0.2cm}
-\begin{figure}[H]
-\centering
-\begin{LTR}
-\begin{tikzpicture}[
-    scale=0.85, every node/.style={transform shape},
-    box/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1pt, align=center, inner sep=7pt, text width=3.1cm, font=\small\sffamily},
-    agent/.style={rectangle, draw=AccentTeal, fill=white, rounded corners=2mm, line width=1.1pt, align=center, inner sep=5pt, text width=2.8cm, font=\footnotesize\sffamily},
-    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=NavyBlueDark},
-    dasharrow/.style={-{Latex[length=2.2mm]}, dashed, line width=1.0pt, draw=AccentTeal}
-]
-
-% Cycle Nodes
-\node[box] (feed) {\textbf{Algorithmic Feed}\\\scriptsize High-Idealization Lifestyle \& Sponsored Content};
-\node[box, right=2.4cm of feed] (comparison) {\textbf{Upward Comparison}\\\scriptsize Contrast Effect \& Self-Discrepancy (Festinger 1954)};
-\node[box, below=1.8cm of comparison] (distress) {\textbf{Affective Distress}\\\scriptsize $\downarrow$ State Self-Esteem (RSES)\\\scriptsize $\uparrow$ Negative Affect (PANAS)};
-\node[box, below=1.8cm of feed] (consumption) {\textbf{Passive Scrolling}\\\scriptsize Compensatory Digital Consumption};
-
-% Cycle Arrows
-\draw[arrow] (feed) -- node[above, font=\scriptsize\sffamily] {Exposure} (comparison);
-\draw[arrow] (comparison) -- node[right, font=\scriptsize\sffamily] {Elicits} (distress);
-\draw[arrow] (distress) -- node[below, font=\scriptsize\sffamily] {Triggers} (consumption);
-\draw[arrow] (consumption) -- node[left, font=\scriptsize\sffamily] {Feeds} (feed);
-
-% Agent Interventions
-\node[agent, above=0.6cm of comparison] (analyst) {\textbf{\texttt{AnalystAgent}}\\\scriptsize Computes Salience $\comparisonScore$};
-\node[agent, left=0.5cm of consumption] (observer) {\textbf{\texttt{ObserverAgent}}\\\scriptsize Monitors Exposure $\exposureIndex$};
-\node[agent, right=0.5cm of distress] (reflector) {\textbf{\texttt{ReflectorAgent}}\\\scriptsize Updates State $\wellbeingVector$};
-
-\draw[dasharrow] (comparison) -- (analyst);
-\draw[dasharrow] (consumption) -- (observer);
-\draw[dasharrow] (distress) -- (reflector);
-
-\end{tikzpicture}
-\end{LTR}
-\caption{תרשים מושגי: מעגל ההשוואה החברתית הדיגיטלי ומנגנון הניטור של סוכני \projectname{}}
-\label{fig:conceptual_framework}
-\end{figure}
-
-בתרשים זה מומחש אופן הפעולה: סוכן \agentObserver{} דוגם את שטף התוכן, סוכן \agentAnalyst{} מבודד גירויי השוואה באמצעות ציון בולטות $\comparisonScore{}$, וסוכן \agentReflector{} מעדכן את וקטור המצב הנפשי $\wellbeingVector{}$ לצורך ייצור רפלקציה מעצימה למשתמש.
-
-% ==============================================================================
-% עמוד 4: טבלה השוואתית מקצועית (Comparative Table & Ethics Note)
-% ==============================================================================
-\newpage
-\section{סקירה השוואתית של ספרות אמפירית מרכזית}
-כדי לבסס את הפיתוח על ממצאים מדעיים מוצקים ולמנוע הנחות בלתי מבוססות, טבלה~\ref{tab:literature_matrix} מרכזת מחקרי מפתח בתחום, תוך הבחנה חמורה בין מתאמים אמפיריים לקשרים סיבתיים.
-
-\begin{table}[H]
-\centering
-\caption{מטריצת ניתוח ספרות מחקרית אמפירית בתחום השוואה חברתית, משפיענים ורווחה נפשית}
-\label{tab:literature_matrix}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.7cm} >{\raggedleft\arraybackslash}p{2.2cm} X >{\raggedleft\arraybackslash}p{3.2cm}}
-\toprule
-\textbf{מחקר ומקור} & \textbf{מתודולוגיה ומדגם} & \textbf{ממצאים אמפיריים מרכזיים} & \textbf{תרומה ישירה ל-\projectname{}} \\
-\midrule
-\textbf{\textenglish{Festinger (1954)}}~\cite{festinger1954theory} \newline {\scriptsize \textenglish{\textit{Human Relations}}} &
-תיאורטי-מושגי \newline {\scriptsize קלאסיקה מקוננת} &
-ניסוח תיאוריית ההשוואה החברתית (\textenglish{SCT}); זיהוי דחף הערכה מולד והבחנה בין כיווני השוואה. &
-הגדרת מדד בולטות ההשוואה $\comparisonScore{}$ עבור סוכן הניתוח. \\
-\midrule
-\textbf{\textenglish{Twenge et al. (2018)}}~\cite{twenge2018increases} \newline {\scriptsize \textenglish{\textit{Clin. Psych. Sci.}}} &
-סקר אורכי רחב היקף \newline {\scriptsize $N > 500{,}000$ מתבגרים} &
-מתאם חיובי מובהק בין שימוש במסכי מגע וברשתות לעלייה בדיכאון ובדידות החל משנת 2010. &
-תיקוף המוטיבציה החברתית ומדדי הפגיעות של משתמשים צעירים. \\
-\midrule
-\textbf{\textenglish{Fardouly et al. (2018)}}~\cite{fardouly2018instagram} \newline {\scriptsize \textenglish{\textit{New Media \& Soc.}}} &
-סקר חתך כמותי \newline {\scriptsize $N = 276$ נשים צעירות} &
-השוואה לתמונות סגנון חיים ומשפיענים מהווה גורם מתווך מרכזי לפגיעה בדימוי הגוף ובערך העצמי. &
-שקלול פערי סטטוס ומשפיעני מאקרו בתוך משוואות סוכן הניתוח (\agentAnalyst{}). \\
-\midrule
-\textbf{\textenglish{Appel et al. (2020)}}~\cite{appels2020social} \newline {\scriptsize \textenglish{\textit{Pers. Soc. Psychol.}}} &
-מטא-אנליזה מקיפה \newline {\scriptsize עשרות מחקרים} &
-אישוש אפקט הניגוד: השוואה כלפי מעלה ברשתות מנבאת באופן יציב ירידה בערך העצמי (\textenglish{RSES}). &
-כיול פונקציית הירידה של וקטור המצב הנפשי $\wellbeingVector{}$. \\
-\midrule
-\textbf{\textenglish{Park et al. (2023)}}~\cite{park2023generative} \newline {\scriptsize \textenglish{\textit{ACM UIST '23}}} &
-ניסוי סימולציה מבוסס \textenglish{LLM} \newline {\scriptsize 25 סוכנים בסביבה סגורה} &
-הוכחת היתכנות של סוכנים גנרטיביים בעלי זיכרון רפלקטיבי ויכולת תכנון התנהגותי אמינה. &
-השראה ישירה למבנה הזיכרון והרפלקציה של סוכן הרפלקציה (\agentReflector{}). \\
-\bottomrule
-\end{tabularx}
-\end{table}
-
-\begin{ethicsbox}
-\textbf{אחריות מדעית והגנת הפרטיות:} כל ניתוחי המצב והרפלקציות ב-\projectname{} מתבצעים מקומית על גבי וקטורי שיכון (\textenglish{Local Embeddings}) ללא שמירת מידע מזהה. המערכת נועדה להעצמת מודעות מטא-קוגניטיבית ואינה מתיימרת להוות כלי אבחון קליני או טיפול רפואי.
-\end{ethicsbox}
-
-% ==============================================================================
-% עמוד 5: רשימת מקורות אקדמיים (Bibliography - Typeset in English LTR)
-% ==============================================================================
+\clearpage
 \begin{english}
-\nocite{festinger1954theory, twenge2018increases, fardouly2018instagram, appels2020social, park2023generative, primack2017social}
+\nocite{*}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 \end{english}

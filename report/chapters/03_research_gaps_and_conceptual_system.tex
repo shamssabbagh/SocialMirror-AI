@@ -1,0 +1,255 @@
+% ==============================================================================
+% פרק 3: פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית של SocialMirror-AI
+% ==============================================================================
+\chapter{פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית של \projectname{}}
+\label{chap:gaps_and_system}
+
+\section{מבוא לפרק}
+הספרות הפסיכולוגית שנסקרה בפרק~\ref{chap:literature_review} ביססה את הקשר שבין חשיפה לתכנים אידיאליים ברשתות לבין עירור השוואה חברתית כלפי מעלה, העמקת פערי עצמי ופגיעה ברווחה הנפשית. עם זאת, כאשר בוחנים את יישום הממצאים הללו בעולם הטכנולוגי והמחקרי הנוכחי, מתגלה פער כפול: מצד אחד, מחקרי ההשפעה של מדיה חברתית לכודים בפולמוס מתודולוגי חריף אודות מתאם מול סיבתיות; ומצד שני, הכלים המסחריים הקיימים לניהול רווחה דיגיטלית מציעים מענה מכניסטי ופטרנליסטי שאינו נוגע בשורש הבעיה.
+
+פרק זה מנתח לעומק פערים אלו, מציג השוואה כמותית מבוססת נתונים אמפיריים מפורסמים בין השפעות "זמן מסך גולמי" לבין השפעות של השוואה חברתית איכותנית, בוחן באופן ביקורתי את מגבלותיהם של פתרונות הרווחה הדיגיטלית המסחריים, ומציג את הפרדיגמה המושגית של פלטפורמת \projectname{} -- מערכת מרובת סוכנים הפועלת כ"מראה קוגניטיבית" מעצימה. לבסוף, הפרק מגדיר את עקרונות האתיקה והפרטיות המקומית, ומתווה מפת דרכים שלבית לפיתוח עתידי של מערך המחקר והסימולציה.
+
+\section{פערי מחקר אמפיריים ומתודולוגיים: פולמוס המתאם מול הסיבתיות}
+\label{sec:gaps_correlation_causation}
+אחד האתגרים המרכזיים בחקר ההשפעות של מדיה דיגיטלית על צעירים הוא הקושי בבידוד קשרים סיבתיים מתוך מערכי מחקר מתאמיים. פולמוס אקדמי נוקב זה ממחיש מדוע נדרש שינוי מהותי באופן שבו נתונים דיגיטליים נמדדים ומנותחים.
+
+\subsection{פולמוס טוונגי מול אורבן ופרז'יבילסקי}
+בשנים האחרונות התפתח דיון מדעי סוער בין שתי אסכולות מחקריות מובילות:
+\begin{itemize}
+    \item \textbf{אסכולת ההשפעה המאקרו-אפידמיולוגית (טוונגי וחוב')}~\cite{twenge2018increases} --
+    חוקרים אלו טוענים כי העלייה החדה בדיכאון ובמצוקה בקרב מתבגרים מאז שנת 2010 היא תוצאה ישירה של הזינוק בזמן החשיפה למסכים ולסמארטפונים. טענה זו נשענת על סקרי ענק ועל מתאמים חיוביים מובהקים ברמת האוכלוסייה.
+    \item \textbf{אסכולת ניתוח עקומת המפרט (אורבן ופרז'יבילסקי)}~\cite{orben2019association} --
+    במאמר מכונן שפורסם בכתב העת \textenglish{\textit{Nature Human Behaviour}}, ערכו אורבן ופרז'יבילסקי (\textenglish{Orben \& Przybylski}) ניתוח עקומת מפרט (\textenglish{Specification Curve Analysis - SCA}) על מדגמים בני מאות אלפי מתבגרים בבריטניה ובארצות הברית ($N > 350{,}000$). החוקרים בדקו מיליוני צירופים אנליטיים אפשריים והראו כי הקשר הכולל בין זמן מסך גולמי לבין רווחה נפשית הוא מזערי ביותר ($r \approx -0.04$), ומסביר פחות מ-$0.4\%$ מהשונות ברווחה הנפשית של צעירים. לשם המחשה, גודל אפקט זה זהה להשפעה של אכילת תפוחי אדמה או הרכבת משקפי ראייה על בריאות הנפש.
+\end{itemize}
+
+\subsection{המסקנה המתודולוגית: כשל המדידה המצרפית}
+הפולמוס המדעי בין טוונגי לאורבן מוביל למסקנה מתודולוגית קריטית, המהווה את נקודת המוצא הרעיונית לפרויקט הנוכחי:
+\begin{quote}
+\textbf{מדידת "זמן מסך כולל" (\textenglish{Aggregate Screen Time}) היא מדד מטעה וחסר תוקף פסיכולוגי}. 
+\end{quote}
+כאשר חוקרים מודדים שעות מסך ללא הבחנה איכותית, הם ממזגים פעילויות מנוגדות במהותן: שיחה מעצימה עם חבר קרוב, צפייה בשיעור מדע, חיפוש מידע אקדמי -- וגלילה פסיבית בפיד רווי משפיענים המעורר השוואה כלפי מעלה. איחוד זה מוחק את האות הפסיכולוגי האמיתי ומייצר תוצאות עמומות.
+
+הספרות העדכנית דורשת מעבר ממתודולוגיה של סקרי חתך רטרוספקטיביים למדידה סמנטית ודינמית בזמן אמת. הנזק הרגשי אינו נגרם על ידי המסך עצמו, אלא על ידי \textbf{רצפי מיקרו-אירועים של השוואה חברתית כלפי מעלה, אשליית האושר של האחר וחשיפה מניפולטיבית לשיווק משפיענים}.
+
+\section{השוואה כמותית מבוססת ראיות: זמן מסך מול השוואה איכותנית}
+\label{sec:gaps_evidence_chart}
+כדי להדגים באופן ויזואלי ומדעי את תקפותה של טענה זו, איור~\ref{fig:effect_size_chart} מציג השוואה של גודלי אפקט מתאמיים (\textenglish{Correlation Coefficients - r}) שנמדדו במחקרי מפתח מבוקרי-עמיתים שפורסמו בספרות.
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.88, every node/.style={transform shape},
+    bar/.style={rectangle, rounded corners=1.5mm, line width=0.8pt, align=left, inner sep=4pt},
+    axislab/.style={font=\scriptsize\sffamily, text=SlateGray},
+    valuelab/.style={font=\scriptsize\bfseries\sffamily}
+]
+
+% Axis Lines
+\draw[line width=1.0pt, color=SilverAccent] (0,-0.5) -- (0,5.8);
+\draw[line width=1.0pt, color=NavyBlueDark] (-3.5,0) -- (4.5,0);
+
+% Axis Ticks and Labels
+\foreach \x in {-0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3, 0.4} {
+    \draw[color=SilverAccent, line width=0.8pt] (\x*10, -0.1) -- (\x*10, 0.1);
+    \node[axislab, below=0.15cm of {(\x*10,0)}] {$\x$};
+}
+\node[axislab, below=0.55cm of {(0,0)}] {\textenglish{Correlation Coefficient ($r$)}};
+
+% Reference Zero Line
+\draw[dashed, color=SlateGray, line width=0.8pt] (0,0) -- (0,5.6);
+
+% Row 1: Generic Screen Time (Orben & Przybylski 2019)
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 5.3) {\textenglish{\textbf{Generic Screen Time \& Well-Being} \scriptsize(Orben \& Przybylski 2019, $N > 350{,}000$)}};
+\filldraw[fill=SilverAccent, draw=SlateGray] (0, 4.65) rectangle (-0.4, 5.05);
+\node[valuelab, left=0.1cm of {(-0.4, 4.85)}] {$r = -0.04$};
+
+% Row 2: Passive Browsing & Negative Affect (Kross et al. 2013)
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 4.2) {\textenglish{\textbf{Passive Scrolling \& Affect Decline} \scriptsize(Kross et al. 2013, ESM Daily Sampling)}};
+\filldraw[fill=BrickRed!80, draw=BrickRed] (0, 3.55) rectangle (-2.1, 3.95);
+\node[valuelab, left=0.1cm of {(-2.1, 3.75)}] {$r = -0.21$};
+
+% Row 3: Upward Social Comparison & Self-Esteem (Appel et al. 2020)
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 3.1) {\textenglish{\textbf{Upward Comparison \& Self-Esteem Drop} \scriptsize(Appel et al. 2020 Meta-Analysis)}};
+\filldraw[fill=BrickRed, draw=NavyBlueDark] (0, 2.45) rectangle (-2.2, 2.85);
+\node[valuelab, left=0.1cm of {(-2.2, 2.65)}] {$r = -0.22$};
+
+% Row 4: Downward Social Comparison & Self-Esteem (Appel et al. 2020)
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 2.0) {\textenglish{\textbf{Downward Comparison \& Defense} \scriptsize(Appel et al. 2020 Meta-Analysis)}};
+\filldraw[fill=ForestGreen!80, draw=ForestGreen] (0, 1.35) rectangle (1.1, 1.75);
+\node[valuelab, right=0.1cm of {(1.1, 1.55)}] {$r = +0.11$};
+
+% Row 5: Influencer Lifestyle Posts & Body Dissatisfaction (Fardouly et al. 2018)
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 0.9) {\textenglish{\textbf{Influencer Exposure \& Body Dissatisfaction} \scriptsize(Fardouly et al. 2018, $N = 276$)}};
+\filldraw[fill=BrickRed!90, draw=BrickRed] (0, 0.25) rectangle (3.6, 0.65);
+\node[valuelab, right=0.1cm of {(3.6, 0.45)}] {$r = +0.36$};
+
+\end{tikzpicture}
+\end{LTR}
+\caption{השוואה אמפירית של גודלי אפקט מתאמיים ($r$) בספרות המחקרית: זמן מסך גולמי מול מדדי השוואה איכותניים}
+\label{fig:effect_size_chart}
+\end{figure}
+
+התרשים ממחיש באופן חד-משמעי את הפער המדעי:
+בעוד שזמן מסך גולמי (עמודה עליונה) מציג מתאם זניח של $r = -0.04$ בלבד, מדדים סמנטיים-איכותניים של חשיפה ממוקדת מציגים קשרים חזקים ומובהקים סטטיסטית פי כמה: השוואה כלפי מעלה מנבאת ירידה בערך העצמי בשיעור של $r = -0.22$~\cite{appels2020social}, גלילה פסיבית מנבאת ירידה ברווחה היומית בשיעור של $r = -0.21$~\cite{kross2013facebook}, וחשיפה לתכני גוף ולייפסטייל של משפיענים מנבאת עלייה חדה בחוסר שביעות רצון גופני בשיעור של $r = +0.36$~\cite{fardouly2018instagram}. נתונים אלו מהווים את ההצדקה המדעית המוצקה ביותר לפיתוח פלטפורמת \projectname{}.
+
+\section{ניתוח ביקורתי של כלי רווחה דיגיטלית קיימים}
+\label{sec:gaps_existing_tools}
+לאור המודעות הגוברת להשלכות השליליות של שימוש מופרז ברשתות, פותחו בשנים האחרונות שורה של כלים טכנולוגיים המוגדרים ככלי רווחה דיגיטלית (\textenglish{Digital Well-Being Tools}). אולם, בחינה ביקורתית חושפת כי כלים אלו סובלים מכשלים מבניים חמורים.
+
+\subsection{סיווג הכלים הקיימים ומגבלותיהם}
+ניתן לסווג את הפתרונות המסחריים הקיימים לשלוש קטגוריות עיקריות:
+\begin{enumerate}
+    \item \textbf{כלי מערכת הפעלה מבוססי מכסות זמן} (\textenglish{Apple Screen Time, Google Digital Wellbeing}) --
+    כלים אלו מודדים דקות מצטברות ומאפשרים למשתמש לקבוע מגבלת זמן יומית (למשל, שעה ביום באינסטגרם). עם סיום המכסה, האפליקציה נחסמת. 
+    \textit{המגבלה}: הכלים אינם מבחינים בין אופי התוכן הנצרך, פועלים באופן פטרנליסטי, וניתנים לביטול או דחייה בלחיצת כפתור פשוטה ("התעלם מהמגבלה לעוד 15 דקות"), מה שהופך אותם לחסרי השפעה ממשית לטווח הארוך.
+    \item \textbf{אפליקציות חסימה וחיכוך התנהגותי} (\textenglish{One Sec, Opal, Freedom}) --
+    אפליקציות אלו מייצרות חיכוך מלאכותי בעת פתיחת הרשת החברתית -- למשל, השהיה של 10 שניות ונשימה מודרכת לפני הכניסה לאפליקציה (\textenglish{One Sec}), או חסימה מוחלטת של הגישה בשעות מסוימות.
+    \textit{המגבלה}: החיכוך מתמקד ברגע הכניסה בלבד. מרגע שהמשתמש עבר את מחסום הכניסה, האפליקציה אינה מלווה אותו במהלך הגלילה, ואינה מספקת כל הגנה מפני גירויי השוואה ושחיקה רגשית בתוך הפיד.
+    \item \textbf{כלי משחוק וסנקציות} (\textenglish{Forest}) --
+    שימוש במנגנוני משחוק (נטיעת עץ וירטואלי שנובל אם המשתמש יוצא מהאפליקציה) לצורך עידוד ריכוז והתרחקות מהטלפון.
+    \textit{המגבלה}: מתאים למשימות מיקוד קצרות (דוגמת למידה למבחן), אך אינו מציע מענה טיפולי או מודעותי להרגלי הצריכה החברתיים.
+\end{enumerate}
+
+\subsection{מדוע הכלים הקיימים נכשלים? אפקט הריאקטנס והיעדר תובנה מטא-קוגניטיבית}
+הכישלון של הכלים המסחריים נובע משני חסמים פסיכולוגיים עמוקים:
+\begin{enumerate}
+    \item \textbf{התנגדות פסיכולוגית (\textenglish{Psychological Reactance})}~\cite{suls2002social} --
+    כאשר כלי טכנולוגי חוסם את המשתמש באופן שרירותי, הפרט תופס זאת כאיום ישיר על האוטונומיה וחופש הבחירה שלו. תגובת הנגד הטבעית היא רצון מוגבר לחזור לאפליקציה החסומה ועקיפת המגבלות.
+    \item \textbf{היעדר שיקוף סמנטי} --
+    הכלים הקיימים מתייחסים למשתמש כאל "מכונת זמן" פסיבית שיש לכבותה, במקום כאל סוכן קוגניטיבי בעל יכולת רפלקציה. הם אינם מסבירים למשתמש \textbf{מדוע} הוא מרגיש מרוקן או מתוסכל, ואינם מפתחים אצלו מודעות ביקורתית לתוכן הנצפה.
+\end{enumerate}
+
+טבלה~\ref{tab:tool_comparison} מציגה השוואה מקיפה בין כלי הרווחה הדיגיטלית המובילים בשוק לבין פלטפורמת \projectname{}.
+
+\begin{table}[H]
+\centering
+\caption{השוואה מטריציונית בין כלי רווחה דיגיטלית מסחריים לבין פלטפורמת \projectname{}}
+\label{tab:tool_comparison}
+\small
+\begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.6cm} >{\raggedleft\arraybackslash}p{2.2cm} >{\raggedleft\arraybackslash}p{2.4cm} >{\raggedleft\arraybackslash}p{2.2cm} X}
+\toprule
+\textbf{ממד השוואה} & \textbf{\textenglish{Screen Time}} & \textbf{\textenglish{One Sec}} & \textbf{\textenglish{Freedom}} & \textbf{\projectname{}} \\
+\midrule
+\textbf{פרדיגמת פעולה} & מדידת זמן כמותית וחסימה & יצירת חיכוך בכניסה לאפליקציה & חסימת רשת ושירותים יזומה & \textbf{מראה קוגניטיבית ושיקוף מטא-קוגניטיבי} \\
+\midrule
+\textbf{ניתוח סמנטי של תוכן} & ללא (עיוור לתוכן) & ללא (מתמקד באירוע הפתיחה) & ללא & \textbf{ניתוח רב-מודאלי עמוק של גירויי השוואה} \\
+\midrule
+\textbf{זיהוי שיווק משפיענים} & אינו קיים & אינו קיים & אינו קיים & \textbf{חישוב מדד חשיפה ממומנת $\exposureIndex{}$} \\
+\midrule
+\textbf{מידול מצב רגשי} & ללא & ללא & ללא & \textbf{וקטור מצב דינמי $\wellbeingVector{}$ מבוסס פסיכומטריה} \\
+\midrule
+\textbf{פטרנליזם מול אוטונומיה} & פטרנליסטי גבוה (מעורר ריאקטנס) & התנהגותי ממתן & כפייה מכנית נוקשה & \textbf{תומך אוטונומיה (שיקוף ללא שיפוטיות)} \\
+\midrule
+\textbf{ארכיטקטורת מערכת} & שירות מערכת הפעלה בסיסי & סקריפט אוטומציה מקומי & מסנן שרתי \textenglish{VPN} & \textbf{חברה רב-סוכנית אוטונומית (\textenglish{MAS})} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{הפרדיגמה הרעיונית של SocialMirror-AI: מראה קוגניטיבית מרובת סוכנים}
+\label{sec:gaps_conceptual_paradigm}
+כדי לגשר על הפערים המחקריים והיישומיים שתוארו לעיל, פרויקט \projectname{} מציע שינוי פרדיגמטי יסודי: \textbf{מעבר מניהול זמן גס לטכנולוגיית שיקוף מטא-קוגניטיבית מבוססת סוכנים אוטונומיים}.
+
+\subsection{יסודות מערכות מרובות סוכנים (MAS)}
+מערכת מרובת סוכנים (\textenglish{Multi-Agent System - MAS}) מוגדרת כארכיטקטורה חישובית הכוללת מספר ישויות תוכנה אוטונומיות (\textenglish{Agents}), המתאפיינות ביכולת תפיסה (\textenglish{Perception}), רפלקציה (\textenglish{Reflection}), תכנון (\textenglish{Planning}) ופעולה (\textenglish{Action}) בתוך סביבה דינמית~\cite{wooldridge2009introduction, wang2024survey}. בשנים האחרונות, השילוב של מודלי שפה גדולים (\textenglish{LLMs}) בתוך מערכות סוכנים אפשר פריצות דרך משמעותיות במידול התנהגות אנושית, כפי שהודגם במחקר הסוכנים הגנרטיביים החלוצי של פארק ועמיתיו (\textenglish{Park et al.})~\cite{park2023generative}.
+
+ב-\projectname{}, אנו רותמים פרדיגמה זו ככלי טיפולי-חינוכי המלווה את המשתמש בזמן אמת:
+\begin{itemize}
+    \item המערכת מפרקת את המשימה המורכבת של הבנת הפיד ושיקוף מצבו של המשתמש לארבעה תפקידים מובחנים;
+    \item כל סוכן מתמחה בתחום מוגדר, מחזיק בפרומפט מערכתי מוקפד, ומקיים תקשורת מתואמת עם שאר הסוכנים;
+    \item המערכת פועלת כולה כ"מראה": במקום להורות למשתמש מה לעשות, היא חושפת בפניו את הדינמיקה הסמויה של הפיד ומאפשרת לו להחזיר לעצמו את השליטה הקוגניטיבית.
+\end{itemize}
+
+\subsection{לולאת התפיסה-רפלקציה של המערכת}
+האינטראקציה בין המשתמש לפלטפורמה מתבצעת בארבעה שלבים רציפים:
+\begin{enumerate}
+    \item \textbf{קליטה ותפיסה מקומית} (\textenglish{Ingestion \& Perception}) -- דגימת מטא-נתונים וטקסטים מתוך הפיד באופן מקומי ובטוח.
+    \item \textbf{ניתוח סמנטי וכימות גירויים} (\textenglish{Semantic Analysis}) -- חישוב מדד בולטות ההשוואה $\comparisonScore{}$ ומדד חשיפת המשפיענים $\exposureIndex{}$.
+    \item \textbf{עדכון וקטור המצב הנפשי} (\textenglish{Affective State Tracking}) -- עדכון משתני הערך העצמי והמאזן הרגשי בתוך וקטור המצב $\wellbeingVector{}$.
+    \item \textbf{שיקוף מטא-קוגניטיבי עדין} (\textenglish{Metacognitive Scaffolding}) -- ייצור תובנות מותאמות אישית המשקפות למשתמש את הדינמיקה הרגשית שחווה.
+\end{enumerate}
+
+\section{ארבעת סוכני המערכת הייעודיים}
+\label{sec:gaps_agent_roles}
+החברה הרב-סוכנית של \projectname{} כוללת ארבעה סוכנים מומחים הפועלים בתיאום מלא:
+
+\begin{enumerate}
+    \item \textbf{סוכן התצפית (\agentObserver{})} -- אחראי על הניטור הפסיבי והבלתי-פולשני של תזרים התוכן הדיגיטלי. תפקידו לקלוט מטא-נתונים (סוג הפוסט, כמות הלייקים, משך הצפייה בפריט, סיווג חשבון כמשפיען או כעמית), לחלץ טקסטים ותיאורי תמונה, ולהעבירם לסוכן הניתוח תוך השמטה מוחלטת של פרטים מזהים אישיים.
+    
+    \item \textbf{סוכן הניתוח (\agentAnalyst{})} -- מוח הניתוח הסמנטי של הפלטפורמה. סוכן זה מפעיל מודל שפה ייעודי המכייל את התוכן לפי קריטריונים פסיכולוגיים מוגדרים: מידת האידיאליזציה, רמת הליטוש, נוכחות סממני עושר ויופי קיצוניים, וקיומן של חסויות מסחריות סמויות. פלט הסוכן כולל את מדד בולטות ההשוואה $\comparisonScore{} \in [0, 1]$ ואת מדד החשיפה למשפיענים $\exposureIndex{} \in [0, 1]$.
+    
+    \item \textbf{סוכן הרפלקציה (\agentReflector{})} -- סוכן הזיכרון והסינתזה הרגשית. מנהל את וקטור המצב הנפשי הדינמי $\wellbeingVector{}$ של המשתמש לאורך זמן. על בסיס נתוני הניתוח והיסטוריית האינטראקציה, הסוכן מזהה מגמות שחיקה ודפוסי התנהגות (כגון: "לאחר 25 דקות של צפייה בסרטוני כושר, נרשמת ירידה חדה במדד הערך העצמי הנתפס"), ומנסח תובנות רפלקטיביות מעצימות ומעוררות מחשבה.
+    
+    \item \textbf{סוכן ההתערבות (\agentInterventionist{})} -- סוכן הגישור והאינטראקציה. אחראי על תזמון והגשת התובנות שנוצרו על ידי סוכן הרפלקציה. פועל על פי עקרונות פסיכולוגיים למניעת ריאקטנס: אינו משתמש בשפה שיפוטית או מאשימה, אינו כופה יציאה מהאפליקציה, ומציע שאלות פתוחות ("האם שמת לב כיצד סרטונים אלו גורמים לך להרגיש כעת?") או הצעות עדינות להפוגה נשימתית.
+\end{enumerate}
+
+\section{ארכיטקטורת זרימת מידע ואינטראקציה בין-סוכנית}
+\label{sec:gaps_flow_architecture}
+איור~\ref{fig:multiagent_architecture} מציג את ארכיטקטורת השכבות המושגית של מערכת \projectname{}, ומדגים את עקרון הבידוד המקומי, זרימת המידע ההיררכית ושיתוף הפעולה הא-סינכרוני בין הסוכנים.
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.76, every node/.style={transform shape},
+    agentnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=3mm, line width=1.2pt, align=center, inner sep=7pt, text width=3.2cm, font=\small\sffamily},
+    usernode/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, rounded corners=3mm, line width=1.4pt, align=center, inner sep=7pt, text width=3.0cm, font=\bfseries\sffamily, text=white},
+    feednode/.style={rectangle, draw=SlateGray, fill=LightBoxBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=6pt, text width=3.0cm, font=\small\sffamily},
+    flowarrow/.style={-{Latex[length=3mm]}, line width=1.2pt, draw=NavyBlueDark},
+    feedbackarrow/.style={-{Latex[length=3mm]}, dashed, line width=1.2pt, draw=AccentTeal}
+]
+
+% Nodes Layout
+\node[usernode] (user) {\textenglish{\textbf{User / Youth}}\\\scriptsize Consumes Feed \& Interacts};
+\node[feednode, below=2.0cm of user] (feed) {\textenglish{\textbf{Algorithmic Feed}}\\\scriptsize Instagram / TikTok Stream};
+
+\node[agentnode, right=2.2cm of feed] (observer) {\textenglish{\textbf{ObserverAgent}}\\\scriptsize Passive Stream Ingestion\\\scriptsize Feature Anonymization};
+\node[agentnode, above=2.0cm of observer] (analyst) {\textenglish{\textbf{AnalystAgent}}\\\scriptsize Semantic LLM Classifier\\\scriptsize Salience $\comparisonScore$ \& Exposure $\exposureIndex$};
+\node[agentnode, right=2.2cm of analyst] (reflector) {\textenglish{\textbf{ReflectorAgent}}\\\scriptsize Affective State Vector $\wellbeingVector$\\\scriptsize Memory Synthesis Loop};
+\node[agentnode, below=2.0cm of reflector] (intervention) {\textenglish{\textbf{InterventionAgent}}\\\scriptsize Non-Intrusive Nudging\\\scriptsize Reactance Minimization};
+
+% Data Flow Arrows
+\draw[flowarrow] (user) -- node[left, font=\scriptsize\sffamily] {Browsing} (feed);
+\draw[flowarrow] (feed) -- node[below, font=\scriptsize\sffamily] {Local Metadata} (observer);
+\draw[flowarrow] (observer) -- node[right, font=\scriptsize\sffamily] {Tokens} (analyst);
+\draw[flowarrow] (analyst) -- node[above=2pt, font=\scriptsize\sffamily] {\textenglish{Scores} $(\comparisonScore, \exposureIndex)$} (reflector);
+\draw[flowarrow] (reflector) -- node[right, font=\scriptsize\sffamily] {Triggers} (intervention);
+
+% Feedback loop routing cleanly around top
+\draw[feedbackarrow] (intervention.east) -- ++(0.7cm,0) |- ([yshift=0.8cm]analyst.north) -| (user.north) node[above=2pt, pos=0.35, font=\scriptsize\sffamily] {\textenglish{Metacognitive Scaffolding / Reflection Loop}};
+
+\end{tikzpicture}
+\end{LTR}
+\caption{ארכיטקטורת זרימת המידע המושגית של מערכת הסוכנים \projectname{}}
+\label{fig:multiagent_architecture}
+\end{figure}
+
+\section{אחריות אתית, פרטיות מקומית וממשל AI אחראי}
+\label{sec:gaps_ethics}
+פיתוח מערכת AI המנטרת תכנים רגשיים של משתמשים צעירים מחייב עמידה בסטנדרטים אתיים ונורמטיביים מחמירים ביותר.
+
+\begin{ethicsbox}[עקרונות הליבה האתיים והגנת הפרטיות בפרויקט \projectname{}]
+פלטפורמת \projectname{} מושתתת על שלושה עקרונות ברזל בלתי ניתנים לפשרה:
+\begin{enumerate}
+    \item \textbf{עיבוד מקומי בלבד} (\textenglish{Local-First / Edge AI}) -- כל תהליכי ניתוח הטקסט, חילוץ המאפיינים ועדכון וקטור המצב מתבצעים על גבי מכשיר הקצה של המשתמש. שום תמונת פיד, פוסט אישי או היסטוריית גלישה אינם נשלחים או נשמרים בשרת ענן מרכזי.
+    \item \textbf{היעדר שיפוטיות ואי-כפייה} -- המערכת אינה מענישה, אינה מביכה ואינה חוסמת את המשתמש. השיקוף נועד להגביר מודעות עצמית וחופש בחירה, ולא לכפות דפוסי התנהגות שרירותיים.
+    \item \textbf{הגדרה לא-קלינית מפורשת} -- המערכת מוגדרת ככלי מטא-קוגניטיבי לרווחה דיגיטלית ואינה מתיימרת להוות כלי לאבחון רפואי, טיפול פסיכותרפי או התערבות בשעת משבר קליני. במקרה של זיהוי מצוקה חריגה, המערכת תפנה את המשתמש לגורמי סיוע מקצועיים מוסמכים.
+\end{enumerate}
+\end{ethicsbox}
+
+\section{סיכום המסגרת המושגית ומפת דרכים מחקרית-הנדסית}
+\label{sec:gaps_roadmap}
+דוח זה ביסס את המסגרת המושגית, הפסיכולוגית וההנדסית של פלטפורמת \projectname{}. הונחו יסודות ברורים המבחינים בין חשיפה כמותית לגירויי השוואה איכותניים, גובש מודל מושגי רב-משתני של תיווך ומיתון, ופותחה ארכיטקטורה רב-סוכנית השומרת על פרטיות מקומית מוחלטת.
+
+\subsection{שלבי הפיתוח, הסימולציה וההערכה המתוכננים}
+מפת הדרכים המחקרית של הפרויקט כוללת ארבעה שלבי המשך מובנים:
+\begin{enumerate}
+    \item \textbf{שלב א': ארכיטקטורה מפורטת, פרומפטים ופרוטוקולי תקשורת} -- ניסוח מלא של הפרומפטים המערכתיים של כל ארבעת הסוכנים, הגדרת פרוטוקול הודעות \textenglish{JSON-RPC} מובנה, ומנגנוני שימור זיכרון ורפלקציה בהשראת פארק וחוב'~\cite{park2023generative}.
+    \item \textbf{שלב ב': המידול המתמטי של וקטור המצב והדינמיקה הזמנית} -- פיתוח המשוואות הדיפרנציאליות והבדידות המדויקות לחישוב בולטות ההשוואה $\comparisonScore{}$, קצב הדעיכה הזמני של הערך העצמי, ומשקולות החשיפה למשפיענים $\exposureIndex{}$.
+    \item \textbf{שלב ג': מערך סימולציה מבוסס סוכנים גנרטיביים} (\textenglish{Generative Agent Simulation}) -- תכנון ניסוי סימולציה מבוקר עם 20 פרסונות וירטואליות מייצגות המדמות משתמשים צעירים בעלי מאפייני אישיות שונים, ובדיקת יעילות המערכת בבלימת שחיקה רגשית.
+    \item \textbf{שלב ד': פרוטוקול הערכה אמפירית ומפת דרכים ליישום} (\textenglish{Roadmap}) -- תכנון ניסוי משתמשים בעולם האמיתי, הגדרת מדדי הצלחה כמותיים ואיכותניים, ותרשים גאנט מפורט לשלבי הפיתוח והאינטגרציה העתידיים.
+\end{enumerate}
+
+בכך מושלמת התשתית התיאורטית והמחקרית של הדוח, המוכנה להמשך המימוש ההנדסי והאמפירי.
