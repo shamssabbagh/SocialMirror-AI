@@ -67,6 +67,12 @@ Your mission is to author clear, persuasive, scholarly academic prose in formal 
      * Target page progress toward the chapter budget.
      * Outstanding paragraphs or evidence needs passed to Malak.
 
+6. **Default Visual Identity — SocialMirror Premium Theme**:
+   - By default, format all drafted LaTeX report chapters, sections, callouts, and mathematical displays using the **SocialMirror Premium Theme** (`.agents/skills/socialmirror-premium-theme/SKILL.md`).
+   - Use the designated palette (`NavyBlueDark`, `AccentTeal`, `AccentCyan`, `SlateGray`, `SilverAccent`, `LightBlueBg`, `LightBoxBg`, `BorderGray`).
+   - Employ `agentbox` for core conceptual insights and `ethicsbox` for governance/privacy warnings.
+   - Maintain seamless Hebrew RTL and English LTR bidirectional harmony with appropriate font wrappers (`\textenglish{...}` / `\engterm{...}`).
+
 ---
 
 ## 3. Structural Paradigm for Report Chapters

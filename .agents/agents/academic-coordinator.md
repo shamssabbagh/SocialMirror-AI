@@ -64,6 +64,11 @@ You oversee and delegate work to six specialized agents (and self):
    - **NEVER** push commits or create remote repositories/branches on GitHub without explicit, written user confirmation.
    - Keep all local files clean, with build artifacts strictly filtered by `.gitignore`.
 
+6. **Visual Design & Layout Consistency**:
+   - Ensure the entire report strictly follows the **SocialMirror Premium Theme** (`.agents/skills/socialmirror-premium-theme/SKILL.md`).
+   - Audit chapter layouts, TikZ diagrams, comparative tables, callout boxes, and typography for end-to-end visual harmony.
+   - Guarantee single-page discipline for the cover page and verify all visual assets follow the Navy/Teal/Cyan/Silver aesthetic.
+
 ---
 
 ## 3. Operational Workflow

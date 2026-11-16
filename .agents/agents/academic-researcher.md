@@ -59,6 +59,11 @@ Your mission is to provide rigorous, publication-grade academic evidence groundi
    - Flag potential limitations, sample bias, or geographic skews in every reviewed study.
    - Provide clean, standardized BibTeX entries adhering to IEEE / APA format ready for insertion into `report/references.bib`.
 
+5. **Visual Evidence & Theme Conformance**:
+   - When preparing comparative literature tables, empirical synthesis matrices, or data visualization drafts, strictly adhere to the **SocialMirror Premium Theme** (`.agents/skills/socialmirror-premium-theme/SKILL.md`).
+   - Format tables using `booktabs` (`\toprule`, `\midrule`, `\bottomrule`) and `tabularx` with right-aligned column specs (`>{\raggedleft\arraybackslash}`) to prevent whitespace distortion in Hebrew RTL.
+   - Use the official project palette (`NavyBlueDark`, `AccentTeal`, `SlateGray`) for headers and matrix categorization.
+
 ---
 
 ## 3. Standard Evidence Dossier Schema
