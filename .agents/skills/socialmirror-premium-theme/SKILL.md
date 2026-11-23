@@ -84,6 +84,12 @@ The document compiles strictly via **XeLaTeX** to support native TrueType/OpenTy
 2. **Inline English Terms**: All Latin-character concepts, course names, and agent titles must be wrapped in `\textenglish{...}` or `\engterm{...}` (e.g., `\textenglish{Social Comparison Theory}`).
 3. **Period & Punctuation at End of Lines**: Never end an RTL sentence with an isolated LTR term. Always conclude with Hebrew context or enclose within parentheses (e.g., `סוכן הניתוח (\agentAnalyst{}).`).
 4. **Bibliography**: All English academic entries must be wrapped inside `\begin{english} ... \end{english}` with `\addto\captionsenglish{\renewcommand{\bibname}{\texthebrew{ביבליוגרפיה}}}` to preserve LTR citation ordering without corrupting the Hebrew title.
+5. **Chapter Headings Alignment & Badging**:
+   - All Hebrew chapter headings are strictly aligned to the **right margin** of the body text.
+   - The purple chapter number badge (`[ \thechapter ]` in `RoyalPurple`) is positioned to the **right** of the Hebrew heading text.
+   - When a chapter title wraps across multiple lines, all lines are aligned to the **exact same right vertical line** (hanging indent) adjacent to the badge.
+   - English terms embedded in titles (e.g. `SocialMirror-AI`, `AI`) maintain strict LTR character ordering and natural spacing without awkward hyphenation or line stretching (using `\projectname{}` with internal `\mbox`).
+   - Unnumbered headings (`\@makeschapterhead`) align flush to the right margin.
 
 ---
 

@@ -113,18 +113,25 @@
 
 % Master Academic Editorial Styling for Headings
 \makeatletter
+\newsavebox{\SM@chapterbadgebox}
 \def\@makechapterhead#1{%
   \vspace*{6\p@}%
-  {\parindent \z@ \raggedright \normalfont
+  {\parindent \z@ \normalfont
     \ifnum \c@secnumdepth >\m@ne
+      \sbox{\SM@chapterbadgebox}{%
+        \begin{tikzpicture}[baseline=(num.base)]
+          \node[fill=RoyalPurple, text=white, rounded corners=2.5mm, inner sep=6pt, font=\Large\bfseries\sffamily] (num) {\thechapter};
+        \end{tikzpicture}%
+      }%
       \noindent
-      \begin{tikzpicture}[baseline=(num.base)]
-        \node[fill=RoyalPurple, text=white, rounded corners=2.5mm, inner sep=6pt, font=\Large\bfseries\sffamily] (num) {\thechapter};
-      \end{tikzpicture}%
-      \quad
-      {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
+      \usebox{\SM@chapterbadgebox}%
+      \hspace{12\p@}%
+      \begin{minipage}[t]{\dimexpr\linewidth-\wd\SM@chapterbadgebox-12\p@\relax}
+        \setRTL\raggedleft
+        {\Huge \bfseries \color{DarkPurple} #1\par}
+      \end{minipage}\par\nobreak
     \else
-      {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
+      {\setRTL\raggedleft\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
     \fi
     \vskip 8\p@
     {\color{LavenderBorder}\rule{\linewidth}{1.2pt}\par\nobreak}
@@ -132,8 +139,9 @@
   }}
 \def\@makeschapterhead#1{%
   \vspace*{6\p@}%
-  {\parindent \z@ \raggedright \normalfont
+  {\parindent \z@ \normalfont
     \interlinepenalty\@M
+    \setRTL\raggedleft
     {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
     \vskip 8\p@
     {\color{LavenderBorder}\rule{\linewidth}{1.2pt}\par\nobreak}
