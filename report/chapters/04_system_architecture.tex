@@ -1,0 +1,295 @@
+% ==============================================================================
+% פרק 4: ארכיטקטורה מפורטת של SocialMirror-AI ועיצוב סוכני ה-AI
+% ==============================================================================
+\chapter{ארכיטקטורה מפורטת של \textenglish{SocialMirror-AI} ועיצוב סוכני ה־\textenglish{AI}}
+\label{chap:detailed_architecture}
+
+\section{פילוסופיית המערכת ועקרונות תכנון הליבה}
+\label{sec:arch_detailed_philosophy}
+פלטפורמת \projectname{} תוכננה כמענה טכנולוגי-מושגי למשבר בריאות הנפש וההשוואה החברתית במרחב הדיגיטלי. בניגוד למערכות מסחריות מסורתיות הפועלות לפי גישה פטרנליסטית ומתמקדות בהטלת סנקציות מכניות, הפילוסופיה של \projectname{} מושתתת על מושג \textbf{"המראה הקוגניטיבית"} (\textenglish{The Cognitive Mirror}): טכנולוגיה שאינה מכתיבה למשתמש כיצד לנהוג, אלא משקפת בפניו באופן צלול, אובייקטיבי ומעצים את הדינמיקה הסמויה המתרחשת ברשת ואת השפעתה על מצבו הפנימי.
+
+תכנון המערכת מונחה על ידי ארבעה עקרונות יסוד הנדסיים ופסיכולוגיים:
+\begin{enumerate}
+    \item \textbf{תמיכה באוטונומיה ובחירה מודעת (\textenglish{Autonomy-Supportive Design})} -- בהתבסס על תיאוריית ההגדרה העצמית (\textenglish{Self-Determination Theory}) של ריאן ודסי~\cite{ryan2000self}, שינוי התנהגותי בר-קיימא יכול לצמוח אך ורק מתוך מוטיבציה פנימית ותחושת מסוגלות אישית. המערכת נמנעת מחסימת אפליקציות כפויה, משיפוט מוסרי או מהטפת מוסר, וממקדת את מאמציה בהחזרת תחושת השליטה והסוכנות (\textenglish{Agency}) למשתמש.
+    \item \textbf{שקיפות קוגניטיבית ופירוק הפיד (\textenglish{Cognitive Transparency})} -- מנועי ההמלצה פועלים כ"קופסה שחורה" אלגוריתמית המעוורת את המשתמש ומציגה בפניו מציאות מלוטשת ומסחרית כאילו הייתה עולם אובייקטיבי. \projectname{} מפרקת אטימות זו באמצעות חשיפת המטא-נתונים, זיהוי אופיים הממומן של תכני משפיענים, וכימות מידת הליטוש והאידיאליזציה בפיד.
+    \item \textbf{פרטיות מקומית מוחלטת (\textenglish{Local-First Privacy Architecture})} -- ניטור מצבים נפשיים ותכני גלישה מהווה סוגיה רגישה מאין כמוה. המערכת תוכננה כך שכל פעולות הקליטה, הניתוח הסמנטי, חישוב וקטור המצב והפקת הרפלקציות מתבצעות באופן מקומי לחלוטין על גבי מכשיר הקצה של המשתמש (\textenglish{Edge AI}), ללא העברת טקסטים, תמונות או היסטוריית גלישה לשרת ענן מרכזי כלשהו.
+    \item \textbf{הפרדת סמכויות מודולרית בחברה רב-סוכנית} -- המורכבות של זיהוי תוכן, ניתוח פסיכולוגי, ניהול זיכרון זמני ואינטראקציה עדינה מחייבת חלוקת תפקידים מוגדרת היטב. המערכת מורכבת מארבעה סוכני \textenglish{LLM} אוטונומיים הפועלים בחלוקת עבודה קפדנית, תוך שימוש בפרומפטים מערכתיים מותאמים אישית ופרוטוקול תקשורת מובנה.
+\end{enumerate}
+
+\section{טופולוגיית השכבות ופרוטוקול תקשורת מבוסס JSON-RPC}
+\label{sec:arch_topology_protocol}
+ארכיטקטורת המערכת מאורגנת בשלוש שכבות לוגיות היררכיות, המבטיחות הפרדה מוחלטת בין שכבת הקליטה והחומרה, שכבת הבינה הקוגניטיבית, ושכבת הממשק והחוויה (איור~\ref{fig:layered_system_architecture}):
+
+\begin{enumerate}
+    \item \textbf{שכבת הקלט והבידוד המקומית (\textenglish{Edge Ingestion \& Isolation Layer})} -- ממשק החומרה של המערכת, המורכב מתוסף דפדפן או שירות נגישות מקומי הקולט את מטא-נתוני הפוסטים (משך צפייה, סוג תוכן, טקסט פוסט, וכמויות אינטראקציה) ישירות מתוך זיכרון ה־\textenglish{DOM} של המכשיר. שכבה זו מפעילה מנגנון אנונימיזציה מחמיר המסיר שמות, תמונות פרופיל ומזהים ייחודיים טרם שליחת המידע לסוכנים.
+    \item \textbf{שכבת הסוכנים הקוגניטיביים האוטונומיים (\textenglish{Autonomous Cognitive Agent Layer})} -- ליבת המערכת, המארחת את ארבעת סוכני הבינה המלאכותית: סוכן התצפית (\agentObserver{}), סוכן הניתוח (\agentAnalyst{}), סוכן הרפלקציה (\agentReflector{}), וסוכן ההתערבות (\agentInterventionist{}). הסוכנים פועלים באופן א-סינכרוני מעל אפיק הודעות פנימי (\textenglish{Local Event Bus}).
+    \item \textbf{שכבת השיקוף והאינטראקציה (\textenglish{Metacognitive Reflection \& HCI Presentation Layer})} -- ממשק המשתמש של הפלטפורמה הכולל את "המראה הקוגניטיבית", לוח מדדים אישי (\textenglish{Dashboard}), מערכת התראות עדינות, ודיאלוג רפלקטיבי אינטראקטיבי.
+\end{enumerate}
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.82, every node/.style={transform shape},
+    layerbox/.style={rectangle, draw=SilverAccent, fill=white, rounded corners=3mm, line width=1.1pt, inner sep=10pt},
+    agentnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=6pt, text width=2.8cm, font=\small\sffamily},
+    busnode/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, text=white, rounded corners=2mm, line width=1.2pt, align=center, inner sep=5pt, text width=13.5cm, font=\bfseries\sffamily\footnotesize},
+    arrow/.style={-{Latex[length=2.5mm]}, line width=1.1pt, draw=NavyBlueDark},
+    busarrow/.style={{Latex[length=2.2mm]}-{Latex[length=2.2mm]}, line width=1.1pt, draw=AccentCyan}
+]
+
+% Top Layer: Presentation
+\node[layerbox, text width=14.0cm, minimum height=2.6cm] (l_pres) {};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=AccentTeal] at (l_pres.north west) {\textenglish{Layer 3: Metacognitive Reflection \& HCI Presentation Layer (Local Web Dashboard)}};
+\node[agentnode, right=1.2cm of l_pres.west, yshift=-0.35cm] (ui1) {\textbf{Cognitive Mirror}\\\scriptsize Exposure Radar};
+\node[agentnode, right=1.2cm of ui1] (ui2) {\textbf{Reflective Dialog}\\\scriptsize Socratic Scaffolding};
+\node[agentnode, right=1.2cm of ui2] (ui3) {\textbf{State Trajectory}\\\scriptsize RSES \& PANAS Views};
+
+% Middle Event Bus
+\node[busnode, below=0.6cm of l_pres] (ebus) {\textenglish{Local Asynchronous Event Bus (JSON-RPC 2.0 In-Process Broker)}};
+
+% Middle Layer: Cognitive Agents
+\node[layerbox, text width=14.0cm, minimum height=3.2cm, below=0.6cm of ebus] (l_agents) {};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=NavyBlueDark] at (l_agents.north west) {\textenglish{Layer 2: Autonomous Multi-Agent Society (Edge LLM Instances)}};
+\node[agentnode, right=0.6cm of l_agents.west, yshift=-0.45cm] (ag_obs) {\textbf{\agentObserver{}}\\\scriptsize Ingestion \& Local\\\scriptsize Anonymization};
+\node[agentnode, right=0.6cm of ag_obs] (ag_ana) {\textbf{\agentAnalyst{}}\\\scriptsize Semantic Salience\\\scriptsize $\comparisonScore$ \& Exposure $\exposureIndex$};
+\node[agentnode, right=0.6cm of ag_ana] (ag_ref) {\textbf{\agentReflector{}}\\\scriptsize State Vector $\wellbeingVector$\\\scriptsize Memory Synthesis};
+\node[agentnode, right=0.6cm of ag_ref] (ag_int) {\textbf{\agentInterventionist{}}\\\scriptsize Nudge Scheduling\\\scriptsize Reactance Minimizer};
+
+% Bottom Layer: Ingestion & Device
+\node[layerbox, text width=14.0cm, minimum height=2.6cm, below=0.7cm of l_agents] (l_ingest) {};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=SlateGray] at (l_ingest.north west) {\textenglish{Layer 1: Device Edge Ingestion \& Privacy Boundary}};
+\node[agentnode, right=1.2cm of l_ingest.west, yshift=-0.35cm] (dev1) {\textbf{Browser DOM}\\\scriptsize Stream Inspector};
+\node[agentnode, right=1.2cm of dev1] (dev2) {\textbf{Dwell-Time Logger}\\\scriptsize Millisecond Chronometry};
+\node[agentnode, right=1.2cm of dev2] (dev3) {\textbf{Privacy Scrub}\\\scriptsize Zero-Cloud Redaction};
+
+% Connections
+\draw[busarrow] (ui1.south) -- (ui1.south |- ebus.north);
+\draw[busarrow] (ui2.south) -- (ui2.south |- ebus.north);
+\draw[busarrow] (ui3.south) -- (ui3.south |- ebus.north);
+
+\draw[busarrow] (ag_obs.north) -- (ag_obs.north |- ebus.south);
+\draw[busarrow] (ag_ana.north) -- (ag_ana.north |- ebus.south);
+\draw[busarrow] (ag_ref.north) -- (ag_ref.north |- ebus.south);
+\draw[busarrow] (ag_int.north) -- (ag_int.north |- ebus.south);
+
+\draw[arrow] (dev1.north) -- (ag_obs.south -| dev1.north);
+\draw[arrow] (dev2.north) -- (ag_obs.south -| dev2.north);
+\draw[arrow] (dev3.north) -- (ag_obs.south -| dev3.north);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{טופולוגיית השכבות המודולרית של פלטפורמת \projectname{} ואפיק ההודעות הפנימי}
+\label{fig:layered_system_architecture}
+\end{figure}
+
+התקשורת הפנימית בין הסוכנים מתנהלת באמצעות פרוטוקול הודעות מובנה בתקן \textenglish{JSON-RPC 2.0}, המבטיח עקיבות מלאה, טיפול בשגיאות, ומבנה נתונים אחיד. להלן דוגמה לסכמת הודעה טיפוסית הנשלחת מסוכן הניתוח לסוכן הרפלקציה בעת זיהוי תוכן מעורר השוואה:
+
+\begin{LTR}
+\begin{footnotesize}
+\begin{verbatim}
+{
+  "jsonrpc": "2.0",
+  "method": "notify_comparison_event",
+  "params": {
+    "timestamp": "2026-11-23T19:42:15Z",
+    "post_id_hash": "e3b0c44298fc1c149afbf4c8996fb924",
+    "salience_score": 0.84,
+    "influencer_exposure_index": 0.91,
+    "attributes": {
+      "idealization_category": "luxury_lifestyle",
+      "body_salience": 0.78,
+      "commercial_disclosure": "sponsored_hidden",
+      "dwell_time_seconds": 18.4
+    }
+  },
+  "id": "req-ana-0492"
+}
+\end{verbatim}
+\end{footnotesize}
+\end{LTR}
+
+\section{מפרט מעמיק של ארבעת סוכני המערכת}
+\label{sec:arch_detailed_agent_specs}
+
+\subsection{סוכן התצפית (\agentObserver{})}
+\label{subsec:spec_observer}
+סוכן התצפית מתפקד כשער הכניסה של המידע לפלטפורמה. מטרתו העיקרית היא לנטר את פעילות הגלילה של המשתמש ברקע, ללא כל הפרעה לחוויית השימוש ומבלי ליצור עומס חישובי על המכשיר.
+\begin{itemize}
+    \item \textbf{קלט הסוכן}: מטא-נתונים גולמיים מהפיד: משך השהייה על פוסט (\textenglish{Dwell Time} באלפיות השנייה), סוג הפריט (תמונה יחידה, קרוסלה, וידאו קצר), טקסט הכותרת (\textenglish{Caption}), תגיות (\textenglish{Hashtags}), ונתוני מעורבות פומביים (כמות לייקים ותגובות).
+    \item \textbf{פעולות עיבוד}:
+    \begin{enumerate}
+        \item \textit{אנונימיזציה מקומית}: הסרת שמות משתמש, תמונות פרופיל, תגובות גולשים ופרטים גאוגרפיים, והחלפתם במזהה גיבוב אנונימי (\textenglish{SHA-256 Hash}).
+        \item \textit{סינון רעשים}: התעלמות מפוסטים שחלפו על פני המסך בפחות מ־1.5 שניות (סריקה מהירה שאינה מהווה צריכת תוכן משמעותית).
+        \item \textit{בניית חבילת נתונים}: יצירת אובייקט תוכן נקי המועבר לסוכן הניתוח באפיק הפנימי.
+    \end{enumerate}
+    \item \textbf{פלט}: אירוע \textenglish{ContentIngestedEvent} המכיל טקסט מנוקה ומטא-נתוני חשיפה.
+\end{itemize}
+
+\subsection{סוכן הניתוח (\agentAnalyst{})}
+\label{subsec:spec_analyst}
+סוכן הניתוח משמש כמוח הסמנטי של הפלטפורמה. תפקידו להעריך את פוטנציאל ההשוואה החברתית הטמון בתוכן, לזהות מאפייני אידיאליזציה קיצוניים, ולחשוף חסויות מסחריות סמויות.
+\begin{itemize}
+    \item \textbf{מודל שפה ומודאליות}: מודל שפה מותאם לקצה (כגון \textenglish{Llama-3-8B-Instruct} או מודל ויזואלי קל משקל) המופעל עם הנחיות מערכת קפדניות ורובריקות ניקוד מוגדרות.
+    \item \textbf{רובריקת הניקוד והערכת הגירוי}:
+    \begin{enumerate}
+        \item \textit{מדד בולטות ההשוואה החברתית} ($\comparisonScore \in [0, 1]$): כימות מידת ההשוואה כלפי מעלה שהתוכן עלול לעורר, על בסיס ארבעה ממדים: רמת הליטוש והעריכה של התמונה, הצגת מראי יופי גופניים חריגים, הפגנת סמלי סטטוס ועושר מופרזים, והבלטת הישגיות קיצונית.
+        \item \textit{מדד חשיפה למשפיענים} ($\exposureIndex \in [0, 1]$): שקלול רמת הפרסום המסחרי בתוכן, זיהוי שיתופי פעולה ממומנים סמויים (כגון תיוג מותגים עדין ללא חשיפה רשמית), והערכת מידת הקשר הפארא-סוציאלי המנוצל בפוסט.
+    \end{enumerate}
+    \item \textbf{תבנית הפרומפט המערכתי של סוכן הניתוח}:
+\end{itemize}
+
+\begin{agentbox}{תבנית הפרומפט המערכתי של סוכן הניתוח (\agentAnalyst{})}
+\textenglish{\small
+\textbf{Role:} You are the SocialMirror-AI Analyst Agent. Your objective is to perform objective, evidence-based psychological classification of social media feed content.\\
+\textbf{Instructions:}
+\begin{enumerate}
+    \item Analyze the provided post text, hashtags, and structural visual tags.
+    \item Score Social Comparison Salience ($\comparisonScore \in [0.0, 1.0]$) based on upward comparison triggers (beauty standards, wealth displays, lifestyle curation).
+    \item Score Influencer Exposure Index ($\exposureIndex \in [0.0, 1.0]$) by detecting commercial intent, brand tagging, and parasocial persuasion cues.
+    \item Output strictly valid JSON matching the schema: \texttt{\{"salience": float, "influencer\_index": float, "primary\_trigger": string, "confidence": float\}}.
+    \item Maintain complete clinical neutrality. Never include moral judgment or user criticism.
+\end{enumerate}
+}
+\end{agentbox}
+
+\subsection{סוכן הרפלקציה (\agentReflector{})}
+\label{subsec:spec_reflector}
+סוכן הרפלקציה הוא מנהל הזיכרון והסינתזה הרגשית של הפלטפורמה. תפקידו לעקוב אחר וקטור המצב הנפשי $\wellbeingVector{}$ של המשתמש לאורך זמן, לזהות מגמות של שחיקה פסיבית, ולנסח תובנות מטא-קוגניטיביות המותאמות אישית להקשר השימוש.
+\begin{itemize}
+    \item \textbf{מנגנון הזיכרון הרפלקטיבי (Episodic Reflection Memory)}: בהשראת ארכיטקטורת הסוכנים הגנרטיביים של פארק וחוב'~\cite{park2023generative}, הסוכן מתחזק מסד נתונים וקטורי מקומי (\textenglish{Local Vector Database}) השומר אירועי חשיפה לצד שלושה מדדי שליפה:
+    \begin{equation}
+        \text{RetrievalScore}(e) = \omega_{\text{rec}} \cdot \text{Recency}(e) + \omega_{\text{imp}} \cdot \text{Importance}(e) + \omega_{\text{rel}} \cdot \text{Relevance}(e, q)
+    \end{equation}
+    כאשר $\text{Recency}$ מודד את הזמן שחלף מאז החשיפה, $\text{Importance}$ מוגדר על ידי גודל הגירוי $\comparisonScore{}$, ו־$\text{Relevance}$ מחושב באמצעות דמיון קוסינוס בין וקטורי השיכון (\textenglish{Embeddings}).
+    \item \textbf{תהליך ייצור התובנה (\textenglish{Reflection Synthesis Loop})}:
+    כאשר סכום הגירויים המצטבר בחלון זמן נתון עובר סף קריטי, או כאשר מזוהה רצף גלילה פסיבי העולה על 20 דקות רצופות של תכנים בעלי $\comparisonScore > 0.7$, הסוכן מייצר תובנה סינתטית:
+    \begin{quote}
+        \textit{"בשלושים הדקות האחרונות, 78\% מהתוכן שנצרך התמקד בהצגת סגנון חיים אידיאלי של משפיענים. נרשמה התאמה בין רצף זה לבין ירידה מתונה במדד הערך העצמי הרגעי המדווח."}
+    \end{quote}
+    \item \textbf{פלט}: אובייקט \textenglish{ReflectionInsight} המועבר ישירות לסוכן ההתערבות.
+\end{itemize}
+
+\subsection{סוכן ההתערבות (\agentInterventionist{})}
+\label{subsec:spec_interventionist}
+סוכן ההתערבות מהווה את חזית התקשורת מול המשתמש. משימתו הרגישה ביותר היא להגיש את התובנות שנוצרו על ידי סוכן הרפלקציה בעיתוי המדויק, בנימה הנכונה, ובאופן שאינו מעורר התנגדות פסיכולוגית (\textenglish{Reactance}).
+\begin{itemize}
+    \item \textbf{עקרונות פעולה פסיכולוגיים}:
+    \begin{enumerate}
+        \item \textit{מזעור ריאקטנס (\textenglish{Reactance Minimization})}: על פי ברהם~\cite{brehm1966theory}, איום על חופש הבחירה של הפרט מייצר דחף עז לבצע דווקא את הפעולה האסורה. על כן, הסוכן לעולם אינו משתמש בציווים ("צא עכשיו מהאפליקציה!"), אלא פונה בשאלות רפלקטיביות פתוחות המעודדות מודעות עצמית ("שמת לב כיצד הגלילה בסרטונים אלו משפיעה על מצב הרוח שלך ברגע זה?").
+        \item \textit{תורת הדחיפות העדינה (\textenglish{Nudge Theory})}: שימוש בעקרונותיהם של ת'יילר וסאנסטיין~\cite{thaler2008nudge} ליצירת ארכיטקטורת בחירה חיובית -- כגון הצעת הפוגה קצרה לנשימה, או שינוי תצוגת הפיד למצב מונוכרומטי (שחור-לבן) המפחית את כוח המשיכה החזותי של התוכן המלוטש.
+        \item \textit{תזמון אופטימלי}: הסוכן ממתין ל"נקודות שבירה טבעיות" בגלילה (מעבר בין סרטונים, סיום צפייה בסטורי), ונמנע מקטיעת אינטראקציות פעילות של המשתמש (כגון כתיבת הודעה לחבר).
+    \end{enumerate}
+\end{itemize}
+
+\section{המידול המתמטי הפורמלי של וקטור המצב והדינמיקה האפקטיבית}
+\label{sec:arch_mathematical_modeling}
+כדי לאפשר ניתוח כמותי מדויק וחיזוי של מגמות שחיקה רגשית, המערכת מתחזקת מודל מתמטי רציף של המצב הנפשי.
+
+\subsection{הגדרת וקטור המצב הנפשי}
+וקטור המצב הנפשי של המשתמש ברגע נתון $t$ מוגדר כשלשה וקטורית:
+\begin{equation}
+    \wellbeingVector(t) = \Big\langle S(t), \; \mathbf{A}(t), \; D(t) \Big\rangle \in [0, 1] \times [0, 1]^2 \times [0, 1]
+\end{equation}
+כאשר:
+\begin{itemize}
+    \item $S(t) \in [0, 1]$ מייצג את ציון הערך העצמי הרגעי (\textenglish{State Self-Esteem}), המכויל כנגד סולם רוזנברג (\textenglish{RSES}). ציון $1.0$ מבטא הערכה עצמית גבוהה וקבלה מלאה, וציון $0.0$ מבטא פגיעה קשה בערך העצמי.
+    \item $\mathbf{A}(t) = \big( \text{PA}(t), \text{NA}(t) \big)$ מייצג את המאזן הרגשי הרגעי לפי שאלון \textenglish{PANAS}: $\text{PA} \in [0, 1]$ מבטא רגש חיובי (\textenglish{Positive Affect} -- עוררות, נחישות, חיוניות), ו־$\text{NA} \in [0, 1]$ מבטא רגש שלילי (\textenglish{Negative Affect} -- חרדה, מועקה, תסכול).
+    \item $D(t) \in [0, 1]$ מייצג את מדד העייפות הדיגיטלית ושחיקת הקשב (\textenglish{Digital Depletion Index}), המודד את המעמסה הקוגניטיבית המצטברת עקב חשיפה ממושכת לגירויים בעלי קצב גבוה.
+\end{itemize}
+
+\subsection{משוואות הדינמיקה הזמנית}
+השינוי בערך העצמי הרגעי $S(t)$ לאורך זמן מונחה על ידי משוואה דיפרנציאלית המשלבת דעיכה עצמית, השפעת גירויי השוואה, ואפקט ויסות מטא-קוגניטיבי:
+\begin{equation}
+    \frac{dS(t)}{dt} = -\lambda_s \Big( S(t) - S_{\text{baseline}} \Big) - \alpha \cdot \comparisonScore(t) \cdot \Big( 1 - M_{\text{meta}}(t) \Big) + \beta \cdot \text{SocialSupport}(t)
+\end{equation}
+כאשר:
+\begin{itemize}
+    \item $\lambda_s > 0$ הוא קצב החזרה הטבעי של המשתמש אל רמת הבסיס האישית שלו ($S_{\text{baseline}}$).
+    \item $\comparisonScore(t)$ הוא מדד בולטות ההשוואה של הפוסט הנצרך ברגע $t$.
+    \item $\alpha > 0$ הוא מקדם הרגישות האישי של המשתמש להשוואה חברתית כלפי מעלה.
+    \item $M_{\text{meta}}(t) \in [0, 1]$ מייצג את מדד המודעות המטא-קוגניטיבית שהוענק על ידי סוכן ההתערבות. כאשר המשתמש חווה תובנה רפלקטיבית ($M_{\text{meta}} \to 1$), השפעת הגירוי על הערך העצמי נבלמת באופן כמעט מוחלט.
+    \item $\beta \cdot \text{SocialSupport}(t)$ מייצג את ההשפעה החיובית של אינטראקציות תומכות וישירות עם חברים קרובים.
+\end{itemize}
+
+במקביל, מדד השחיקה הדיגיטלית $D(t)$ מתפתח בהתאם למשוואת הצטברות עם אפקט רוויה:
+\begin{equation}
+    D(t+\Delta t) = \min\left( 1.0, \; D(t) + \gamma \cdot \exposureIndex(t) \cdot \Delta t - \delta \cdot \text{PauseDuration}(t) \right)
+\end{equation}
+כאשר $\gamma$ הוא מקדם השחיקה עקב חשיפה לתכנים ממומנים ומסחריים, ו־$\delta$ הוא קצב ההתאוששות הקוגניטיבית במהלך הפוגות גלילה. מודל זה מאפשר למערכת לחזות מראש "נפילות ערך עצמי" (\textenglish{Self-Esteem Crashes}) עוד טרם התרחשותן, ולהפעיל את סוכן ההתערבות בזמן הקריטי ביותר למניעת שחיקה.
+
+\section{אינטראקציית אדם-סוכן (HAI) וממשק המראה הקוגניטיבית}
+\label{sec:arch_hai_dashboard}
+ממשק המשתמש של פלטפורמת \projectname{} תוכנן סביב עקרונות ה־\textenglish{Explainable AI (XAI)} והעצמת המשתמש. המערכת אינה מסתירה את שיקוליה, אלא מעניקה למשתמש שקיפות מלאה לגבי האופן שבו הסוכנים מנתחים את התוכן וממדלים את מצבו.
+
+איור~\ref{fig:cognitive_dashboard_wireframe} מציג שרטוט מפורט של ממשק "המראה הקוגניטיבית" המוצע:
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.84, every node/.style={transform shape},
+    wireframe/.style={rectangle, draw=NavyBlueDark, fill=white, rounded corners=4mm, line width=1.4pt, inner sep=12pt},
+    card/.style={rectangle, draw=SilverAccent, fill=LightBoxBg, rounded corners=2.5mm, line width=1.0pt, inner sep=8pt},
+    accentcard/.style={rectangle, draw=AccentTeal, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, inner sep=8pt},
+    headerbar/.style={rectangle, draw=NavyBlueDark, fill=NavyBlueDark, text=white, rounded corners=2mm, line width=1.0pt, inner sep=6pt, font=\bfseries\sffamily\small}
+]
+
+% Main Outer Phone/Dashboard Frame
+\node[wireframe, text width=13.0cm, minimum height=9.6cm] (frame) {};
+
+% Top Header
+\node[headerbar, anchor=north, text width=12.4cm, align=center] at (frame.north) {\textenglish{SocialMirror-AI — Personal Cognitive Mirror Dashboard}};
+
+% Left Column: Real-Time Feed Radar
+\node[card, below=0.7cm of frame.north west, anchor=north west, xshift=0.5cm, text width=5.6cm, minimum height=3.6cm] (c_radar) {
+    \textenglish{%
+    \textbf{\color{NavyBlueDark}Session Feed Diagnostics}\\[4pt]
+    \scriptsize \textbf{Current Dwell Time:} 24.5 min\\[2pt]
+    \scriptsize \textbf{Upward Salience ($\comparisonScore$):} \textcolor{BrickRed}{\textbf{High (0.82)}}\\[2pt]
+    \scriptsize \textbf{Influencer Saturation ($\exposureIndex$):} 74\% Sponsored\\[6pt]
+    \begin{tikzpicture}
+        \draw[SilverAccent, fill=LightBlueBg] (0,0) rectangle (4.6, 0.4);
+        \draw[fill=BrickRed] (0,0) rectangle (3.77, 0.4);
+        \node[font=\tiny\bfseries\color{white}] at (1.8, 0.2) {82\% Comparison Load};
+    \end{tikzpicture}%
+    }
+};
+
+% Right Column: State Vector Trajectory
+\node[card, below=0.7cm of frame.north east, anchor=north east, xshift=-0.5cm, text width=5.6cm, minimum height=3.6cm] (c_state) {
+    \textenglish{%
+    \textbf{\color{NavyBlueDark}State Vector Dynamics $\wellbeingVector(t)$}\\[4pt]
+    \scriptsize \textbf{State Self-Esteem ($S_t$):} 0.61 \textcolor{BrickRed}{($\downarrow 14\%$)}\\[2pt]
+    \scriptsize \textbf{Positive Affect (PA):} 0.42 | \textbf{Negative Affect (NA):} 0.68\\[4pt]
+    \begin{tikzpicture}[scale=0.9]
+        \draw[->, color=SlateGray, line width=0.7pt] (0,0) -- (4.4,0) node[right, font=\tiny] {$t$};
+        \draw[->, color=SlateGray, line width=0.7pt] (0,0) -- (0,1.2) node[above, font=\tiny] {$S$};
+        \draw[line width=1.2pt, color=AccentCyan] (0,1.0) .. controls (1.5,0.9) and (2.5,0.4) .. (4.0,0.3);
+        \draw[dashed, color=BrickRed] (2.2,0) -- (2.2,0.65) node[above, font=\tiny] {Doomscroll onset};
+    \end{tikzpicture}%
+    }
+};
+
+% Bottom Full-Width Card: Reflective Insight & Socratic Dialogue
+\node[accentcard, below=0.5cm of c_radar.south west, anchor=north west, text width=12.0cm, minimum height=2.8cm] (c_insight) {
+    \textenglish{%
+    \textbf{\color{AccentTeal}Metacognitive Reflection Scaffold (from \agentInterventionist{})}\\[4pt]
+    \small \textit{"Notice how the last 6 reels focused heavily on luxury travel and fitness milestones. We've detected a subtle dip in your momentary confidence since opening this tag."}\\[6pt]
+    \begin{tikzpicture}
+        \node[rectangle, draw=AccentTeal, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\bfseries\color{NavyBlueDark}] (b1) {Take a 2-min Breath Pause};
+        \node[rectangle, draw=SlateGray, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateGray}, right=0.5cm of b1] (b2) {Mute Luxury Hashtags};
+        \node[rectangle, draw=SilverAccent, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateGray}, right=0.5cm of b2] (b3) {Switch to Grayscale Mode};
+    \end{tikzpicture}%
+    }
+};
+
+\end{tikzpicture}
+\end{LTR}
+\caption{שרטוט ממשק "המראה הקוגניטיבית" (\textenglish{Cognitive Dashboard Wireframe}) והתובנה הרפלקטיבית}
+\label{fig:cognitive_dashboard_wireframe}
+\end{figure}
+
+הממשק משלב בין אבחון מדויק בזמן אמת של עומס ההשוואה בפיד, עקומת מגמה דינמית של וקטור המצב, ורכיב שיקוף סוקרטי עדין המציע פעולות ויסות עצמיות ללא כפייה. שילוב זה מציב את \projectname{} כמודל מופת לאינטראקציית אדם-בינה מלאכותית אתית, המקדמת אוריינות דיגיטלית וחוסן פסיכולוגי.

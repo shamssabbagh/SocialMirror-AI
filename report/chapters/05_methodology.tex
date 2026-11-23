@@ -1,0 +1,139 @@
+% ==============================================================================
+% פרק 5: מתודולוגיית מחקר, מערך סימולציה ומדדי הערכה
+% ==============================================================================
+\chapter{מתודולוגיית מחקר, מערך סימולציה ומדדי הערכה}
+\label{chap:methodology_simulation}
+
+\section{פרדיגמת המחקר: הצדקת הניסוי המבוקר בסימולציה}
+\label{sec:meth_paradigm_justification}
+חקר ההשפעה של רשתות חברתיות על רווחה נפשית בקרב צעירים ניצב בפני דילמה אתית ומתודולוגית עמוקה: מצד אחד, ניסויי מעבדה בבני אדם החושפים מתבגרים פגיעים לתכנים מעוררי השוואה, חרדה ואידיאליזציה קיצונית עלולים להסב להם נזק פסיכולוגי ישיר ולעמוד בניגוד לכללי האתיקה המחקרית (\textenglish{IRB}). מצד שני, מחקרי שדה המסתמכים על דיווח עצמי רטרוספקטיבי סובלים מהטיות זיכרון חמורות ומחוסר יכולת לבודד קשרים סיבתיים מדויקים ברמת הפוסט הבודד.
+
+כדי להתגבר על מגבלות אלו, פרויקט \projectname{} מאמץ פרדיגמת מחקר חדשנית: \textbf{מערך סימולציה מבוקר מבוסס סוכנים גנרטיביים} (\textenglish{Generative Agent-Based Simulation}). מתודולוגיה זו, הנשענת על הישגיהם של פארק ועמיתיו~\cite{park2023generative} וסקירתם של ואנג וחוב'~\cite{wang2024survey}, רותמת מודלי שפה גדולים ליצירת סוכני פרסונה סינתטיים המדמים התנהגות אנושית, תגובתיות רגשית ודינמיקות של הערכה עצמית באופן מבוקר ובטוח לחלוטין.
+
+היתרונות המדעיים של מתודולוגיה זו כוללים:
+\begin{enumerate}
+    \item \textbf{בטיחות אתית מוחלטת} -- שום משתמש צעיר אינו נחשף לתכנים מזיקים; כל התגובות הרגשיות מופקות בתוך סביבת סימולציה ממוחשבת.
+    \item \textbf{שחזוריות מדעית מלאה (\textenglish{Perfect Reproducibility})} -- היכולת להריץ אלפי תרחישי גלילה זהים תחת תנאי חשיפה שונים ולבחון את התנהגות המערכת במדויק.
+    \item \textbf{בידוד משתנים נקי} -- השוואה ישירה ומבוקרת בין פיד אלגוריתמי עתיר משפיענים לבין פיד עמיתים אורגני, תוך נטרול משתנים מתערבים סביבתיים.
+\end{enumerate}
+
+\section{ארכיטיפי הפרסונות הסינתטיות ומאפייניהן הפסיכולוגיים}
+\label{sec:meth_persona_archetypes}
+מערך הסימולציה כולל קבוצה של \textbf{20 פרסונות גנרטיביות סינתטיות} המבוססות על מודלי שפה, המייצגות קשת רחבה של מאפיינים אישיותיים, דפוסי שימוש ורגישויות פסיכולוגיות. הפרסונות מחולקות לארבעה ארכיטיפים מרכזיים (5 פרסונות בכל ארכיטיפ):
+
+\begin{enumerate}
+    \item \textbf{ארכיטיפ א': מתבגר פגיע להשוואה (\textenglish{High-Vulnerability Adolescent})} --
+    מאופיין בהערכה עצמית בסיסית נמוכה ($S_{\text{baseline}} = 0.35$), ציון נוירוטיציזם גבוה במודל חמש התכונות (\textenglish{Big Five}), נטייה מובהקת להשוואה חברתית כלפי מעלה, ורגישות גבוהה במיוחד לתכני יופי גופני וסטטוס חברתי ($\alpha = 0.85$).
+    \item \textbf{ארכיטיפ ב': צרכן סגנון חיים מזדמן (\textenglish{Casual Lifestyle Consumer})} --
+    מאופיין בהערכה עצמית ממוצעת ויציבה ($S_{\text{baseline}} = 0.58$), רמות נוירוטיציזם ומוחצנות מאוזנות, ורגישות מתונה לתכנים ממומנים של משפיענים ($\alpha = 0.48$).
+    \item \textbf{ארכיטיפ ג': יוצר תוכן אקטיבי ומחפש אישור (\textenglish{Active Creator \& Validation Seeker})} --
+    מאופיין ברמת מוחצנות גבוהה, עוררות רגשית עזה, רגישות גבוהה לכמות אינטראקציות חברתיות (לייקים ושיתופים), ופגיעות מוגברת לחרדת החמצה (\textenglish{FOMO}).
+    \item \textbf{ארכיטיפ ד': משתמש בעל חוסן נפשי גבוה (\textenglish{Comparison-Resilient User})} --
+    מאופיין בהערכה עצמית בסיסית גבוהה ויציבה ($S_{\text{baseline}} = 0.82$), פתיחות גבוהה לחוויה, מודעות ביקורתית מובנית כלפי תכנים שיווקיים, ורגישות נמוכה מאוד לאפקט הניגוד ($\alpha = 0.15$).
+\end{enumerate}
+
+טבלה~\ref{tab:persona_archetypes_matrix} מסכמת את ההגדרות הפסיכומטריות של ארבעת הארכיטיפים בסימולציה:
+
+\begin{table}[H]
+\centering
+\caption{מטריצת ארכיטיפי הפרסונות בסימולציה והפרמטרים הפסיכומטריים שלהן}
+\label{tab:persona_archetypes_matrix}
+\small
+\begin{tabularx}{\textwidth}{>{\bfseries\color{NavyBlueDark}}p{2.6cm} p{1.6cm} p{2.8cm} c c X}
+\toprule
+\textbf{ארכיטיפ} & \textbf{גיל מדומה} & \textbf{פרופיל \textenglish{Big Five}} & \textbf{$S_{\text{base}}$} & \textbf{$\alpha$ (רגישות)} & \textbf{דפוס תגובה מרכזי לגלילה} \\
+\midrule
+מתבגר פגיע להשוואה & 15--18 & נוירוטיציזם גבוה, מוחצנות נמוכה & 0.35 & 0.85 & גלילת פיצוי ממושכת, שקיעה באפקט הניגוד, נפילה חדה בערך העצמי. \\
+צרכן לייפסטייל מזדמן & 19--23 & מוחצנות בינונית, נוירוטיציזם מתון & 0.58 & 0.48 & השוואה מתונה, רגישות סלקטיבית לתכני יוקרה וחופשות, התאוששות יומית. \\
+יוצר תוכן פעיל & 17--22 & מוחצנות גבוהה, מצפוניות בינונית & 0.62 & 0.65 & תנודתיות רגשית בהתאם למדדי משוב, חרדת החמצה גבוהה, עוררות שלילית. \\
+משתמש בעל חוסן נפשי & 20--26 & יציבות רגשית גבוהה, פתיחות גבוהה & 0.82 & 0.15 & תפיסת תוכן כהשראה אובייקטיבית, חסינות מאפקט הניגוד, ניתוק יזום. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{פרוטוקול יצירת הפיד והרצת הסימולציה}
+\label{sec:meth_simulation_protocols}
+הסימולציה מתבצעת בתוך סביבת \textenglish{Sandbox} דיגיטלית מבודדת. מנוע הסימולציה מייצר רצפי פיד מותאמים אישית הנצרכים על ידי סוכני הפרסונה לאורך 100 צעדי זמן (\textenglish{Time Steps / Ticks}), כאשר כל צעד מייצג אינטראקציה עם פוסט בודד (איור~\ref{fig:simulation_pipeline_flowchart}).
+
+הניסוי המתוכנן כולל שלושה תנאים ניסוייים מבוקרים:
+\begin{itemize}
+    \item \textbf{תנאי 1: פיד עמיתים אורגני (קבוצת ביקורת שלילית - Control)} -- 80\% מתכני הפיד מייצגים פוסטים של עמיתים אמיתיים (שגרת יומיום, חוויות לימודיות, תוכן אותנטי), ורק 20\% מוקדשים לתכנים ציבוריים כלליים.
+    \item \textbf{תנאי 2: פיד ממוטב עוררות ללא התערבות (קבוצת ביקורת חיובית - Unmitigated Algorithmic)} -- 75\% מתכני הפיד מורכבים מתכני משפיענים בעלי אידיאליזציה גבוהה ופרסום ממומן סמוי ($\mathcal{S}_{\text{comp}} > 0.75, \mathcal{E}_{\text{inf}} > 0.70$), ללא כל התערבות של מערכת \projectname{}.
+    \item \textbf{תנאי 3: פיד ממוטב עוררות עם התערבות \projectname{} (קבוצת הניסוי - Mitigated)} -- אותו תמהיל תכנים עתיר גירויים של תנאי 2, אך עם הפעלה מלאה של ארבעת סוכני \projectname{} המספקים שיקופים מטא-קוגניטיביים בזמן אמת.
+\end{itemize}
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.82, every node/.style={transform shape},
+    simnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.3cm, font=\small\sffamily},
+    personanode/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, text=white, rounded corners=3mm, line width=1.3pt, align=center, inner sep=8pt, text width=3.4cm, font=\bfseries\sffamily},
+    metricnode/.style={rectangle, draw=ForestGreen, fill=LightBoxBg, rounded corners=2mm, line width=1.1pt, align=center, inner sep=6pt, text width=3.2cm, font=\footnotesize\sffamily},
+    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=NavyBlueDark},
+    dasharrow/.style={-{Latex[length=2.5mm]}, dashed, line width=1.1pt, draw=AccentTeal}
+]
+
+% Simulation Process Steps
+\node[simnode] (gen) {\textbf{Feed Generator Engine}\\\scriptsize Synthesizes 100 Post Stream\\Curated vs. Organic Balance};
+\node[personanode, right=2.0cm of gen] (personas) {\textbf{20 Synthetic Personas}\\\scriptsize 4 Psychological Archetypes\\(Autonomous LLM Agents)};
+\node[simnode, right=2.0cm of personas] (env) {\textbf{Interaction Sandbox}\\\scriptsize Simulates Dwell Time, Likes,\\Saves \& Doomscrolling};
+
+\node[simnode, below=1.8cm of personas] (platform) {\textbf{\projectname{} Core}\\\scriptsize 4 Multi-Agent Society\\\scriptsize (Observer, Analyst, Reflector, Interventionist)};
+
+\node[metricnode, below=1.8cm of gen] (m_quant) {\textbf{Quantitative Metrics}\\\scriptsize State Vector Shifts $\Delta \wellbeingVector$\\\scriptsize RSES \& PANAS Alignments};
+\node[metricnode, below=1.8cm of env] (m_qual) {\textbf{Qualitative Telemetry}\\\scriptsize Reactance Rate, Self-Efficacy,\\Nudge Acceptance Index};
+
+% Arrows
+\draw[arrow] (gen) -- node[above, font=\scriptsize\sffamily] {Feeds Stream} (personas);
+\draw[arrow] (personas) -- node[above, font=\scriptsize\sffamily] {Consumes \& Reacts} (env);
+\draw[arrow] (env) -- ++(0,-1.0cm) -| (platform.north);
+
+\draw[dasharrow] (platform.west) -- node[above, font=\scriptsize\sffamily] {Telemetry} (m_quant);
+\draw[dasharrow] (platform.east) -- node[above, font=\scriptsize\sffamily] {Efficacy} (m_qual);
+\draw[dasharrow] (platform.north) -- node[right, font=\scriptsize\sffamily] {Scaffolding Feedback} (personas.south);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{תרשים זרימת מערך הסימולציה המבוקר של פלטפורמת \projectname{}}
+\label{fig:simulation_pipeline_flowchart}
+\end{figure}
+
+\section{מדדי הערכה כמותיים ואיכותניים}
+\label{sec:meth_evaluation_metrics}
+כדי להבטיח את תוקפה המדעי של המערכת, הוגדרה מערכת מדדים מקיפה הבוחנת הן את ביצועי הסוכנים והן את יעילותם בהגנה על הרווחה הנפשית.
+
+\subsection{מדדים כמותיים}
+\begin{enumerate}
+    \item \textbf{דיוק ורגישות הסיווג הסמנטי (\textenglish{Classification Metrics})} --
+    השוואת ציוני $\comparisonScore{}$ ו־$\exposureIndex{}$ המחושבים על ידי \agentAnalyst{} מול תיוג מוזהב (\textenglish{Ground Truth}) של 200 פוסטים שקודדו באופן בלתי-תלוי על ידי שופטים אנושיים מומחים בפסיכולוגיה. מחושבים מדדי דיוק (\textenglish{Precision}), רגישות (\textenglish{Recall}), וציון $F_1$.
+    \item \textbf{מתאם מול סולמות פסיכומטריים סטנדרטיים} --
+    בדיקת מתאם פירסון ($r$) בין שינויי וקטור המצב המחושב $\Delta S(t)$ לבין תנודות בציוני שאלוני \textenglish{RSES} ו־\textenglish{PANAS} המדווחים על ידי הפרסונות בסיום כל סשן סימולציה.
+    \item \textbf{שיעור בלימת שחיקת הערך העצמי (\textenglish{Depletion Mitigation Rate - DMR})} --
+    ההפרש באחוזים בירידת הערך העצמי המצטברת בין קבוצת הניסוי המלווה במערכת (תנאי 3) לבין קבוצת האלגוריתם הבלתי-מווסת (תנאי 2):
+    \begin{equation}
+        \text{DMR} = \frac{\Delta S_{\text{unmitigated}} - \Delta S_{\text{mitigated}}}{\Delta S_{\text{unmitigated}}} \times 100\%
+    \end{equation}
+    יעד ההצלחה שהוגדר לפרויקט הינו השגת $\text{DMR} \ge 40\%$ בקרב הפרסונות הפגיעות.
+\end{enumerate}
+
+\subsection{מדדים איכותניים}
+\begin{enumerate}
+    \item \textbf{מדד אי-החודרנות הנתפסת (\textenglish{Perceived Non-Intrusiveness})} -- הערכת איכות ההודעות של \agentInterventionist{} באמצעות שאלון בעל 5 פריטים (סולם ליקרט 1--5) הבוחן תחושת שיפוטיות, חודרנות, ואובדן שליטה.
+    \item \textbf{שיעור עקיפת ההתערבות (\textenglish{Reactance Bypass Rate})} -- אחוז המקרים שבהם הפרסונה בחרה להתעלם מהשיקוף ולהמשיך בגלילה אינטנסיבית (מדד המעיד על כישלון בתזמון או בניסוח ההודעה).
+\end{enumerate}
+
+\section{ממשל אתי, פרטיות מקומית ועמידה בסטנדרטים של ועדת אתיקה (IRB)}
+\label{sec:meth_ethics_irb}
+פיתוח מערכת מרובת סוכנים המנטרת מדדי רווחה נפשית מחייב עמידה קפדנית בעקרונות אתיקה בינלאומיים עבור מחקרים המערבים טכנולוגיה ובריאות הנפש.
+
+\begin{ethicsbox}[פרוטוקול אתיקה מחקרית והגנה על אוכלוסיות פגיעות]
+\begin{enumerate}
+    \item \textbf{היעדר מוחלט של אבחון קליני} -- \projectname{} מוגדרת באופן חד-משמעי ככלי מטא-קוגניטיבי לשיקוף ולהעצמה דיגיטלית בלבד. המערכת אינה מעניקה אבחנות רפואיות (כגון דיכאון קליני או הפרעות אכילה) ואינה מחליפה טיפול פסיכותרפי.
+    \item \textbf{מנגנון הפניה וחירום מובנה (\textenglish{Crisis Safeguard Protocol})} -- במקרה שבו מודל המצב מזהה ירידה קיצונית ורציפה במדד הרווחה המשולבת באיתותי מצוקה חריגים, המערכת מושבתת מפעולות שיקוף שגרתיות ומציגה באופן בולט קישורים וטלפונים ישירים למוקדי סיוע רשמיים לבריאות הנפש (כגון ער"ן או סה"ר).
+    \item \textbf{פרטיות ואנונימיזציה מלאה בסימולציה ובניסויי שדה} -- כל נתוני הסימולציה נשמרים מקומית. בניסויי משתמשים עתידיים, הגישה למערכת תותנה בהסכמה מדעת מלאה (\textenglish{Informed Consent}), כאשר כל משתתף ישמור על בעלות מוחלטת על הנתונים ויוכל למחוק את היסטוריית השימוש בכל רגע נתון.
+\end{enumerate}
+\end{ethicsbox}
+
+השילוב בין סימולציה מבוקרת, בידוד מתודולוגי של משתנים ורגולציה אתית מחמירה מבטיח כי \projectname{} תספק תובנות מדעיות מהימנות תוך שמירה בלתי מתפשרת על שלומם של המשתמשים.

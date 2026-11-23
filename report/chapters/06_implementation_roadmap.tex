@@ -1,0 +1,117 @@
+% ==============================================================================
+% פרק 6: היתכנות טכנולוגית, מפת דרכים ליישום ומטריצת סיכונים
+% ==============================================================================
+\chapter{היתכנות טכנולוגית, מפת דרכים ליישום ומטריצת סיכונים}
+\label{chap:implementation_roadmap}
+
+\section{מחסנית טכנולוגית מוצעת ובחירת סביבות עבודה}
+\label{sec:impl_tech_stack_selection}
+היתכנות המימוש של פלטפורמת \projectname{} נשענת על ההתקדמות המהירה של השנים האחרונות בשלושה תחומים מרכזיים: מזעור מודלי שפה לעיבוד מקומי בקצה (\textenglish{Small Language Models - SLMs}), מסגרות תזמור מרובות סוכנים מבוססות גרפים, ומסדי נתונים וקטוריים קלי-משקל.
+
+מחסנית הטכנולוגיה המוצעת לפיתוח המערכת כוללת ארבע שכבות ליבה:
+\begin{enumerate}
+    \item \textbf{מודלי שפה מקומיים לעיבוד בקצה (\textenglish{Edge AI Inference})} --
+    כדי לעמוד בדרישת הברזל של שמירה מוחלטת על פרטיות המשתמש, המערכת תתבסס על מודלים בעלי ארכיטקטורה קומפקטית ומכומתת (\textenglish{4-bit Quantized GGUF}), כגון \textenglish{Llama-3-8B-Instruct}~\cite{touvron2023llama} או \textenglish{Phi-3-Mini} (3.8 מיליארד פרמטרים). מודלים אלו מסוגלים לרוץ מקומית על גבי מעבד גרפי של מחשב נייד או שבב \textenglish{NPU} מודרני בסמארטפונים בקצב של 25--40 טוקנים לשנייה, תוך צריכת זיכרון (\textenglish{VRAM}) הנמוכה מ־6 ג'יגה-בייט.
+    \item \textbf{מסגרת תזמור מרובת סוכנים (\textenglish{Multi-Agent Orchestration Framework})} --
+    אימוץ סביבת \textenglish{LangGraph} או \textenglish{AutoGen}~\cite{wu2023autogen}. סביבות אלו מאפשרות תיאום א-סינכרוני מבוסס גרף מצבים מחזורי (\textenglish{Cyclic State Graph}), ניהול זיכרון משותף בין סוכנים, טיפול בשגיאות תקשורת, ועקיבות מלאה של נתיבי ההחלטה באמצעות רישום אירועים (\textenglish{Event Sourcing}).
+    \item \textbf{מסד נתונים וקטורי מקומי (\textenglish{Local Vector Database})} --
+    שימוש בספריית \textenglish{ChromaDB} או \textenglish{SQLite-vec} לשמירת היסטוריית החשיפות ורפלקציות העבר של סוכן הרפלקציה. המערכת תבצע חיפושי דמיון קוסינוס מקומיים ללא כל פנייה לשרתי ענן, תוך שימוש במודל שיכון קומפקטי מקומי (כגון \textenglish{all-MiniLM-L6-v2}).
+    \item \textbf{שכבת ממשק משתמש ואיסוף נתונים (\textenglish{HCI Frontend \& Data Ingestion})} --
+    תוסף דפדפן חוצה-פלטפורמות (\textenglish{Chrome/Firefox Manifest V3 Extension}) או אפליקציית דסקטופ מבוססת \textenglish{Electron/React}, המאפשרת ממשק חזותי עשיר, הצגת עקומות המצב הנפשי בזמן אמת, והענקת פיגומים מטא-קוגניטיביים עדינים.
+\end{enumerate}
+
+\section{שלבי הפיתוח, אבני דרך ותרשים גאנט}
+\label{sec:impl_milestones_gantt}
+תהליך הפיתוח המתוכנן של פרויקט \projectname{} מחולק לחמישה שלבים עוקבים, הנפרסים על פני תקופה של 12 חודשים:
+
+\begin{enumerate}
+    \item \textbf{שלב 1: מחקר מכין, תיקוף מושגי והגדרת ארכיטקטורה (חודשים 1--2)} -- גיבוש הדוח המכין הנוכחי, אפיון שאלות המחקר, ניסוח מודל הנתונים וקטור המצב, ואימות המקורות האמפיריים.
+    \item \textbf{שלב 2: פיתוח אבות-טיפוס של סוכני הקלט והסיווג (חודשים 3--5)} -- בניית מנגנון הקליטה של \agentObserver{}, כתיבת הפרומפטים של \agentAnalyst{}, וכיול דיוק הסיווג הסמנטי של מדד $\comparisonScore{}$ כנגד מאגר נתונים מוזהב.
+    \item \textbf{שלב 3: מנוע הרפלקציה, הזיכרון הווקטורי ודינמיקת המצב (חודשים 6--7)} -- הטמעת מנגנון הזיכרון האפיזודי של \agentReflector{}, שילוב המשוואות המתמטיות של וקטור המצב $\wellbeingVector{}$, ופיתוח מנגנוני הניסוח של \agentInterventionist{}.
+    \item \textbf{שלב 4: הרצת מערך הסימולציה עם 20 הפרסונות ואיסוף נתונים (חודשים 8--9)} -- ביצוע הניסוי המבוקר בסביבת ה־\textenglish{Sandbox}, מדידת מדדי ה־\textenglish{DMR}, ואימות מול סולמות \textenglish{RSES} ו־\textenglish{PANAS}.
+    \item \textbf{שלב 5: ניסוי פיילוט משתמשים, ליטוש ממשק ודוח מסכם (חודשים 10--12)} -- בחינת ממשק "המראה הקוגניטיבית" בקרב קבוצת פיילוט של סטודנטים באוניברסיטת חיפה (בכפוף לאישור ועדת אתיקה), תיעוד הממצאים והגשת הדוח הסופי.
+\end{enumerate}
+
+איור~\ref{fig:project_gantt_chart} מציג את תרשים הגאנט הכרונולוגי של שלבי הפיתוח ואבני הדרך המרכזיות של הפרויקט:
+
+\vspace{0.3cm}
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[
+    scale=0.82, every node/.style={transform shape},
+    bar/.style={rectangle, rounded corners=1.5mm, line width=0.8pt, inner sep=4pt, font=\scriptsize\sffamily},
+    timeline/.style={draw=SilverAccent, line width=0.8pt},
+    phasebg/.style={fill=LightBlueBg, draw=SilverAccent, line width=0.7pt, rounded corners=2mm}
+]
+
+% Time Axis Grid (Months 1 to 12)
+\foreach \m in {1,...,12} {
+    \draw[timeline] (\m*1.1, 0) -- (\m*1.1, 5.5);
+    \node[font=\tiny\bfseries\color{SlateGray}, below=0.1cm of {(\m*1.1, 0)}] {M\m};
+}
+\draw[line width=1.0pt, color=NavyBlueDark] (1.1, 0) -- (13.2, 0);
+
+% Phase 1: Preparatory Research (M1-M2)
+\filldraw[fill=NavyBlueDark, draw=NavyBlueDark] (1.1, 4.6) rectangle (3.3, 5.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{NavyBlueDark}] at (3.5, 4.85) {Phase 1: Preparatory Specification \& Modeling};
+
+% Phase 2: Core Ingestion & LLM Classifier (M3-M5)
+\filldraw[fill=AccentTeal, draw=AccentTeal] (3.3, 3.6) rectangle (6.6, 4.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{AccentTeal}] at (6.8, 3.85) {Phase 2: Observer \& Analyst Agent Prototyping};
+
+% Phase 3: Reflection Engine & Vector Memory (M6-M7)
+\filldraw[fill=AccentCyan, draw=NavyBlueDark] (6.6, 2.6) rectangle (8.8, 3.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{NavyBlueDark}] at (9.0, 2.85) {Phase 3: Reflector \& Interventionist Synthesis};
+
+% Phase 4: Persona Simulation Experiments (M8-M9)
+\filldraw[fill=BrickRed!80, draw=BrickRed] (8.8, 1.6) rectangle (11.0, 2.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{BrickRed}] at (11.2, 1.85) {Phase 4: 20-Persona Simulation \& Evaluation};
+
+% Phase 5: Pilot Study & Final Thesis (M10-M12)
+\filldraw[fill=ForestGreen, draw=ForestGreen] (11.0, 0.6) rectangle (14.3, 1.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{ForestGreen}] at (14.5, 0.85) {Phase 5: Pilot HCI Trials \& Final Thesis};
+
+% Dependency Connecting Lines
+\draw[->, line width=1.0pt, color=SlateGray, dashed] (3.3, 4.6) -- (3.3, 4.1);
+\draw[->, line width=1.0pt, color=SlateGray, dashed] (6.6, 3.6) -- (6.6, 3.1);
+\draw[->, line width=1.0pt, color=SlateGray, dashed] (8.8, 2.6) -- (8.8, 2.1);
+\draw[->, line width=1.0pt, color=SlateGray, dashed] (11.0, 1.6) -- (11.0, 1.1);
+
+\end{tikzpicture}
+\end{LTR}
+\caption{תרשים גאנט (\textenglish{Project Gantt Chart}) לחמשת שלבי הפיתוח, אבני הדרך והתלויות הכרונולוגיות}
+\label{fig:project_gantt_chart}
+\end{figure}
+
+\section{מטריצת סיכונים טכנולוגיים והנדסיים ואסטרטגיות הפחתה}
+\label{sec:impl_risk_matrix}
+פיתוח מערכת מרובת סוכנים מתקדמת טומן בחובו שורה של אתגרים מתודולוגיים והנדסיים. טבלה~\ref{tab:risk_matrix} מנתחת את ארבעת סיכוני הליבה של הפרויקט ומציגה אסטרטגיות הפחתה מוגדרות ותוכניות מגירה:
+
+\begin{table}[H]
+\centering
+\caption{מטריצת סיכונים טכנולוגיים ומתודולוגיים ואסטרטגיות הפחתה}
+\label{tab:risk_matrix}
+\small
+\begin{tabularx}{\textwidth}{>{\bfseries\color{NavyBlueDark}}p{2.6cm} c c X p{2.6cm}}
+\toprule
+\textbf{תיאור הסיכון} & \textbf{חומרה} & \textbf{סבירות} & \textbf{אסטרטגיית הפחתה ומניעה} & \textbf{תוכנית מגירה} \\
+\midrule
+הזיות מודל שפה (\textenglish{Hallucinations}) בסיווג פסיכולוגי & גבוהה & בינונית & כפיית פלט מובנה מבוסס סכמת \textenglish{JSON Schema}, הגדרת רובריקות סיווג חד-משמעיות בפרומפט, וטמפרטורת דגימה נמוכה ($\tau = 0.2$). & כיול מחדש כנגד מאגר פוסטים מתויג ושימוש במודל שיפוט שני (\textenglish{Judge LLM}). \\
+\midrule
+זמני השהיה ועומס חישובי על מכשיר הקצה & בינונית & גבוהה & שימוש במודלי שפה מכומתים (\textenglish{4-bit Quantization}), הפעלת סוכן הניתוח במנות א-סינכרוניות (\textenglish{Batching}), ודילוג על פוסטים שחלפו במהירות. & העברת עיבוד כבד למודל שפה מבוזר מקומי ברשת הביתית. \\
+\midrule
+התנגדות פסיכולוגית (\textenglish{Reactance}) ועייפות התראות & גבוהה & בינונית & ניסוח סוקרטי עדין, הגבלת תדירות ההתערבויות למקסימום 2 בשעה, ומתן שליטה מלאה למשתמש על סגנון השיקוף. & מעבר לתצוגה שקטה בלוח המחוונים ללא התראות קופצות. \\
+\midrule
+שבירת מנגנון הקליטה עקב שינויי \textenglish{DOM} ברשתות & בינונית & גבוהה & בידוד שכבת הקלט לתוסף מודולרי, שימוש באלגוריתמי זיהוי מבוססי מטא-נתונים כלליים במקום שמות קלאסים ספציפיים. & עדכון מהיר של חוקי החילוץ באמצעות סקריפט תצורה מקוון. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{הקצאת משאבים והיתכנות חישובית באוניברסיטת חיפה}
+\label{sec:impl_resource_allocation}
+ההיתכנות החישובית של פרויקט \projectname{} נשענת על ניצול יעיל של משאבי החומרה הקיימים במעבדות המחקר של אוניברסיטת חיפה.
+
+עבור הרצת מערך הסימולציה עם 20 הפרסונות הגנרטיביות, נדרש שרת מחשוב בעל מעבד גרפי מדגם \textenglish{NVIDIA RTX 4090} (24 ג'יגה-בייט \textenglish{VRAM}) או שרת ענן אקדמי ייעודי. משאב זה מאפשר הרצה מקבילית של 4 מופעי סוכנים מקומיים בו-זמנית, תוך השלמת סשן סימולציה מלא של 100 פוסטים בתוך פחות מ־45 דקות.
+
+עלויות הפיתוח הכוללות נשמרות ברמה מינימלית בזכות השימוש במודלי קוד פתוח (\textenglish{Open-Weight Models}) ובכלי תוכנה חופשיים, עובדה המבטיחה את שחזוריות המחקר והתאמתו למסגרות אקדמיות עתידיות.

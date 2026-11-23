@@ -1,0 +1,128 @@
+% ==============================================================================
+% נספחים: פרומפטים מערכתיים, כלי מדידה ואתיקה
+% ==============================================================================
+\chapter*{נספחים}
+\addcontentsline{toc}{chapter}{נספחים}
+\label{chap:appendices}
+
+\section*{נספח א': מפרט פרומפטים מערכתיים עבור סוכני \projectname{}}
+\addcontentsline{toc}{section}{נספח א': מפרט פרומפטים מערכתיים}
+\label{app:agent_prompts}
+
+להלן מפרט הפרומפטים המערכתיים המלאים המוטמעים בארבעת סוכני הפלטפורמה:
+
+\subsection*{פרומפט סוכן התצפית (\agentObserver{})}
+\begin{LTR}
+\begin{footnotesize}
+\begin{verbatim}
+SYSTEM: You are the ObserverAgent in SocialMirror-AI.
+OBJECTIVE: Ingest incoming raw client DOM elements.
+RULES:
+1. Extract dwell time (ms), post layout, and caption.
+2. Scrub all PII: usernames, handles, and avatars.
+3. Compute an irreversible SHA-256 hash for the post ID.
+4. If dwell time < 1500ms, discard record as scroll noise.
+5. Format output strictly as JSON: IngestedContentEvent.
+\end{verbatim}
+\end{footnotesize}
+\end{LTR}
+
+\subsection*{פרומפט סוכן הניתוח (\agentAnalyst{})}
+\begin{LTR}
+\begin{footnotesize}
+\begin{verbatim}
+SYSTEM: You are the AnalystAgent in SocialMirror-AI.
+OBJECTIVE: Perform zero-shot psychological classification.
+INPUT: Anonymized caption text, hashtags, structural tags.
+RUBRIC:
+- Salience Score (S_comp in [0.0, 1.0]): Upward comparison.
+  * 0.0 - 0.3: Casual peer updates, everyday events.
+  * 0.4 - 0.6: Polished aesthetics, event highlights.
+  * 0.7 - 1.0: Hyper-idealized luxury & body aesthetic editing.
+- Influencer Index (E_inf in [0.0, 1.0]): Commercial marketing.
+  * Detect paid partnerships, subtle brand tags, affiliate codes.
+OUTPUT: Strictly valid JSON without preamble:
+{
+  "salience": float,
+  "influencer_index": float,
+  "primary_trigger": string,
+  "confidence": float
+}
+\end{verbatim}
+\end{footnotesize}
+\end{LTR}
+
+\subsection*{פרומפט סוכן הרפלקציה (\agentReflector{})}
+\begin{LTR}
+\begin{footnotesize}
+\begin{verbatim}
+SYSTEM: You are the ReflectorAgent in SocialMirror-AI.
+OBJECTIVE: Track user affective state and synthesize reflections.
+STATE VECTOR: Maintain w(t) = <S(t), (PA(t), NA(t)), D(t)>.
+MEMORY DYNAMICS:
+- Store comparison events in the local vector memory store.
+- Apply exponential temporal decay: lambda_s = 0.05 min^-1.
+- Synthesize an insight when comparison density > 0.70
+  across 15+ minutes of continuous scroll.
+TONE: Empathetic, analytical, objective, non-judgmental.
+\end{verbatim}
+\end{footnotesize}
+\end{LTR}
+
+\subsection*{פרומפט סוכן ההתערבות (\agentInterventionist{})}
+\begin{LTR}
+\begin{footnotesize}
+\begin{verbatim}
+SYSTEM: You are the InterventionAgent in SocialMirror-AI.
+OBJECTIVE: Deliver metacognitive scaffolds that empower agency.
+PSYCHOLOGICAL PRINCIPLES:
+1. Never order the user to leave or close the application.
+2. Formulate observations as gentle Socratic inquiries:
+   "Have you noticed how...?"
+3. Offer actionable, low-friction micro-interventions:
+   breathing pause, grayscale mode, or mindful tagging.
+4. Enforce strict frequency capping: Max 2 alerts per active hour.
+\end{verbatim}
+\end{footnotesize}
+\end{LTR}
+
+\newpage
+\section*{נספח ב': פריטי שאלונים פסיכומטריים מתוקפים}
+\addcontentsline{toc}{section}{נספח ב': פריטי שאלונים פסיכומטריים מתוקפים}
+\label{app:psychometric_scales}
+
+\subsection*{סולם הערך העצמי של רוזנברג (\textenglish{Rosenberg Self-Esteem Scale - RSES})}
+הסולם כולל 10 פריטים המדורגים על גבי סולם ליקרט בעל 4 דרגות (1 = כלל לא מסכים, 4 = מסכים מאוד):
+\begin{enumerate}
+    \item באופן כללי, אני מרוצה מעצמי.
+    \item לפעמים אני חושב/ת שאני לא שווה כלום (היפוך סולם).
+    \item אני מרגיש/ה שיש לי מספר תכונות טובות.
+    \item אני מסוגל/ת לעשות דברים טוב כמו רוב האנשים.
+    \item אני מרגיש/ה שאין לי הרבה במה להתגאות (היפוך סולם).
+    \item אני בהחלט מרגיש/ה חסר/ת תועלת לפעמים (היפוך סולם).
+    \item אני מרגיש/ה שאני אדם בעל ערך, לפחות שווה לאחרים.
+    \item הלוואי ויכולתי לכבד את עצמי יותר (היפוך סולם).
+    \item בסך הכל, אני נוטה להרגיש שאני כישלון (היפוך סולם).
+    \item יש לי גישה חיובית כלפי עצמי.
+\end{enumerate}
+
+\subsection*{לוח הרגשות החיוביים והשליליים (\textenglish{PANAS})}
+רשימת 20 תיאורי הרגש הנמדדים להערכת המצב האפקטיבי הרגעי:
+\begin{itemize}
+    \item \textbf{רגש חיובי (\textenglish{Positive Affect - PA})}: קשוב/ה, נלהב/ה, נרגש/ת, מעוּדד/ת, חזק/ה, גאה, מלא/ת מרץ, מלא/ת השראה, נחוש/ה, פעיל/ה.
+    \item \textbf{רגש שלילי (\textenglish{Negative Affect - NA})}: מוטרד/ת, מצוברח/ת, אשם/ה, מפוחד/ת, עוין/ת, עצבני/ת, מבויש/ת, לחוץ/ה, מבוהל/ת, חרד/ה.
+\end{itemize}
+
+\newpage
+\section*{נספח ג': פרוטוקול אתיקה מחקרית והצהרת בטיחות}
+\addcontentsline{toc}{section}{נספח ג': פרוטוקול אתיקה מחקרית והצהרת בטיחות}
+\label{app:ethics_protocol}
+
+\begin{ethicsbox}[רשימת תיוג לעמידה בסטנדרטים אתיים (\textenglish{IRB Ethics Checklist})]
+\begin{itemize}
+    \item[$\checkmark$] \textbf{היעדר מוחלט של איסוף נתונים מזהים}: כל המידע המעובד במערכת עובר תהליך אנונימיזציה מקומי בלתי הפיך עוד טרם עיבודו.
+    \item[$\checkmark$] \textbf{מניעת חשיפת משתתפים לסיכון פסיכולוגי}: שלבי הניסוי והכיול הראשוניים מתבצעים במלואם באמצעות סוכני פרסונה גנרטיביים ממוחשבים, ללא מעורבות ישירה של מתבגרים.
+    \item[$\checkmark$] \textbf{מנגנון עצירה והפניה במצבי חירום}: המערכת מצוידת במנגנון איתור מצבי קיצון המנתב את המשתמש באופן אוטומטי למוקדי תמיכה נפשית רשמיים ומונע שימוש לא מבוקר.
+    \item[$\checkmark$] \textbf{הסכמה מדעת שקופה ובחירה חופשית}: השימוש במערכת לעולם אינו נכפה על המשתמש, וכל רכיב בארכיטקטורה ניתן לכיבוי או התאמה אישית בהתאם לרצונו החופשי.
+\end{itemize}
+\end{ethicsbox}
