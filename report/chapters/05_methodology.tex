@@ -36,12 +36,13 @@
 
 \begin{table}[H]
 \centering
-\caption{מטריצת ארכיטיפי הפרסונות בסימולציה והפרמטרים הפסיכומטריים שלהן}
+\caption{מטריצת ארכיטיפי הפרסונות בסימולציה והפרמטרים הפסיכומטריים שלהן (המחשת מודל הסימולציה)}
 \label{tab:persona_archetypes_matrix}
 \small
-\begin{tabularx}{\textwidth}{>{\bfseries\color{NavyBlueDark}}p{2.6cm} p{1.6cm} p{2.8cm} c c X}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{2.6cm} p{1.6cm} p{2.8cm} c c X}
 \toprule
-\textbf{ארכיטיפ} & \textbf{גיל מדומה} & \textbf{פרופיל \textenglish{Big Five}} & \textbf{$S_{\text{base}}$} & \textbf{$\alpha$ (רגישות)} & \textbf{דפוס תגובה מרכזי לגלילה} \\
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}ארכיטיפ} & \textbf{\color{DarkPurple}גיל מדומה} & \textbf{\color{DarkPurple}פרופיל \textenglish{Big Five}} & \textbf{\color{DarkPurple}$S_{\text{base}}$} & \textbf{\color{DarkPurple}$\alpha$ (רגישות)} & \textbf{\color{DarkPurple}דפוס תגובה מרכזי לגלילה} \\
 \midrule
 מתבגר פגיע להשוואה & 15--18 & נוירוטיציזם גבוה, מוחצנות נמוכה & 0.35 & 0.85 & גלילת פיצוי ממושכת, שקיעה באפקט הניגוד, נפילה חדה בערך העצמי. \\
 צרכן לייפסטייל מזדמן & 19--23 & מוחצנות בינונית, נוירוטיציזם מתון & 0.58 & 0.48 & השוואה מתונה, רגישות סלקטיבית לתכני יוקרה וחופשות, התאוששות יומית. \\
@@ -68,22 +69,22 @@
 \begin{LTR}
 \begin{tikzpicture}[
     scale=0.82, every node/.style={transform shape},
-    simnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.3cm, font=\small\sffamily},
-    personanode/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, text=white, rounded corners=3mm, line width=1.3pt, align=center, inner sep=8pt, text width=3.4cm, font=\bfseries\sffamily},
-    metricnode/.style={rectangle, draw=ForestGreen, fill=LightBoxBg, rounded corners=2mm, line width=1.1pt, align=center, inner sep=6pt, text width=3.2cm, font=\footnotesize\sffamily},
-    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=NavyBlueDark},
-    dasharrow/.style={-{Latex[length=2.5mm]}, dashed, line width=1.1pt, draw=AccentTeal}
+    simnode/.style={rectangle, draw=RoyalPurple, fill=LavenderLight, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.3cm, font=\small\sffamily},
+    personanode/.style={rectangle, draw=PurpleAccent, fill=DarkPurple, text=white, rounded corners=3mm, line width=1.3pt, align=center, inner sep=8pt, text width=3.4cm, font=\bfseries\sffamily},
+    metricnode/.style={rectangle, draw=SuccessEmerald, fill=LavenderCard, rounded corners=2mm, line width=1.1pt, align=center, inner sep=6pt, text width=3.2cm, font=\footnotesize\sffamily},
+    arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=DarkPurple},
+    dasharrow/.style={-{Latex[length=2.5mm]}, dashed, line width=1.1pt, draw=RoyalPurple}
 ]
 
 % Simulation Process Steps
-\node[simnode] (gen) {\textbf{Feed Generator Engine}\\\scriptsize Synthesizes 100 Post Stream\\Curated vs. Organic Balance};
+\node[simnode] (gen) {\textbf{\color{DarkPurple}Feed Generator Engine}\\\scriptsize Synthesizes 100 Post Stream\\Curated vs. Organic Balance};
 \node[personanode, right=2.0cm of gen] (personas) {\textbf{20 Synthetic Personas}\\\scriptsize 4 Psychological Archetypes\\(Autonomous LLM Agents)};
-\node[simnode, right=2.0cm of personas] (env) {\textbf{Interaction Sandbox}\\\scriptsize Simulates Dwell Time, Likes,\\Saves \& Doomscrolling};
+\node[simnode, right=2.0cm of personas] (env) {\textbf{\color{DarkPurple}Interaction Sandbox}\\\scriptsize Simulates Dwell Time, Likes,\\Saves \& Doomscrolling};
 
-\node[simnode, below=1.8cm of personas] (platform) {\textbf{\projectname{} Core}\\\scriptsize 4 Multi-Agent Society\\\scriptsize (Observer, Analyst, Reflector, Interventionist)};
+\node[simnode, below=1.8cm of personas] (platform) {\textbf{\color{DarkPurple}\projectname{} Core}\\\scriptsize 4 Multi-Agent Society\\\scriptsize (Observer, Analyst, Reflector, Interventionist)};
 
-\node[metricnode, below=1.8cm of gen] (m_quant) {\textbf{Quantitative Metrics}\\\scriptsize State Vector Shifts $\Delta \wellbeingVector$\\\scriptsize RSES \& PANAS Alignments};
-\node[metricnode, below=1.8cm of env] (m_qual) {\textbf{Qualitative Telemetry}\\\scriptsize Reactance Rate, Self-Efficacy,\\Nudge Acceptance Index};
+\node[metricnode, below=1.8cm of gen] (m_quant) {\textbf{\color{DarkPurple}Quantitative Metrics}\\\scriptsize State Vector Shifts $\Delta \wellbeingVector$\\\scriptsize RSES \& PANAS Alignments};
+\node[metricnode, below=1.8cm of env] (m_qual) {\textbf{\color{DarkPurple}Qualitative Telemetry}\\\scriptsize Reactance Rate, Self-Efficacy,\\Nudge Acceptance Index};
 
 % Arrows
 \draw[arrow] (gen) -- node[above, font=\scriptsize\sffamily] {Feeds Stream} (personas);
@@ -96,7 +97,7 @@
 
 \end{tikzpicture}
 \end{LTR}
-\caption{תרשים זרימת מערך הסימולציה המבוקר של פלטפורמת \projectname{}}
+\caption{תרשים זרימת מערך הסימולציה המבוקר של פלטפורמת \projectname{} (המחשת מודל הסימולציה)}
 \label{fig:simulation_pipeline_flowchart}
 \end{figure}
 

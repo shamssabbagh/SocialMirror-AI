@@ -41,46 +41,46 @@
 \begin{tikzpicture}[
     scale=0.82, every node/.style={transform shape},
     bar/.style={rectangle, rounded corners=1.5mm, line width=0.8pt, inner sep=4pt, font=\scriptsize\sffamily},
-    timeline/.style={draw=SilverAccent, line width=0.8pt},
-    phasebg/.style={fill=LightBlueBg, draw=SilverAccent, line width=0.7pt, rounded corners=2mm}
+    timeline/.style={draw=LavenderBorder, line width=0.8pt},
+    phasebg/.style={fill=LavenderLight, draw=LavenderBorder, line width=0.7pt, rounded corners=2mm}
 ]
 
 % Time Axis Grid (Months 1 to 12)
 \foreach \m in {1,...,12} {
     \draw[timeline] (\m*1.1, 0) -- (\m*1.1, 5.5);
-    \node[font=\tiny\bfseries\color{SlateGray}, below=0.1cm of {(\m*1.1, 0)}] {M\m};
+    \node[font=\tiny\bfseries\color{SlateMuted}, below=0.1cm of {(\m*1.1, 0)}] {M\m};
 }
-\draw[line width=1.0pt, color=NavyBlueDark] (1.1, 0) -- (13.2, 0);
+\draw[line width=1.1pt, color=DarkPurple] (1.1, 0) -- (13.2, 0);
 
 % Phase 1: Preparatory Research (M1-M2)
-\filldraw[fill=NavyBlueDark, draw=NavyBlueDark] (1.1, 4.6) rectangle (3.3, 5.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{NavyBlueDark}] at (3.5, 4.85) {Phase 1: Preparatory Specification \& Modeling};
+\filldraw[fill=DarkPurple, draw=DarkPurple] (1.1, 4.6) rectangle (3.3, 5.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (3.5, 4.85) {Phase 1: Preparatory Specification \& Modeling};
 
 % Phase 2: Core Ingestion & LLM Classifier (M3-M5)
-\filldraw[fill=AccentTeal, draw=AccentTeal] (3.3, 3.6) rectangle (6.6, 4.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{AccentTeal}] at (6.8, 3.85) {Phase 2: Observer \& Analyst Agent Prototyping};
+\filldraw[fill=RoyalPurple, draw=RoyalPurple] (3.3, 3.6) rectangle (6.6, 4.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{RoyalPurple}] at (6.8, 3.85) {Phase 2: Observer \& Analyst Agent Prototyping};
 
 % Phase 3: Reflection Engine & Vector Memory (M6-M7)
-\filldraw[fill=AccentCyan, draw=NavyBlueDark] (6.6, 2.6) rectangle (8.8, 3.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{NavyBlueDark}] at (9.0, 2.85) {Phase 3: Reflector \& Interventionist Synthesis};
+\filldraw[fill=PurpleAccent, draw=DarkPurple] (6.6, 2.6) rectangle (8.8, 3.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (9.0, 2.85) {Phase 3: Reflector \& Interventionist Synthesis};
 
 % Phase 4: Persona Simulation Experiments (M8-M9)
-\filldraw[fill=BrickRed!80, draw=BrickRed] (8.8, 1.6) rectangle (11.0, 2.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{BrickRed}] at (11.2, 1.85) {Phase 4: 20-Persona Simulation \& Evaluation};
+\filldraw[fill=AlertRose, draw=AlertRose] (8.8, 1.6) rectangle (11.0, 2.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{AlertRose}] at (11.2, 1.85) {Phase 4: 20-Persona Simulation \& Evaluation};
 
 % Phase 5: Pilot Study & Final Thesis (M10-M12)
-\filldraw[fill=ForestGreen, draw=ForestGreen] (11.0, 0.6) rectangle (14.3, 1.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{ForestGreen}] at (14.5, 0.85) {Phase 5: Pilot HCI Trials \& Final Thesis};
+\filldraw[fill=SuccessEmerald, draw=SuccessEmerald] (11.0, 0.6) rectangle (14.3, 1.1);
+\node[anchor=west, font=\scriptsize\bfseries\color{SuccessEmerald}] at (14.5, 0.85) {Phase 5: Pilot HCI Trials \& Final Thesis};
 
 % Dependency Connecting Lines
-\draw[->, line width=1.0pt, color=SlateGray, dashed] (3.3, 4.6) -- (3.3, 4.1);
-\draw[->, line width=1.0pt, color=SlateGray, dashed] (6.6, 3.6) -- (6.6, 3.1);
-\draw[->, line width=1.0pt, color=SlateGray, dashed] (8.8, 2.6) -- (8.8, 2.1);
-\draw[->, line width=1.0pt, color=SlateGray, dashed] (11.0, 1.6) -- (11.0, 1.1);
+\draw[->, line width=1.0pt, color=SlateMuted, dashed] (3.3, 4.6) -- (3.3, 4.1);
+\draw[->, line width=1.0pt, color=SlateMuted, dashed] (6.6, 3.6) -- (6.6, 3.1);
+\draw[->, line width=1.0pt, color=SlateMuted, dashed] (8.8, 2.6) -- (8.8, 2.1);
+\draw[->, line width=1.0pt, color=SlateMuted, dashed] (11.0, 1.6) -- (11.0, 1.1);
 
 \end{tikzpicture}
 \end{LTR}
-\caption{תרשים גאנט (\textenglish{Project Gantt Chart}) לחמשת שלבי הפיתוח, אבני הדרך והתלויות הכרונולוגיות}
+\caption{תרשים גאנט (\textenglish{Project Gantt Chart}) לחמשת שלבי הפיתוח, אבני הדרך והתלויות הכרונולוגיות (מפת דרכים מתוכננת)}
 \label{fig:project_gantt_chart}
 \end{figure}
 
@@ -93,9 +93,10 @@
 \caption{מטריצת סיכונים טכנולוגיים ומתודולוגיים ואסטרטגיות הפחתה}
 \label{tab:risk_matrix}
 \small
-\begin{tabularx}{\textwidth}{>{\bfseries\color{NavyBlueDark}}p{2.6cm} c c X p{2.6cm}}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{2.6cm} c c X p{2.6cm}}
 \toprule
-\textbf{תיאור הסיכון} & \textbf{חומרה} & \textbf{סבירות} & \textbf{אסטרטגיית הפחתה ומניעה} & \textbf{תוכנית מגירה} \\
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}תיאור הסיכון} & \textbf{\color{DarkPurple}חומרה} & \textbf{\color{DarkPurple}סבירות} & \textbf{\color{DarkPurple}אסטרטגיית הפחתה ומניעה} & \textbf{\color{DarkPurple}תוכנית מגירה} \\
 \midrule
 הזיות מודל שפה (\textenglish{Hallucinations}) בסיווג פסיכולוגי & גבוהה & בינונית & כפיית פלט מובנה מבוסס סכמת \textenglish{JSON Schema}, הגדרת רובריקות סיווג חד-משמעיות בפרומפט, וטמפרטורת דגימה נמוכה ($\tau = 0.2$). & כיול מחדש כנגד מאגר פוסטים מתויג ושימוש במודל שיפוט שני (\textenglish{Judge LLM}). \\
 \midrule

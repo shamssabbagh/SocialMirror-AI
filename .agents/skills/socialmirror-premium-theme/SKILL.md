@@ -2,23 +2,26 @@
 name: socialmirror-premium-theme
 description: >-
   Official visual design system and LaTeX styling guidelines for the SocialMirror-AI academic project
-  (Assignment 2, University of Haifa). Enforces a premium academic visual identity blending modern psychology
-  and artificial intelligence aesthetics with a dark navy, deep teal, bright cyan, silver, and white palette.
-  Provides complete specifications for single-page cover design, Hebrew RTL and English LTR bidirectional typography,
-  XeLaTeX compilation, robust callout environments, publication-grade TikZ vector diagrams, and booktabs comparative matrices.
+  (Assignment 2, University of Haifa). Enforces a premium academic visual identity inspired by the dark black-and-purple
+  aesthetic: a dark black/deep-violet cover with vibrant purple "Mirror-AI" accents, framed central digital mirror illustration,
+  white interior pages with dark purple section headings, purple chapter badges, light lavender callout boxes for objectives/insights/summaries,
+  lavender table headers, and publication-grade card-and-arrow TikZ vector diagrams.
   Activate whenever the user requests "Use the SocialMirror Premium Theme" or "השתמש בעיצוב הקבוע של SocialMirror".
 ---
 
-# SocialMirror-AI Premium Theme — Permanent Design System
+# SocialMirror-AI Premium Theme — Permanent Design System (Black, Royal Purple & Lavender)
 
 ## 1. Visual Identity Philosophy
 
-The **SocialMirror Premium Theme** represents the visual and typographic standard for the **SocialMirror-AI** academic project at the University of Haifa. The theme harmonizes the cognitive, introspective depth of psychological well-being research with the futuristic, precision-oriented clarity of multi-agent artificial intelligence.
+The **SocialMirror Premium Theme** represents the visual and typographic standard for the **SocialMirror-AI** academic project at the University of Haifa. The theme harmonizes the cognitive, introspective depth of psychological well-being research with the sleek, high-contrast clarity of modern agentic artificial intelligence.
 
 ### Key Visual Pillars
-- **Academic Authority**: Clean lines, generous whitespace, structured typographic hierarchy, and formal university presentation.
-- **Cognitive-Technological Dualism**: Deep navy blues and teals anchor human psychological introspection, while vibrant cyan highlights signify autonomous AI perception and algorithmic reflection.
-- **Rigor & Transparency**: Publication-ready TikZ diagrams, standardized `booktabs` matrices, and clear demarcation between empirical evidence and proposed architecture.
+- **Dark Elegance & Digital Introspection**: The report opens with an immersive dark cover (deep black-violet `#0B0813`) featuring vibrant purple highlights (`#9D4EDD`) on `Mirror-AI`, framing the central digital mirror illustration that symbolizes the mirror reflection of social comparison.
+- **Academic Authority & Interior Clarity**: Interior pages transition to crisp canvas white (`#FFFFFF`) with dark purple (`#2E1065`) headings, subtle lavender dividers, and optimal typographic whitespace ensuring effortless readability on screen and in high-resolution print.
+- **Iconic Chapter Badging**: Every chapter opens with a solid royal purple rounded box (`#6D28D9`) displaying the chapter number in crisp white, echoed consistently in the Table of Contents.
+- **Structured Lavender Callouts**: Standardized light lavender (`#F5F3FF`) callout environments with lavender borders (`#C4B5FD`) for project objectives (`objectivebox`), metacognitive insights (`insightbox`), chapter summaries (`summarybox`), and ethical safeguards (`ethicsbox`).
+- **Card-and-Arrow System Architecture**: Modular agent society diagrams and information-flow architectures designed as clean rounded cards with directed purple arrows, accompanied by lavender-tinted booktabs comparative tables.
+- **Rigorous Methodological Labeling**: All UI prototypes, mockups, and simulation parameters are explicitly tagged with illustrative markers ("המחשה" / "Illustrative Prototype").
 - **Flawless Bidirectionality**: First-class Hebrew RTL primary discourse with seamlessly isolated English LTR technical notation, author names, formulas, and IEEE citations.
 
 ---
@@ -29,28 +32,35 @@ All colors are formally defined in `report/preamble.tex` using the `xcolor` pack
 
 | Palette Role | LaTeX Color Name | RGB Values | HEX Code | Functional Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| **Primary Navy** | `NavyBlueDark` | `(10, 40, 95)` | `#0A285F` | Primary titles, university headers, section numerals, outer borders |
-| **Secondary Teal** | `AccentTeal` | `(0, 128, 128)` | `#008080` | Subtitles, agent node outlines, subsection titles, secondary emphasis |
-| **Accent Cyan** | `AccentCyan` | `(0, 168, 204)` | `#00A8CC` | AI highlights, active focal points, divider line highlights, vector arrows |
-| **Slate Gray** | `SlateGray` | `(80, 90, 100)` | `#505A64` | Institutional subheadings, course metadata, student role labels, captions |
-| **Silver Accent** | `SilverAccent` | `(218, 224, 233)` | `#DAE0E9` | Subtle divider bars, card outlines, soft separation lines |
-| **Light Blue Fill** | `LightBlueBg` | `(238, 244, 252)` | `#EEF4FC` | `agentbox` background fill, TikZ state/process node background |
-| **Neutral Fill** | `LightBoxBg` | `(245, 247, 250)` | `#F5F7FA` | `ethicsbox` background fill, table zebra striping, neutral containers |
-| **Border Gray** | `BorderGray` | `(200, 210, 225)` | `#C8D2E1` | Image framing, table horizontal rules, subtle box boundaries |
-| **Critical Alert** | `BrickRed` | `(182, 42, 42)` | `#B62A2A` | Ethical caveats, privacy constraints, clinical disclaimers |
-| **Canvas White** | `white` | `(255, 255, 255)` | `#FFFFFF` | Document background, card interiors, crisp contrast zones |
+| **Cover Black** | `CoverBlack` | `(11, 8, 19)` | `#0B0813` | Dark cover page background canvas |
+| **Dark Purple** | `DarkPurple` | `(46, 16, 101)` | `#2E1065` | Main document headings, section titles, primary table borders |
+| **Royal Purple** | `RoyalPurple` | `(109, 40, 217)` | `#6D28D9` | Solid chapter number badges, TOC badges, primary vector arrows |
+| **Purple Accent** | `PurpleAccent` | `(157, 78, 221)` | `#9D4EDD` | Title accent on `Mirror-AI`, active focal points, subtle glowing borders |
+| **Purple Glow** | `PurpleGlow` | `(192, 132, 252)` | `#C084FC` | Soft neon purple accents, decorative elements |
+| **Lavender Light** | `LavenderLight` | `(245, 243, 255)` | `#F5F3FF` | Callout box background fill, table zebra striping |
+| **Lavender Card** | `LavenderCard` | `(237, 233, 254)` | `#EDE9FE` | Table headers, secondary card background fill |
+| **Lavender Border** | `LavenderBorder` | `(196, 181, 253)` | `#C4B5FD` | Callout borders, running header rule, card outlines |
+| **Charcoal Text** | `CharcoalText` | `(31, 41, 55)` | `#1F2937` | High-contrast body text for maximum print & screen legibility |
+| **Slate Muted** | `SlateMuted` | `(107, 114, 128)` | `#6B7280` | Running header metadata, captions, secondary annotations |
+| **Alert Rose** | `AlertRose` | `(225, 29, 72)` | `#E11D48` | Ethical caveats, downward metric trends, risk matrices |
+| **Success Emerald** | `SuccessEmerald` | `(16, 185, 129)` | `#10B981` | Resilience metrics, positive psychological buffers |
+| **Canvas White** | `white` | `(255, 255, 255)` | `#FFFFFF` | Interior page background, card interiors |
 
 ### LaTeX Color Definitions
 ```latex
 \usepackage[dvipsnames, table]{xcolor}
-\definecolor{NavyBlueDark}{RGB}{10, 40, 95}
-\definecolor{AccentTeal}{RGB}{0, 128, 128}
-\definecolor{AccentCyan}{RGB}{0, 168, 204}
-\definecolor{SlateGray}{RGB}{80, 90, 100}
-\definecolor{SilverAccent}{RGB}{218, 224, 233}
-\definecolor{LightBoxBg}{RGB}{245, 247, 250}
-\definecolor{LightBlueBg}{RGB}{238, 244, 252}
-\definecolor{BorderGray}{RGB}{200, 210, 225}
+\definecolor{CoverBlack}{RGB}{11, 8, 19}
+\definecolor{DarkPurple}{RGB}{46, 16, 101}
+\definecolor{RoyalPurple}{RGB}{109, 40, 217}
+\definecolor{PurpleAccent}{RGB}{157, 78, 221}
+\definecolor{PurpleGlow}{RGB}{192, 132, 252}
+\definecolor{LavenderLight}{RGB}{245, 243, 255}
+\definecolor{LavenderCard}{RGB}{237, 233, 254}
+\definecolor{LavenderBorder}{RGB}{196, 181, 253}
+\definecolor{CharcoalText}{RGB}{31, 41, 55}
+\definecolor{SlateMuted}{RGB}{107, 114, 128}
+\definecolor{AlertRose}{RGB}{225, 29, 72}
+\definecolor{SuccessEmerald}{RGB}{16, 185, 129}
 ```
 
 ---
@@ -108,26 +118,32 @@ The cover page must fit **strictly on exactly ONE A4 page** with zero overflow i
 ```
 
 ### Cover Page Structural Rules
-1. **Vertical Hierarchy**:
-   1. Institution: `אוניברסיטת חיפה` (`\Large\bfseries\color{NavyBlueDark}`)
-   2. Title: `SocialMirror-AI` (`\fontsize{32pt}{38pt}\selectfont\bfseries\color{NavyBlueDark}`)
-   3. Subtitle: `מראה חברתית בעידן הבינה המלאכותית` (`\Large\bfseries\color{AccentTeal}`)
-   4. Accent Divider: TikZ line combining `SilverAccent` bar (9cm), `AccentCyan` center segment (2.8cm), and `NavyBlueDark` center pip.
-   5. Assignment: `מטלה 2 – דוח מכין לפרויקט עתידי` (`\large\bfseries\color{NavyBlueDark}`)
-   6. Course: `קורס: סוכני AI ו־Vibe Coding` (`\normalsize\bfseries\color{SlateGray}`)
-   7. Authors Header: `מגישות:` (`\large\bfseries\color{NavyBlueDark}`)
+1. **Dark Canvas**: `\pagecolor{CoverBlack}` on the cover page, cleanly returning to `\pagecolor{white}` on interior pages.
+2. **Vertical Hierarchy**:
+   1. Institution: `אוניברסיטת חיפה` (`\Large\bfseries\color{white}`)
+   2. Title: `SocialMirror-AI` with `Mirror-AI` highlighted in vibrant purple (`{\fontsize{34pt}{40pt}\selectfont\bfseries\textcolor{white}{Social}\textcolor{PurpleAccent}{Mirror-AI}}`)
+   3. Subtitle: `מראה חברתית בעידן הבינה המלאכותית` (`\Large\bfseries\color{LavenderLight}`)
+   4. Accent Divider: TikZ line combining `LavenderBorder` bar, `PurpleAccent` center segment, and glowing center pip.
+   5. Assignment: `מטלה 2 – דוח מכין לפרויקט עתידי` (`\large\bfseries\color{white}`)
+   6. Course: `קורס: סוכני AI ו־Vibe Coding` (`\normalsize\bfseries\color{LavenderLight!85}`)
+   7. Authors Header: `מגישות:` (`\large\bfseries\color{PurpleAccent}`)
    8. Authors Columns: Two balanced `minipage` blocks (width `0.45\textwidth` each):
-      - Right (First read in RTL): **שמס סבאג** / סטודנטית לפסיכולוגיה
-      - Left (Second read in RTL): **מלאק פרוג׳ה** / סטודנטית לתקשורת ושיווק
+      - Right (First read in RTL): **שמס סבאג** (`\color{white}`) / סטודנטית לפסיכולוגיה (`\color{LavenderLight!75}`)
+      - Left (Second read in RTL): **מלאק פרוג׳ה** (`\color{white}`) / סטודנטית לתקשורת ושיווק (`\color{LavenderLight!75}`)
       - *No additional student IDs or extra text.*
-   9. Official Cover Image: Centered, width `0.92\linewidth`, height constrained, bordered with `\fcolorbox{BorderGray}{white}{...}`.
+   9. Official Cover Image: Centered, width `0.88\linewidth`, height constrained, bordered with glowing purple/lavender accent container `\fcolorbox{PurpleAccent}{CoverBlack}{...}`.
 
 ---
 
 ## 5. Visual Components & Environments
 
-### A. Robust Callout Boxes
+### A. Robust Lavender Callout Boxes
 Standard `tcolorbox` can emit invalid PDF operators under XeLaTeX `bidi`. This theme implements callout environments via `environ` and `\fcolorbox`:
+- `objectivebox`: Lavender background (`LavenderLight`), lavender border (`LavenderBorder`), royal purple bullet, dark purple heading.
+- `insightbox`: Lavender background (`LavenderLight`), royal purple border (`RoyalPurple`), royal purple bullet, dark purple heading.
+- `summarybox`: Lavender background (`LavenderLight`), lavender border (`LavenderBorder`), royal purple bullet, dark purple heading.
+- `agentbox`: Lavender background (`LavenderLight`), royal purple border (`RoyalPurple`), dark purple heading.
+- `ethicsbox`: Lavender background (`LavenderLight`), alert rose border (`AlertRose`), alert rose heading.
 
 #### Agent Callout (`agentbox`)
 ```latex

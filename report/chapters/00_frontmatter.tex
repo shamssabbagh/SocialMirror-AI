@@ -15,10 +15,10 @@
 
 \vspace{0.4cm}
 
-\begin{conceptbox}{חזון פלטפורמת \projectname{}}
+\begin{objectivebox}[חזון פלטפורמת \projectname{}]
 מעבר ממדידה כמותית פטרנליסטית של "שעות מסך" אל \textbf{"מראה קוגניטיבית משקפת ומעצימה"}:
 פלטפורמת מחקר עתידית מבוססת סוכנים אוטונומיים המפרקת את האטימות האלגוריתמית, מבודדת גירויי השוואה ושיווק משפיענים, ומספקת פיגומים מטא-קוגניטיביים המאפשרים לצעירים לפתח חוסן נפשי ובחירה דיגיטלית מודעת.
-\end{conceptbox}
+\end{objectivebox}
 
 \newpage
 
@@ -28,9 +28,10 @@
 \begin{table}[H]
 \centering
 \small
-\begin{tabularx}{\textwidth}{>{\bfseries\color{NavyBlueDark}}p{3.4cm} p{5.0cm} X}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{3.4cm} p{5.0cm} X}
 \toprule
-\textbf{מונח בעברית} & \textbf{מונח לועזי} & \textbf{הגדרה ומשמעות במערכת \projectname{}} \\
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}מונח בעברית} & \textbf{\color{DarkPurple}מונח לועזי} & \textbf{\color{DarkPurple}הגדרה ומשמעות במערכת \projectname{}} \\
 \midrule
 מערכת מרובת סוכנים & \textenglish{Multi-Agent System (MAS)} & ארכיטקטורה חישובית של ישויות תוכנה אוטונומיות הפועלות בתיאום להשגת מטרות מורכבות. \\
 השוואה חברתית כלפי מעלה & \textenglish{Upward Social Comparison} & תהליך פסיכולוגי שבו הפרט משווה את עצמו לאחרים הנתפסים כמוצלחים, מושכים או עשירים ממנו. \\
@@ -49,14 +50,43 @@
 
 \newpage
 % תוכן עניינים ורשימות
+\makeatletter
+\let\orig@l@chapter\l@chapter
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 1.0em \@plus\p@
+    \setlength\@tempdima{2.4em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      \begingroup
+        \renewcommand{\numberline}[1]{%
+          \tikz[baseline=-0.6ex]{\node[fill=RoyalPurple, text=white, rounded corners=1.8mm, inner sep=3.5pt, font=\bfseries\small]{##1};}\enspace%
+        }%
+        {\color{DarkPurple}#1}%
+      \endgroup
+      \nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss \color{DarkPurple}#2}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\makeatother
+
 {
-  \hypersetup{linkcolor=NavyBlueDark}
+  \hypersetup{linkcolor=DarkPurple}
   \tableofcontents
 }
 
+\makeatletter
+\let\l@chapter\orig@l@chapter
+\makeatother
+
 \newpage
 {
-  \hypersetup{linkcolor=NavyBlueDark}
+  \hypersetup{linkcolor=DarkPurple}
   \listoffigures
   \vspace{0.8cm}
   \listoftables

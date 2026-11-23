@@ -7,11 +7,12 @@
 \usepackage{geometry}
 \geometry{
     a4paper,
-    top=2.5cm,
+    top=2.8cm,
     bottom=2.5cm,
     left=2.8cm,
     right=2.8cm,
-    headheight=20pt
+    headheight=28pt,
+    headsep=15pt
 }
 
 \usepackage{setspace}
@@ -32,17 +33,32 @@
 \usepackage{array}
 \usepackage{environ}
 
-% Colors & Themes
+% Colors & Themes (Reference-Inspired: Dark Black & Deep Purple Cover, Deep Purple & Lavender Interior)
 \usepackage[dvipsnames, table]{xcolor}
-\definecolor{NavyBlueDark}{RGB}{10, 40, 95}
-\definecolor{AccentTeal}{RGB}{0, 128, 128}
-\definecolor{AccentCyan}{RGB}{0, 168, 204}
-\definecolor{SlateGray}{RGB}{80, 90, 100}
-\definecolor{SilverAccent}{RGB}{218, 224, 233}
-\definecolor{LightBoxBg}{RGB}{245, 247, 250}
-\definecolor{LightBlueBg}{RGB}{238, 244, 252}
-\definecolor{BorderGray}{RGB}{200, 210, 225}
-\definecolor{BrickRed}{RGB}{180, 40, 40}
+\definecolor{CoverBlack}{RGB}{11, 8, 19}       % #0B0813 - Deep dark black/violet cover background
+\definecolor{DarkPurple}{RGB}{46, 16, 101}     % #2E1065 - Deep purple for main titles, headings, and borders
+\definecolor{RoyalPurple}{RGB}{109, 40, 217}   % #6D28D9 - Solid purple for chapter badge boxes, primary arrows
+\definecolor{PurpleAccent}{RGB}{157, 78, 221}  % #9D4EDD - Vibrant purple for "Mirror-AI" on cover, highlights
+\definecolor{PurpleGlow}{RGB}{192, 132, 252}   % #C084FC - Soft neon purple accent
+\definecolor{LavenderLight}{RGB}{245, 243, 255}% #F5F3FF - Very light lavender background for callouts
+\definecolor{LavenderCard}{RGB}{237, 233, 254} % #EDE9FE - Slightly deeper lavender for cards & table headers
+\definecolor{LavenderBorder}{RGB}{196, 181, 253}% #C4B5FD - Lavender border for boxes and table rules
+\definecolor{CharcoalText}{RGB}{31, 41, 55}    % #1F2937 - High contrast dark text for print & screen
+\definecolor{SlateMuted}{RGB}{107, 114, 128}   % #6B7280 - Subtle gray for captions and metadata
+\definecolor{AlertRose}{RGB}{225, 29, 72}      % #E11D48 - Alert/downward metrics
+\definecolor{SuccessEmerald}{RGB}{16, 185, 129}% #10B981 - Success/upward metrics
+
+% Backwards-compatible aliases for existing components:
+\definecolor{NavyBlueDark}{RGB}{46, 16, 101}   % Maps to DarkPurple
+\definecolor{AccentTeal}{RGB}{109, 40, 217}    % Maps to RoyalPurple
+\definecolor{AccentCyan}{RGB}{157, 78, 221}    % Maps to PurpleAccent
+\definecolor{SlateGray}{RGB}{107, 114, 128}    % Maps to SlateMuted
+\definecolor{SilverAccent}{RGB}{196, 181, 253} % Maps to LavenderBorder
+\definecolor{LightBoxBg}{RGB}{245, 243, 255}   % Maps to LavenderLight
+\definecolor{LightBlueBg}{RGB}{237, 233, 254}  % Maps to LavenderCard
+\definecolor{BorderGray}{RGB}{196, 181, 253}   % Maps to LavenderBorder
+\definecolor{BrickRed}{RGB}{225, 29, 72}       % Maps to AlertRose
+\definecolor{ForestGreen}{RGB}{16, 185, 129}   % Maps to SuccessEmerald
 
 % TikZ Vector Graphics
 \usepackage{tikz}
@@ -84,65 +100,111 @@
 % Keep Hebrew heading for Bibliography even in English environment
 \addto\captionsenglish{\renewcommand{\bibname}{\texthebrew{ביבליוגרפיה}}}
 
-% Running Headers & Footers
+% Running Headers & Footers (Subtle, Clean & Academic)
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[R]{\small\nouppercase{\leftmark}}
-\fancyhead[L]{\small\textenglish{\textsc{SocialMirror-AI}}}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[R]{\small\color{SlateMuted}\nouppercase{\leftmark}}
+\fancyhead[L]{\small\bfseries\color{DarkPurple}\textenglish{Social\textcolor{RoyalPurple}{Mirror-AI}}}
+\fancyfoot[C]{\small\color{SlateMuted}\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{LavenderBorder}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0pt}
 
 % Master Academic Editorial Styling for Headings
 \makeatletter
 \def\@makechapterhead#1{%
-  \vspace*{10\p@}%
+  \vspace*{6\p@}%
   {\parindent \z@ \raggedright \normalfont
     \ifnum \c@secnumdepth >\m@ne
-        {\Large\bfseries\color{AccentTeal} \@chapapp\space \thechapter}
-        \par\nobreak
-        \vskip 6\p@
+      \noindent
+      \begin{tikzpicture}[baseline=(num.base)]
+        \node[fill=RoyalPurple, text=white, rounded corners=2.5mm, inner sep=6pt, font=\Large\bfseries\sffamily] (num) {\thechapter};
+      \end{tikzpicture}%
+      \quad
+      {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
+    \else
+      {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
     \fi
-    \interlinepenalty\@M
-    {\Huge \bfseries \color{NavyBlueDark} #1\par\nobreak}
-    \vskip 6\p@
-    {\color{AccentCyan}\rule{\linewidth}{1.6pt}\par\nobreak}
-    \vskip 18\p@
+    \vskip 8\p@
+    {\color{LavenderBorder}\rule{\linewidth}{1.2pt}\par\nobreak}
+    \vskip 16\p@
   }}
 \def\@makeschapterhead#1{%
-  \vspace*{10\p@}%
+  \vspace*{6\p@}%
   {\parindent \z@ \raggedright \normalfont
     \interlinepenalty\@M
-    {\Huge \bfseries \color{NavyBlueDark} #1\par\nobreak}
-    \vskip 6\p@
-    {\color{AccentTeal}\rule{\linewidth}{1.6pt}\par\nobreak}
-    \vskip 18\p@
+    {\Huge \bfseries \color{DarkPurple} #1\par\nobreak}
+    \vskip 8\p@
+    {\color{LavenderBorder}\rule{\linewidth}{1.2pt}\par\nobreak}
+    \vskip 16\p@
   }}
 
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-3.2ex \@plus -1ex \@minus -.2ex}%
-                                   {1.8ex \@plus.2ex}%
-                                   {\normalfont\Large\bfseries\color{NavyBlueDark}}}
+                                   {-3.0ex \@plus -1ex \@minus -.2ex}%
+                                   {1.5ex \@plus.2ex}%
+                                   {\normalfont\Large\bfseries\color{DarkPurple}}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-2.8ex\@plus -1ex \@minus -.2ex}%
-                                     {1.2ex \@plus .2ex}%
-                                     {\normalfont\large\bfseries\color{AccentTeal}}}
-\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
                                      {-2.5ex\@plus -1ex \@minus -.2ex}%
                                      {1.0ex \@plus .2ex}%
-                                     {\normalfont\normalsize\bfseries\color{SlateGray}}}
+                                     {\normalfont\large\bfseries\color{RoyalPurple}}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-2.2ex\@plus -1ex \@minus -.2ex}%
+                                     {0.8ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries\color{SlateMuted}}}
 \makeatother
 
-% Clean, Robust Callout Boxes (XeLaTeX RTL / bidi Compatible)
+% Clean, Robust Lavender Callout Boxes (XeLaTeX RTL / bidi Compatible)
+\NewEnviron{objectivebox}[1][מטרות הפרויקט]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{LavenderBorder}{LavenderLight}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
+}
+
+\NewEnviron{insightbox}[1][תובנה מטא-קוגניטיבית מרכזית]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{RoyalPurple}{LavenderLight}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
+}
+
+\NewEnviron{summarybox}[1][סיכום הפרק]{%
+    \par\vspace{0.35cm}\noindent
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{LavenderBorder}{LavenderLight}{%
+        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
+            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            \BODY
+        \end{minipage}%
+    }%
+    \endgroup\par\vspace{0.35cm}%
+}
+
 \NewEnviron{agentbox}[1]{%
     \par\vspace{0.35cm}\noindent
     \begingroup
     \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.2pt}%
-    \fcolorbox{NavyBlueDark}{LightBlueBg}{%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{RoyalPurple}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-            {\large\bfseries\color{NavyBlueDark} #1}\par\vspace{0.2cm}%
+            {\large\bfseries\color{DarkPurple} #1}\par\vspace{0.2cm}%
             \BODY
         \end{minipage}%
     }%
@@ -153,24 +215,10 @@
     \par\vspace{0.35cm}\noindent
     \begingroup
     \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.2pt}%
-    \fcolorbox{AccentTeal}{LightBlueBg}{%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{LavenderBorder}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-            {\large\bfseries\color{AccentTeal} #1}\par\vspace{0.2cm}%
-            \BODY
-        \end{minipage}%
-    }%
-    \endgroup\par\vspace{0.35cm}%
-}
-
-\NewEnviron{insightbox}[1]{%
-    \par\vspace{0.35cm}\noindent
-    \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.2pt}%
-    \fcolorbox{NavyBlueDark}{LightBoxBg}{%
-        \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-            {\large\bfseries\color{NavyBlueDark} #1}\par\vspace{0.2cm}%
+            {\large\bfseries\color{DarkPurple} #1}\par\vspace{0.2cm}%
             \BODY
         \end{minipage}%
     }%
@@ -181,10 +229,10 @@
     \par\vspace{0.35cm}\noindent
     \begingroup
     \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.2pt}%
-    \fcolorbox{BrickRed}{LightBoxBg}{%
+    \setlength{\fboxrule}{1.1pt}%
+    \fcolorbox{AlertRose}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
-            {\large\bfseries\color{BrickRed} #1}\par\vspace{0.2cm}%
+            {\large\bfseries\color{AlertRose} #1}\par\vspace{0.2cm}%
             \BODY
         \end{minipage}%
     }%

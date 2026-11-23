@@ -7,84 +7,86 @@
 \begin{document}
 
 % ==============================================================================
-% עמוד שער אקדמי מעוצב ויוקרתי (Premium Academic Cover Page)
+% עמוד שער אקדמי מעוצב ויוקרתי (Dark Black & Royal Purple Academic Cover)
 % ==============================================================================
 \begin{titlepage}
+    \pagecolor{CoverBlack}
     \hypersetup{pageanchor=false}
     \centering
-    \vspace*{-0.6cm}
+    \vspace*{-0.5cm}
     
     % 1. שם האוניברסיטה
-    {\scshape\Large\bfseries\color{NavyBlueDark} אוניברסיטת חיפה \par}
+    {\scshape\Large\bfseries\color{white} אוניברסיטת חיפה \par}
     
-    \vspace{0.45cm}
+    \vspace{0.4cm}
     
-    % 2. שם הפרויקט
-    {\fontsize{32pt}{38pt}\selectfont\bfseries\color{NavyBlueDark} \textenglish{SocialMirror-AI} \par}
+    % 2. שם הפרויקט עם הדגשת Mirror-AI בסגול בוהק
+    {\fontsize{34pt}{40pt}\selectfont\bfseries\textenglish{\textcolor{white}{Social}\textcolor{PurpleAccent}{Mirror-AI}} \par}
     
     \vspace{0.25cm}
     
     % 3. כותרת משנה
-    {\Large\bfseries\color{AccentTeal} מראה חברתית בעידן הבינה המלאכותית \par}
+    {\Large\bfseries\color{LavenderLight} מראה חברתית בעידן הבינה המלאכותית \par}
     
-    \vspace{0.35cm}
+    \vspace{0.3cm}
     
     % עיטור גרפי עדין ומודרני (Subtle accent divider)
     \begin{center}
     \begin{tikzpicture}
-        \draw[line width=1.0pt, color=SilverAccent] (-4.5, 0) -- (4.5, 0);
-        \draw[line width=2.0pt, color=AccentCyan] (-1.4, 0) -- (1.4, 0);
-        \fill[color=NavyBlueDark] (0, 0) circle (2.2pt);
+        \draw[line width=1.0pt, color=LavenderBorder!50] (-4.5, 0) -- (4.5, 0);
+        \draw[line width=2.2pt, color=PurpleAccent] (-1.5, 0) -- (1.5, 0);
+        \fill[color=PurpleGlow] (0, 0) circle (2.5pt);
     \end{tikzpicture}
     \end{center}
     
-    \vspace{0.25cm}
+    \vspace{0.2cm}
     
     % 4. פירוט המטלה
-    {\large\bfseries\color{NavyBlueDark} מטלה 2 – דוח מכין לפרויקט עתידי \par}
+    {\large\bfseries\color{white} מטלה 2 – דוח מכין לפרויקט עתידי \par}
     
     \vspace{0.15cm}
     
     % 5. שם הקורס
-    {\normalsize\bfseries\color{SlateGray} קורס: סוכני \textenglish{AI} ו־\textenglish{Vibe Coding} \par}
+    {\normalsize\bfseries\color{LavenderLight!85} קורס: סוכני \textenglish{AI} ו־\textenglish{Vibe Coding} \par}
     
-    \vspace{0.55cm}
+    \vspace{0.45cm}
     
     % 6. מגישות
-    {\large\bfseries\color{NavyBlueDark} מגישות: \par}
+    {\large\bfseries\color{PurpleAccent} מגישות: \par}
     
-    \vspace{0.25cm}
+    \vspace{0.2cm}
     
     % 7 + 8. שמות המגישות ותחומי הלימוד (Two balanced columns in RTL)
     \begin{center}
     \begin{minipage}[t]{0.45\textwidth}
         \centering
-        {\large\bfseries\color{NavyBlueDark} שמס סבאג \par}
+        {\large\bfseries\color{white} שמס סבאג \par}
         \vspace{0.1cm}
-        {\small\color{SlateGray} סטודנטית לפסיכולוגיה \par}
+        {\small\color{LavenderLight!75} סטודנטית לפסיכולוגיה \par}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.45\textwidth}
         \centering
-        {\large\bfseries\color{NavyBlueDark} מלאק פרוג׳ה \par}
+        {\large\bfseries\color{white} מלאק פרוג׳ה \par}
         \vspace{0.1cm}
-        {\small\color{SlateGray} סטודנטית לתקשורת ושיווק \par}
+        {\small\color{LavenderLight!75} סטודנטית לתקשורת ושיווק \par}
     \end{minipage}
     \end{center}
     
-    \vspace{0.55cm}
+    \vspace{0.45cm}
     
-    % תמונת השער הרשמית (Official Cover Image - centered, large, framed)
+    % תמונת השער הרשמית (Official Cover Image - centered, framed with glowing purple border)
     \begin{center}
         \setlength{\fboxsep}{3pt}%
-        \setlength{\fboxrule}{1.2pt}%
-        \fcolorbox{BorderGray}{white}{%
-            \includegraphics[width=0.92\linewidth, keepaspectratio]{assets/socialmirror-cover.png}%
+        \setlength{\fboxrule}{1.4pt}%
+        \fcolorbox{PurpleAccent}{CoverBlack}{%
+            \includegraphics[width=0.88\linewidth, keepaspectratio]{assets/socialmirror-cover.png}%
         }%
     \end{center}
     
     \vfill
 \end{titlepage}
+\pagecolor{white}
 \hypersetup{pageanchor=true}
 
 % ==============================================================================

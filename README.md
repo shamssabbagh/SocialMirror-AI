@@ -1,136 +1,173 @@
 # SocialMirror-AI
 
-**AI-Powered Social Media and Psychological Well-Being – Preparatory Academic Report**  
-*Course: "AI Agents & Vibe Coding" (Assignment 2) · University of Haifa*  
-*Authors: Shams Sabbagh (Psychology) & Malak Farouja (Communication & Marketing)*  
-*Equal Co-Authorship & Collaborative Academic Development*
+[📄 לפתיחת דוח מטלה 2 (PDF)](report/main.pdf) &nbsp;|&nbsp; [🌐 צפייה ישירה בקובץ ה-PDF ב-GitHub](https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf)
 
 ---
 
-## 1. Project Overview
-
-**SocialMirror-AI** is a proposed AI-powered multi-agent research platform designed to investigate, model, and mitigate the adverse psychological impacts of algorithmic social media feeds on young adults (ages 15–26). 
-
-The platform specifically addresses:
-- **Algorithmic feed curation** and the systematic distortion toward idealized upward social comparison.
-- **Influencer marketing mechanics**, commercial persuasion, and parasocial relationship dynamics.
-- **Social comparison processes** (Festinger's Social Comparison Theory, upward vs. downward comparison, Higgins' Self-Discrepancy Theory).
-- **Psychological well-being indicators** (State Self-Esteem [RSES], positive/negative affect balance [PANAS], digital burnout, and doomscrolling).
-
-Rather than relying on primitive temporal restrictions (e.g., rigid screen-time limits that trigger psychological reactance), **SocialMirror-AI** introduces a collaborative multi-agent society (`ObserverAgent`, `AnalystAgent`, `ReflectorAgent`, and `InterventionAgent`) operating locally at the edge (`Local-First Privacy`) to provide metacognitive transparency and autonomy-supportive reflective scaffolding.
+**מראה חברתית בעידן הבינה המלאכותית: חקר הקשר בין חשיפה להזנות אלגוריתמיות, השוואה חברתית, דימוי עצמי ורווחה נפשית בקרב צעירים**  
+*קורס: "סוכני AI ו־Vibe Coding" (מטלה 2 – דוח מכין לפרויקט עתידי) · אוניברסיטת חיפה*  
+*מגישות: שמס סבאג (פסיכולוגיה) & מלאק פרוג׳ה (תקשורת ושיווק)*  
+*שותפות אקדמית שוויונית מלאה (Equal Co-Authorship & Collaborative Academic Development)*
 
 ---
 
-## 2. Multi-Agent System Architecture (.agents)
+## 📌 קישור ישיר לדוח האקדמי
 
-The academic report and system design were created through the orchestration of four specialized autonomous agents, each guided by dedicated skills and operating guidelines located in `.agents/`:
+הדוח האקדמי המלא הוכן ב-LaTeX באמצעות מנוע **XeLaTeX**, כולל טיפוגרפיה דו-כיוונית מושלמת (עברית ואנגלית), שפת עיצוב יוקרתית (SocialMirror Premium Theme), תרשימים וקטוריים ב-TikZ ומטריצות מחקריות מבוקרות.
 
-### 🤖 1. Academic Coordinator Agent (`academic-coordinator`)
-- **Role**: Lead workflow coordinator and academic supervisor.
-- **Responsibilities**: Orchestrates the multi-agent academic pipeline, enforces strict empirical evidence standards, monitors the page budget, ensures an equal collaborative voice across the entire document (without any internal division of writing), and coordinates handoffs and review loops.
-- **Skill**: `.agents/skills/coordinator-workflow/SKILL.md`
-
-### 🔍 2. Academic Research Agent (`academic-researcher`)
-- **Role**: Evidence discovery, scientific audit, and psychometrics specialist.
-- **Responsibilities**: Curates and audits peer-reviewed academic literature across social psychology, computational social science, and multi-agent AI. Formulates empirical dossiers, verifies 29 BibTeX citations with complete DOIs, and strictly differentiates correlation from causation (addressing the Twenge vs. Orben/Przybylski debate).
-- **Skill**: `.agents/skills/academic-research/SKILL.md`
-
-### ✍️ 3. Academic Writing Agent (`academic-writer`)
-- **Role**: Scholarly multilingual author and mathematical modeling specialist.
-- **Responsibilities**: Drafts rigorous academic text in formal scientific Hebrew with accurate English academic terminology. Enforces conceptual demarcation between established literature and our proposed architecture, and formalizes mathematical state vector dynamics ($\mathbf{w}(t) = \langle S(t), \mathbf{A}(t), D(t) \rangle$).
-- **Skill**: `.agents/skills/academic-writing/SKILL.md`
-
-### 🎨 4. Design & Typesetting Agent (`design-agent`)
-- **Role**: Visual design system and LaTeX typesetter.
-- **Responsibilities**: Implements the **SocialMirror Premium Theme** across all 53 pages. Designs publication-grade TikZ vector diagrams (Figures 1.1, 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2, 4.1, 4.2, 5.1, 6.1), booktabs comparative matrices (Tables 2.1, 2.2, 3.1, 5.1, 6.1), and ensures bidirectional typography harmony (Hebrew RTL with English LTR).
-- **Skill**: `.agents/skills/socialmirror-premium-theme/SKILL.md`
+* **נתיב הקובץ במאגר**: [`report/main.pdf`](report/main.pdf)
+* **היקף הדוח**: **54 עמודים** מלאים ומעוצבים.
+* **קישור ישיר לצפייה ב-GitHub (לאחר ביצוע Push)**:  
+  👉 **[https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf](https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf)**
 
 ---
 
-## 3. Academic Report Structure (53 Pages)
+## 1. סקירת הפרויקט (Project Overview)
 
-The compiled preparatory academic report (`report/main.pdf`) spans **53 pages** and contains:
+**SocialMirror-AI** הינו פרויקט אקדמי מכין המציע פלטפורמת מחקר והתערבות מבוססת חברת סוכני בינה מלאכותית (Multi-Agent System). הפלטפורמה מתוכננת לחקור, למדל ולמתן את ההשפעות השליליות של פידים אלגוריתמיים ברשתות חברתיות (כגון Instagram ו-TikTok) על רווחתם הנפשית של צעירים בגילאי 15–26.
 
-| Section / Chapter | Title | Scope & Key Figures / Tables |
+הפרויקט מתמקד במוקדים המחקריים הבאים:
+1. **שיבוש אלגוריתמי והשוואה חברתית כלפי מעלה (Upward Social Comparison)**: ניתוח המנגנון לפיו מנועי המלצה ממקסמי מעורבות (Engagement-Maximizing Algorithms) חושפים משתמשים באופן מוטה לתכנים אידיאליים ומלוטשים, המעוררים פערים בין "העצמי הממשי" ל"העצמי האידיאלי" (Self-Discrepancy Theory).
+2. **שיווק משפיענים וקשרים פארא-סוציאליים**: מידול ההשפעה של חשיפה לפרסום מוסווה ואידיאליזציית סגנון חיים על דימוי גוף וערך עצמי (State Self-Esteem).
+3. **סוכני AI מקומיים מצילי פרטיות (Local-First Edge Architecture)**: מענה לחסרונות של כלי "Digital Wellbeing" קיימים (הנשענים על הגבלות זמן נוקשות המעוררות התנגדות פסיכולוגית - Reactance), באמצעות חברת סוכנים חכמה המספקת שיקוף מטא-קוגניטיבי (Reflective Scaffolding) תומך אוטונומיה (Self-Determination Theory).
+
+---
+
+## 2. הבחנה עקרונית בין סוכני העבודה לסוכני המערכת המוצעת
+
+בפרויקט זה קיימת הפרדה מתודולוגית קפדנית בין שתי ישויות עצמאיות של סוכני בינה מלאכותית:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│              1. סוכני העבודה להכנת הדוח האקדמי (Report Workflow Agents)            │
+│                     הסוכנים שסייעו למחברות בתחקיר, בכתיבה, בעיצוב ובבקרה                  │
+├──────────────────────┬──────────────────────┬───────────────────────────────────┤
+│ Academic Coordinator │ Academic Researcher  │ Academic Writer   │ Design Agent  │
+└──────────────────────┴──────────────────────┴───────────────────┴───────────────┘
+                                       ▼ יצרו ותיעדו
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│             2. סוכני מערכת SocialMirror-AI העתידית (Proposed Platform Architecture) │
+│                       ארכיטקטורת חברת הסוכנים המוצעת לפיתוח עתידי                     │
+├──────────────────────┬──────────────────────┬───────────────────┬───────────────┤
+│    ObserverAgent     │     AnalystAgent     │  ReflectorAgent   │InterventionAg.│
+└──────────────────────┴──────────────────────┴───────────────────┴───────────────┘
+```
+
+### א. סוכני העבודה שסייעו בהכנת הדוח האקדמי (Workflow Agents)
+ארבעה סוכני AI עצמאיים שהוגדרו תחת `.agents/` וסייעו לשמס ומלאק בתהליך המחקר, הכתיבה, הטיפוגרפיה והבדיקה של הדוח האקדמי:
+1. **Academic Coordinator Agent (`academic-coordinator`)**: אמון על ניהול זרימת העבודה האקדמית, סנכרון שיתוף הפעולה ההדדי ללא חלוקת פרקים פנימית, פיקוח על תקציב העמודים (54 עמודים) ואכיפת סטנדרטים מדעיים ומתודולוגיים.
+2. **Academic Researcher Agent (`academic-researcher`)**: אמון על גילוי, אימות ובקרה מדעית של מקורות אמפיריים, ניתוח גודלי אפקט סטטיסטיים ($r, \beta, d$), הפרדה קפדנית בין קורלציה לסיבתיות, ווידוא תקינות של 29 מקורות BibTeX ו-DOIs.
+3. **Academic Writer Agent (`academic-writer`)**: אמון על ניסוח מדעי אקדמי מדויק בעברית רהוטה ומינוח בינלאומי באנגלית, ביסוס מודלים מתמטיים של וקטור המצב הנפשי ($\mathbf{w}(t)$), והקפדה על בידול קטגורי בין ספרות קיימת לבין תכנון עתידי.
+4. **Design & Typesetting Agent (`design-agent`)**: אמון על שפת העיצוב היוקרתית (SocialMirror Premium Theme) – עיצוב שער כהה חד-עמודי, עמודים פנימיים אלגנטיים, תרשימי זרימה וארכיטקטורה ב-TikZ, טבלאות booktabs, ואיזון טיפוגרפי דו-כיווני (RTL/LTR).
+
+### ב. סוכני ארכיטקטורת מערכת SocialMirror-AI המוצעת (Proposed Platform Agents)
+חברת סוכנים מקומית מרובת-סוכנים (Multi-Agent System) הפועלת על מכשיר הקצה (On-Device Local SLM):
+1. **ObserverAgent**: ניטור פסיבי ומקנה פרטיות (Local Edge Logging) של זמני שהייה, מהירות גלילה (Scroll Velocity) וסוגי תכנים הנצרכים ברשתות החברתיות.
+2. **AnalystAgent**: פירוק וסיווג תוכן בזמן אמת, זיהוי אלמנטים של אידיאליזציה ושיווק משפיענים, וכימות מידת הפער העצמי וההשוואה החברתית.
+3. **ReflectorAgent**: יצירת תובנות מטא-קוגניטיביות ושיקוף מותאם אישית בלוח המחוונים (Cognitive Dashboard), ללא הטפה או שיפוטיות.
+4. **InterventionAgent**: הפעלת מיקרו-התערבויות מתוזמנות היטב (Just-In-Time Adaptive Interventions) המעודדות ויסות רגשי ומודעות עצמית.
+
+---
+
+## 3. דוח בדיקות מקיף של ארבעת סוכני העבודה (QA & Audit Matrix)
+
+בהתאם להנחיות העבודה האקדמית, בוצע סבב בדיקות ובקרה רב-ממדי על ידי ארבעת סוכני ההכנה:
+
+| סוכן בודק | תחום הבדיקה | מה נבדק? | ממצאים שעלו בבדיקה | פעולות תיקון שבוצעו | סטטוס |
+| :--- | :--- | :--- | :--- | :--- | :---: |
+| **Academic Researcher** | אימות מקורות ונתונים אמפיריים | תרשים 3.1 וסקירת הספרות (השוואת מחקרי Appel et al. מול Fardouly et al.) | בתרשים הקודם הוצגו מתאמים באופן פשטני כאילו המחקרים מדדו את אותו המשתנה. בפועל, Appel et al. מדדו קנאה ודיכאון בפייסבוק, ואילו Fardouly et al. מדדו השוואת מראה וחוסר שביעות רצון מהגוף באינסטגרם. כמו כן, בביבליוגרפיה הופיע שיוך שגוי למאמר משנת 2020. | עודכנו רשומות BibTeX ב-`references.bib` (נוספו Appel et al. 2015, 2016 ותוקן Fardouly et al. 2018). נבנתה **טבלה 3.1** ייעודית ("מטריצת ראיות אמפיריות") המפרקת את המבנים הפסיכולוגיים לפי מדגם, משתנה מסביר, מוסבר, וגודל אפקט ($r/\beta$). תרשים 3.1 עודכן גרפית ונוספה תיבת תובנה מתודולוגית. | ✅ **עבר בהצלחה** (מאומת) |
+| **Design Agent** | שפת עיצוב חזותית וטיפוגרפיה | התאמת הדוח לשפת העיצוב החדשה (SocialMirror Premium Theme) לפי תמונת הייחוס | השער הקודם היה בהיר וחסר עומק; תיבות ההדגשה היו בתכלת במקום לבנדר עדין; מספרי הפרקים בתוכן העניינים ובכותרות היו ללא תגיות סגולות; תרשימי הארכיטקטורה והגאנט נזקקו למיתוג אחיד. | עוצב שער כהה יוקרתי (`CoverBlack`), הדגשת `Mirror-AI` בסגול זוהר (`#9D4EDD`), מסגרת זוהרת לתמונת המראה, כותרות פרקים ותוכן עניינים עם תגיות מעוגלות סגולות (`#6D28D9`), תיבות לבנדר אלגנטיות (`#F5F3FF` / `#EDE9FE`), ושדרוג כל תרשימי TikZ. | ✅ **עבר בהצלחה** (מאומת) |
+| **Academic Writer** | אחידות קול אקדמי ובידול קטגורי | וידוא היעדר חלוקת עבודה פנימית בין הסטודנטיות, וסימון נאות של המחשות | אותרו אזכורים ישנים של חלוקת פרקים. נדרש לוודא שכל 54 העמודים כתובים בקול שוויוני ומאוחד של שמס ומלאק, ושכל נתוני הסימולציה מסומנים במפורש כהמחשה כדי למנוע הטעיה אמפירית. | הוסרו כל האזכורים הפנימיים של חלוקת משימות; כל התרשימים המדגימים סומנו במפורש בתווית `(המחשת מודל הסימולציה)` או `(Prototype Mockup)`; נוסחו מעברים אקדמיים רהוטים בפרקים 2 ו-3. | ✅ **עבר בהצלחה** (מאומת) |
+| **Academic Coordinator** | קומפילציה, גלישת שוליים ו-Bidi | תקינות קומפילציית XeLaTeX, מניעת גלישת שוליים, ובדיקת היפוך מקפים/נקודתיים | בטבלה 3.1 נוצרה חריגה קלה של שולי הטבלה; בכותרת תיבת תובנה ב-tcolorbox חל היפוך מקפים בשל Polyglossia; בנספח א' מספרי הפרומפטים באנגלית הוצגו מימין לשמאל. | הוגדרו רוחבי עמודות מדויקים בטבלה 3.1; הוחלפו נקודתיים במקפים מפרידים בתיבות; בלוקי הפרומפטים באנגלית נעטפו בסביבת `\begin{english}`; הורצו 4 סבבי קומפילציה מלאים שהניבו 54 עמודים מושלמים ללא שגיאות. | ✅ **עבר בהצלחה** (מאומת) |
+
+---
+
+## 4. מבנה הדוח האקדמי המלא (54 עמודים)
+
+| פרק / חלק בדוח | כותרת ותיאור | תרשימים וטבלאות מרכזיים |
 | :--- | :--- | :--- |
-| **Title Page** | Single-Page Academic Cover | Verified University of Haifa header, co-authors, and framed artwork |
-| **Front Matter** | Executive Summary & Acronyms | Executive summary, terminology dictionary, TOC, LOF (12 figures), LOT (5 tables) |
-| **Chapter 1** | מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי | Socio-technological context, stakeholders ecosystem (**Fig. 1.1**), mediating pathway (**Fig. 1.2**), research questions & agent mapping (**Fig. 1.3**) |
-| **Chapter 2** | סקירת ספרות ומסגרת תיאורטית | Festinger's SCT (**Fig. 2.1**), self-discrepancy, multivariate model (**Fig. 2.2**), psychometric conversion (**Tab. 2.1**), triple feedback loop (**Fig. 2.3**), literature matrix (**Tab. 2.2**) |
-| **Chapter 3** | פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית | Empirical controversy, effect size comparison chart (**Fig. 3.1**), digital wellbeing tool critique (**Tab. 3.1**), MAS paradigm, information-flow architecture (**Fig. 3.2**) |
-| **Chapter 4** | ארכיטקטורה מפורטת ועיצוב סוכני ה־AI | Core principles, 3-layer topology (**Fig. 4.1**), JSON-RPC protocol, agent specifications, mathematical state dynamics, Cognitive Mirror Dashboard wireframe (**Fig. 4.2**) |
-| **Chapter 5** | מתודולוגיית מחקר, מערך סימולציה ומדדי הערכה | Controlled simulation justification, 20 personas matrix (**Tab. 5.1**), 3 feed conditions, simulation pipeline flowchart (**Fig. 5.1**), DMR/reactance metrics, IRB ethics |
-| **Chapter 6** | היתכנות טכנולוגית, מפת דרכים ומטריצת סיכונים | Local SLM stack (Llama-3/Phi-3, LangGraph, ChromaDB), 5-phase Gantt chart (**Fig. 6.1**), engineering risk matrix (**Tab. 6.1**), Haifa computational resources |
-| **Chapter 7** | סיכום, תובנות ומבט לעתיד | Integrative synthesis, computational social science contributions, human agency and algorithmic responsibility |
-| **Appendices** | נספחים מחקריים | App. A: System prompts for all 4 agents; App. B: Validated Hebrew RSES & PANAS scales; App. C: IRB ethics compliance checklist |
-| **Bibliography** | רשימת מקורות אקדמיים | 29 peer-reviewed citations formatted in IEEE style |
+| **שער הדוח** | שער כהה יוקרתי חד-עמודי לפי תמונת הייחוס | מיתוג סגול זוהר, שמות המגישות, פרטי האוניברסיטה ואיור המראה הדיגיטלית |
+| **חלק מקדים** | תקציר מנהלים, מילון מונחים, תוכן עניינים, רשימת איורים וטבלאות | תוכן עניינים מעוצב עם תגיות סגולות עגולות, רשימת 12 איורים ו-6 טבלאות |
+| **פרק 1** | מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי | איור 1.1 (אקו-סיסטם מחזיקי עניין), איור 1.2 (מסלול התיווך הפסיכולוגי), איור 1.3 (שאלות מחקר ומיפוי סוכנים) |
+| **פרק 2** | סקירת ספרות ומסגרת תיאורטית מקיפה | איור 2.1 (מודל ההשוואה החברתית של פסטינגר), איור 2.2 (מודל רב-משתני), טבלה 2.1 (המרה פסיכומטרית), איור 2.3 (מעגל משוב משולש), טבלה 2.2 (מטריצת ספרות) |
+| **פרק 3** | פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית | **טבלה 3.1** (מטריצת ראיות אמפיריות ופערים מתודולוגיים), **איור 3.1** (השוואת גודלי אפקט עם תובנת הפרדת מבנים), טבלה 3.2 (ביקורת כלי רווחה קיימים), איור 3.2 (ארכיטקטורת זרימת מידע MAS) |
+| **פרק 4** | ארכיטקטורה מפורטת ועיצוב סוכני ה־AI | איור 4.1 (ארכיטקטורה שכבתית מפורטת ב-TikZ), מפרטי סוכנים, וקטור מצב מתמטי, איור 4.2 (תרשים wireframe של ה-Cognitive Mirror Dashboard) |
+| **פרק 5** | מתודולוגיית מחקר, מערך סימולציה ומדדי הערכה | טבלה 5.1 (מטריצת 20 פרסונות מדומה), איור 5.1 (תרשים זרימת צינור הסימולציה המבוקר), מדדי DMR ו-Reactance, פרוטוקול אתיקה IRB |
+| **פרק 6** | היתכנות טכנולוגית, מפת דרכים ומטריצת סיכונים | ארכיטקטורת SLM מקומית, איור 6.1 (תרשים גאנט שלבי פיתוח), טבלה 6.1 (מטריצת ניהול סיכונים), משאבי מחשוב אוניברסיטת חיפה |
+| **פרק 7** | סיכום, תובנות ומבט לעתיד | סינתזה אינטגרטיבית, תרומה למדעי החברה החישוביים, אוטונומיה אנושית ואחריות אלגוריתמית |
+| **נספחים** | נספחי מחקר מתודולוגיים | נספח א' (System Prompts באנגלית לסוכני המערכת), נספח ב' (שאלוני RSES ו-PANAS בעברית), נספח ג' (צ'ק-ליסט אתיקה IRB) |
+| **רשימת מקורות** | ביבליוגרפיה אקדמית מבוקרת עמיתים | 29 מקורות אקדמיים מובילים בפורמט IEEE |
 
 ---
 
-## 4. Repository Structure
+## 5. מבנה הקבצים במאגר (Repository Architecture)
 
 ```text
 SocialMirror-AI/
-├── .agents/
+├── .agents/                        # סוכני העבודה וכישוריהם להכנת הדוח
 │   ├── agents/
-│   │   ├── academic-coordinator.md
-│   │   ├── academic-researcher.md
-│   │   ├── academic-writer.md
-│   │   └── design-agent.md
+│   │   ├── academic-coordinator.md # סוכן תיאום זרימת העבודה האקדמית
+│   │   ├── academic-researcher.md  # סוכן תחקיר ואימות מקורות אמפיריים
+│   │   ├── academic-writer.md      # סוכן כתיבה ומידול מדעי
+│   │   └── design-agent.md         # סוכן עיצוב וטיפוגרפיה ב-LaTeX
 │   └── skills/
 │       ├── coordinator-workflow/SKILL.md
-│       ├── academic-research/SKILL.md
-│       ├── academic-writing/SKILL.md
-│       └── socialmirror-premium-theme/SKILL.md
-├── report/
-│   ├── main.tex                    # Master XeLaTeX document
-│   ├── preamble.tex                # Color palette, fonts, polyglossia, TikZ & tcolorbox styling
-│   ├── macros.tex                  # Notation, mathematical operators, agent role macros
-│   ├── references.bib              # 29 peer-reviewed academic citations
-│   ├── compile.ps1                 # Automated 4-pass compilation script (XeLaTeX + BibTeX)
+│       └── socialmirror-premium-theme/SKILL.md # שפת העיצוב המלאה (שחור, סגול, לבנדר)
+├── report/                         # מקורות ה-LaTeX של הדוח האקדמי
+│   ├── main.tex                    # מסמך ה-XeLaTeX הראשי ודף השער
+│   ├── preamble.tex                # חבילות, פלטת צבעים (DarkPurple, RoyalPurple, Lavender), הגדרות Polyglossia
+│   ├── macros.tex                  # פקודות מאקרו מתמטיות ושמות סוכנים
+│   ├── references.bib              # מאגר 29 מקורות אקדמיים מאומתים
+│   ├── main.pdf                    # קובץ ה-PDF המעוצב הסופי (54 עמודים)
+│   ├── compile.ps1                 # סקריפט קומפילציה אוטומטי (4-pass build)
 │   ├── assets/
-│   │   └── socialmirror-cover.png  # Official project cover illustration
-│   └── chapters/
-│       ├── 00_frontmatter.tex      # Abstract, glossary, TOC, LOF, LOT
-│       ├── 01_introduction.tex     # Chapter 1
-│       ├── 02_literature_review.tex# Chapter 2
-│       ├── 03_research_gaps_and_conceptual_system.tex # Chapter 3
-│       ├── 04_system_architecture.tex # Chapter 4
-│       ├── 05_methodology.tex      # Chapter 5
-│       ├── 06_implementation_roadmap.tex # Chapter 6
-│       ├── 07_conclusion.tex       # Chapter 7
-│       └── 08_appendices.tex       # Appendices A, B, C
-├── .gitignore                      # Git ignore rules for LaTeX auxiliary files
-└── README.md                       # Collaborative project documentation
+│   │   └── socialmirror-cover.png  # איור השער הרשמי של הפרויקט
+│   └── chapters/                   # פרקי הדוח ב-LaTeX
+│       ├── 00_frontmatter.tex      # תקציר, מילון מונחים, תוכן עניינים מעוצב
+│       ├── 01_introduction.tex     # פרק 1
+│       ├── 02_literature_review.tex# פרק 2
+│       ├── 03_research_gaps_and_conceptual_system.tex # פרק 3 כולל טבלה 3.1 ותרשים 3.1
+│       ├── 04_system_architecture.tex # פרק 4 כולל תרשים ארכיטקטורה ו-Dashboard
+│       ├── 05_methodology.tex      # פרק 5
+│       ├── 06_implementation_roadmap.tex # פרק 6 כולל גאנט וסיכונים
+│       ├── 07_conclusion.tex       # פרק 7
+│       └── 08_appendices.tex       # נספחים א', ב', ג'
+├── .gitignore                      # החרגת קבצי עזר של LaTeX ושמירת main.pdf
+└── README.md                       # דף הבית של המאגר עם קישור ישיר לדוח
 ```
 
 ---
 
-## 5. How to Compile the LaTeX Report
+## 6. הוראות קומפילציה (Build Instructions)
 
-### Prerequisites
-- **XeLaTeX**: Required for bidirectional Unicode support (Hebrew RTL with English LTR) and native system fonts (Arial, Courier New).
-- **BibTeX**: Required for IEEEtran academic citation processing.
-- Recommended distribution: **MiKTeX** (Windows) or **TeX Live** (Cross-platform).
+הדוח עושה שימוש במנוע **XeLaTeX** עבור תמיכה מלאה בגופני Unicode של מערכת ההפעלה (Arial, Courier New) ובקרת כיווניות (Hebrew RTL עם מקטעי English LTR):
 
-### Compilation Command
-From PowerShell, execute the included compilation helper:
-```powershell
-cd report
-powershell -ExecutionPolicy Bypass -File compile.ps1
-```
+1. יש לוודא התקנת הפצת LaTeX עדכנית הכוללת מנוע XeLaTeX (כדוגמת **MiKTeX** על Windows או **TeX Live**).
+2. פתיחת מסוף PowerShell בתיקיית `report/`:
+   ```powershell
+   cd report
+   powershell -ExecutionPolicy Bypass -File compile.ps1
+   ```
+3. הסקריפט מריץ סדרת בנייה מלאה בת 4 שלבים:
+   - `xelatex main.tex` (קריאה ראשונית ויצירת תוויות עזר)
+   - `bibtex main` (עיבוד 29 המקורות הביבליוגרפיים ב-IEEEtran)
+   - `xelatex main.tex` (פתרון הפניות צולבות, עדכון תוכן עניינים, רשימת איורים וטבלאות)
+   - `xelatex main.tex` (סגירת עימוד, כותרות עליונות ומספור עמודים סופי)
 
-The script runs a robust 4-pass build sequence:
-1. `xelatex main.tex` (initial parse and label extraction)
-2. `bibtex main` (process all 29 citations)
-3. `xelatex main.tex` (resolve cross-references, TOC, LOF, LOT)
-4. `xelatex main.tex` (finalize layout and page numbering)
-
-The compiled PDF is generated at `report/main.pdf` (~625 KB, 53 pages).
+התוצר נוצר בנתיב `report/main.pdf` (כ-634 KB, **54 עמודים**).
 
 ---
 
-## 6. Academic & Version Control Integrity
+## 7. משמעת בקרת גרסאות והנחיות לביצוע Push
 
-- **Strict Git Constraint**: Per project protocol, no commits, branches, or pushes to remote GitHub repositories are made without explicit co-author approval.
-- **Collaborative Voice**: The report reflects the equal, joint intellectual contribution of both students—Shams Sabbagh and Malak Farouja—bridging cognitive psychology, social communication, and artificial intelligence.
+- **מצב הקבצים במאגר**: כל השינויים, קבצי ה-LaTeX המעודכנים, הביבליוגרפיה המתוקנת, דף ה-README.md, וקובץ ה-PDF הסופי (`report/main.pdf`) שמורים כולם ב-Working Tree של המאגר.
+- **הנחיות לביצוע Commit ו-Push**:
+  1. פתחי את תוכנת **GitHub Desktop**.
+  2. ודאי שנבחר המאגר `SocialMirror-AI`.
+  3. ברשימת ה-Changes תוכלי לסקור את כל השינויים בקבצי ה-TeX, הביבליוגרפיה, ה-README וקובץ ה-PDF.
+  4. רשמי הודעת Commit מתאימה, לדוגמה:  
+     `feat: finalize Assignment 2 report (54 pages) with purple/lavender theme, Table 3.1 evidence matrix, and verified PDF`
+  5. לחצי על **Commit to main** ולאחר מכן על **Push origin**.
+  6. **בדיקת הקישור**: לאחר ביצוע ה-Push, פתחי לשונית גלישה בסתר (Incognito) ובדקי את הקישור הישיר:  
+     `https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf`  
+     ודאי שהקובץ נפתח בצורה תקינה בדפדפן ושכל 54 העמודים מוצגים באופן מושלם.

@@ -94,7 +94,7 @@
     \item \textbf{אופטימיזציה אלגוריתמית של עוררות} -- אלגוריתם הפיד אינו ניטרלי; הוא מקדם באופן אגרסיבי תכנים המעוררים תגובות רגשיות עזות. כתוצאה מכך, הפיד של צעירים רווי כמעט אך ורק בגירויים המעודדים השוואה חברתית כלפי מעלה.
 \end{enumerate}
 
-מטא-אנליזה מקיפה של אפל וחוב' (\textenglish{Appel et al.})~\cite{appels2020social}, שסקרה עשרות מחקרי אינטראקציה דיגיטלית, איששה באופן חד-משמעי כי השוואה כלפי מעלה ברשתות חברתיות קשורה באופן עקבי ומתמשך לירידה בערך העצמי, להופעת רגשות נחיתות ולדיכאון קל. הממצאים ממחישים כי במרחב הווירטואלי, אפקט הניגוד גובר בהרבה על אפקט ההטמעה.
+מחקרם ומסגרתם התיאורטית של אפל וחוב' (\textenglish{Appel, Crusius, \& Gerlach})~\cite{appel2015social, appel2016interplay}, אשר בחנו את המנגנון הפסיכולוגי של השוואה חברתית ברשתות, הדגימו כי חשיפה לסטנדרטים גבוהים של השוואה כלפי מעלה מעוררת קנאה (\textenglish{envy}) ותחושות נחיתות המובילות לשחיקה מתמשכת בערך העצמי וברווחה הנפשית. הממצאים ממחישים כי במרחב הווירטואלי, אפקט הניגוד גובר בהרבה על אפקט ההטמעה.
 
 \section{תיאוריית הפער העצמי והשלכותיה על רווחה נפשית}
 \label{sec:lit_self_discrepancy}
@@ -245,7 +245,8 @@
 \small
 \begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.6cm} >{\raggedleft\arraybackslash}p{2.5cm} >{\raggedleft\arraybackslash}p{3.2cm} X}
 \toprule
-\textbf{כלי פסיכומטרי} & \textbf{ממדים נמדדים} & \textbf{משתנה חישובי במערכת} & \textbf{משמעות פונקציונלית בארכיטקטורה} \\
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}כלי פסיכומטרי} & \textbf{\color{DarkPurple}ממדים נמדדים} & \textbf{\color{DarkPurple}משתנה חישובי במערכת} & \textbf{\color{DarkPurple}משמעות פונקציונלית בארכיטקטורה} \\
 \midrule
 \textbf{\textenglish{RSES}} \newline \textenglish{Rosenberg (1965)}~\cite{rosenberg1965society} & 
 הערכה עצמית גלובלית ורגעית (10 פריטים) & 
@@ -289,7 +290,7 @@ $\exposureIndex{} \in [0, 1]$ \newline מדד חשיפה למשפיענים &
 % Main Cycle Nodes
 \node[state] (feed) {\textenglish{\textbf{Feed Curation}}\\\scriptsize High-Arousal Lifestyle \&\\Sponsored Targeting};
 \node[state, right=3.0cm of feed] (comparison) {\textenglish{\textbf{Upward Comparison}}\\\scriptsize Contrast Effect Triggered\\\textenglish{(Festinger 1954; Suls 2002)}};
-\node[state, below=2.4cm of comparison] (discrepancy) {\textenglish{\textbf{Self-Discrepancy}}\\\scriptsize Actual vs. Ideal Gap Expands\\\textenglish{(Higgins 1987; Appel 2020)}};
+\node[state, below=2.4cm of comparison] (discrepancy) {\textenglish{\textbf{Self-Discrepancy}}\\\scriptsize Actual vs. Ideal Gap Expands\\\textenglish{(Higgins 1987; Appel 2015)}};
 \node[state, left=3.0cm of discrepancy] (distress) {\textenglish{\textbf{Affective Depletion}}\\\scriptsize \textenglish{$\downarrow$ State Self-Esteem ($S_t$)}\\\scriptsize \textenglish{$\uparrow$ Negative Affect ($\mathbf{A}_t$)}};
 
 % Primary Cycle Transitions
@@ -329,7 +330,8 @@ $\exposureIndex{} \in [0, 1]$ \newline מדד חשיפה למשפיענים &
 \scriptsize
 \begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.3cm} >{\raggedleft\arraybackslash}p{2.1cm} X >{\raggedleft\arraybackslash}p{2.8cm}}
 \toprule
-\textbf{מחקר ומקור} & \textbf{מתודולוגיה ומדגם} & \textbf{ממצאים אמפיריים מרכזיים} & \textbf{השלכה הנדסית ל-\projectname{}} \\
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}מחקר ומקור} & \textbf{\color{DarkPurple}מתודולוגיה ומדגם} & \textbf{\color{DarkPurple}ממצאים אמפיריים מרכזיים} & \textbf{\color{DarkPurple}השלכה הנדסית ל-\projectname{}} \\
 \midrule
 \textbf{\textenglish{Festinger (1954)}}~\cite{festinger1954theory} \newline {\tiny \textenglish{\textit{Hum. Relat.}}} &
 מודל תיאורטי קלאסי &
@@ -361,9 +363,9 @@ $\exposureIndex{} \in [0, 1]$ \newline מדד חשיפה למשפיענים &
 תמונות משפיענים מעוררות החפצה עצמית וחוסר שביעות רצון מדימוי הגוף. &
 שילוב סיווג תכני גוף ולייפסטייל במדד החשיפה $\exposureIndex{}$. \\
 \midrule
-\textbf{\textenglish{Appel et al. (2020)}}~\cite{appels2020social} \newline {\tiny \textenglish{\textit{Pers. Soc. Psychol. Rev.}}} &
-מטא-אנליזה מקיפה של עשרות מחקרים &
-אישוש יציב של אפקט הניגוד: השוואה כלפי מעלה מנבאת פגיעה מובהקת בערך העצמי. &
+\textbf{\textenglish{Appel et al. (2015, 2016)}}~\cite{appel2015social, appel2016interplay} \newline {\tiny \textenglish{\textit{J. Soc. Clin. Psychol. / Curr. Opin. Psychol.}}} &
+מחקרי שדה וניסויי מעבדה מבוקרים &
+אישוש יציב של אפקט הניגוד: חשיפה לסטנדרטים אידיאליים מנבאת קנאה ושחיקת ערך עצמי. &
 כיול קצב השחיקה האקספוננציאלי של מדד הערך העצמי הרגעי. \\
 \midrule
 \textbf{\textenglish{Lou \& Yuan (2019)}}~\cite{lou2019influencer} \newline {\tiny \textenglish{\textit{J. Interact. Adv.}}} &

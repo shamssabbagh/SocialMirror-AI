@@ -32,37 +32,37 @@
 \begin{LTR}
 \begin{tikzpicture}[
     scale=0.82, every node/.style={transform shape},
-    layerbox/.style={rectangle, draw=SilverAccent, fill=white, rounded corners=3mm, line width=1.1pt, inner sep=10pt},
-    agentnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=6pt, text width=2.8cm, font=\small\sffamily},
-    busnode/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, text=white, rounded corners=2mm, line width=1.2pt, align=center, inner sep=5pt, text width=13.5cm, font=\bfseries\sffamily\footnotesize},
-    arrow/.style={-{Latex[length=2.5mm]}, line width=1.1pt, draw=NavyBlueDark},
-    busarrow/.style={{Latex[length=2.2mm]}-{Latex[length=2.2mm]}, line width=1.1pt, draw=AccentCyan}
+    layerbox/.style={rectangle, draw=LavenderBorder, fill=white, rounded corners=3.5mm, line width=1.1pt, inner sep=10pt},
+    agentnode/.style={rectangle, draw=RoyalPurple, fill=LavenderCard, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=6pt, text width=2.8cm, font=\small\sffamily},
+    busnode/.style={rectangle, draw=PurpleAccent, fill=DarkPurple, text=white, rounded corners=2mm, line width=1.2pt, align=center, inner sep=5pt, text width=13.5cm, font=\bfseries\sffamily\footnotesize},
+    arrow/.style={-{Latex[length=2.5mm]}, line width=1.1pt, draw=RoyalPurple},
+    busarrow/.style={{Latex[length=2.2mm]}-{Latex[length=2.2mm]}, line width=1.1pt, draw=PurpleAccent}
 ]
 
 % Top Layer: Presentation
 \node[layerbox, text width=14.0cm, minimum height=2.6cm] (l_pres) {};
-\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=AccentTeal] at (l_pres.north west) {\textenglish{Layer 3: Metacognitive Reflection \& HCI Presentation Layer (Local Web Dashboard)}};
-\node[agentnode, right=1.2cm of l_pres.west, yshift=-0.35cm] (ui1) {\textbf{Cognitive Mirror}\\\scriptsize Exposure Radar};
-\node[agentnode, right=1.2cm of ui1] (ui2) {\textbf{Reflective Dialog}\\\scriptsize Socratic Scaffolding};
-\node[agentnode, right=1.2cm of ui2] (ui3) {\textbf{State Trajectory}\\\scriptsize RSES \& PANAS Views};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=RoyalPurple] at (l_pres.north west) {\textenglish{Layer 3: Metacognitive Reflection \& HCI Presentation Layer (Local Web Dashboard)}};
+\node[agentnode, right=1.2cm of l_pres.west, yshift=-0.35cm] (ui1) {\textbf{\color{DarkPurple}Cognitive Mirror}\\\scriptsize Exposure Radar};
+\node[agentnode, right=1.2cm of ui1] (ui2) {\textbf{\color{DarkPurple}Reflective Dialog}\\\scriptsize Socratic Scaffolding};
+\node[agentnode, right=1.2cm of ui2] (ui3) {\textbf{\color{DarkPurple}State Trajectory}\\\scriptsize RSES \& PANAS Views};
 
 % Middle Event Bus
 \node[busnode, below=0.6cm of l_pres] (ebus) {\textenglish{Local Asynchronous Event Bus (JSON-RPC 2.0 In-Process Broker)}};
 
 % Middle Layer: Cognitive Agents
 \node[layerbox, text width=14.0cm, minimum height=3.2cm, below=0.6cm of ebus] (l_agents) {};
-\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=NavyBlueDark] at (l_agents.north west) {\textenglish{Layer 2: Autonomous Multi-Agent Society (Edge LLM Instances)}};
-\node[agentnode, right=0.6cm of l_agents.west, yshift=-0.45cm] (ag_obs) {\textbf{\agentObserver{}}\\\scriptsize Ingestion \& Local\\\scriptsize Anonymization};
-\node[agentnode, right=0.6cm of ag_obs] (ag_ana) {\textbf{\agentAnalyst{}}\\\scriptsize Semantic Salience\\\scriptsize $\comparisonScore$ \& Exposure $\exposureIndex$};
-\node[agentnode, right=0.6cm of ag_ana] (ag_ref) {\textbf{\agentReflector{}}\\\scriptsize State Vector $\wellbeingVector$\\\scriptsize Memory Synthesis};
-\node[agentnode, right=0.6cm of ag_ref] (ag_int) {\textbf{\agentInterventionist{}}\\\scriptsize Nudge Scheduling\\\scriptsize Reactance Minimizer};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=DarkPurple] at (l_agents.north west) {\textenglish{Layer 2: Autonomous Multi-Agent Society (Edge LLM Instances)}};
+\node[agentnode, right=0.6cm of l_agents.west, yshift=-0.45cm] (ag_obs) {\textbf{\color{DarkPurple}\agentObserver{}}\\\scriptsize Ingestion \& Local\\\scriptsize Anonymization};
+\node[agentnode, right=0.6cm of ag_obs] (ag_ana) {\textbf{\color{DarkPurple}\agentAnalyst{}}\\\scriptsize Semantic Salience\\\scriptsize $\comparisonScore$ \& Exposure $\exposureIndex$};
+\node[agentnode, right=0.6cm of ag_ana] (ag_ref) {\textbf{\color{DarkPurple}\agentReflector{}}\\\scriptsize State Vector $\wellbeingVector$\\\scriptsize Memory Synthesis};
+\node[agentnode, right=0.6cm of ag_ref] (ag_int) {\textbf{\color{DarkPurple}\agentInterventionist{}}\\\scriptsize Nudge Scheduling\\\scriptsize Reactance Minimizer};
 
 % Bottom Layer: Ingestion & Device
 \node[layerbox, text width=14.0cm, minimum height=2.6cm, below=0.7cm of l_agents] (l_ingest) {};
-\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=SlateGray] at (l_ingest.north west) {\textenglish{Layer 1: Device Edge Ingestion \& Privacy Boundary}};
-\node[agentnode, right=1.2cm of l_ingest.west, yshift=-0.35cm] (dev1) {\textbf{Browser DOM}\\\scriptsize Stream Inspector};
-\node[agentnode, right=1.2cm of dev1] (dev2) {\textbf{Dwell-Time Logger}\\\scriptsize Millisecond Chronometry};
-\node[agentnode, right=1.2cm of dev2] (dev3) {\textbf{Privacy Scrub}\\\scriptsize Zero-Cloud Redaction};
+\node[anchor=north west, xshift=0.35cm, yshift=-0.15cm, font=\bfseries\sffamily\footnotesize, color=SlateMuted] at (l_ingest.north west) {\textenglish{Layer 1: Device Edge Ingestion \& Privacy Boundary}};
+\node[agentnode, right=1.2cm of l_ingest.west, yshift=-0.35cm] (dev1) {\textbf{\color{DarkPurple}Browser DOM}\\\scriptsize Stream Inspector};
+\node[agentnode, right=1.2cm of dev1] (dev2) {\textbf{\color{DarkPurple}Dwell-Time Logger}\\\scriptsize Millisecond Chronometry};
+\node[agentnode, right=1.2cm of dev2] (dev3) {\textbf{\color{DarkPurple}Privacy Scrub}\\\scriptsize Zero-Cloud Redaction};
 
 % Connections
 \draw[busarrow] (ui1.south) -- (ui1.south |- ebus.north);
@@ -231,28 +231,28 @@
 \begin{LTR}
 \begin{tikzpicture}[
     scale=0.84, every node/.style={transform shape},
-    wireframe/.style={rectangle, draw=NavyBlueDark, fill=white, rounded corners=4mm, line width=1.4pt, inner sep=12pt},
-    card/.style={rectangle, draw=SilverAccent, fill=LightBoxBg, rounded corners=2.5mm, line width=1.0pt, inner sep=8pt},
-    accentcard/.style={rectangle, draw=AccentTeal, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, inner sep=8pt},
-    headerbar/.style={rectangle, draw=NavyBlueDark, fill=NavyBlueDark, text=white, rounded corners=2mm, line width=1.0pt, inner sep=6pt, font=\bfseries\sffamily\small}
+    wireframe/.style={rectangle, draw=DarkPurple, fill=white, rounded corners=5mm, line width=1.5pt, inner sep=12pt},
+    card/.style={rectangle, draw=LavenderBorder, fill=LavenderLight, rounded corners=2.5mm, line width=1.0pt, inner sep=8pt},
+    accentcard/.style={rectangle, draw=RoyalPurple, fill=LavenderCard, rounded corners=2.5mm, line width=1.1pt, inner sep=8pt},
+    headerbar/.style={rectangle, draw=DarkPurple, fill=DarkPurple, text=white, rounded corners=2mm, line width=1.0pt, inner sep=6pt, font=\bfseries\sffamily\small}
 ]
 
 % Main Outer Phone/Dashboard Frame
 \node[wireframe, text width=13.0cm, minimum height=9.6cm] (frame) {};
 
 % Top Header
-\node[headerbar, anchor=north, text width=12.4cm, align=center] at (frame.north) {\textenglish{SocialMirror-AI — Personal Cognitive Mirror Dashboard}};
+\node[headerbar, anchor=north, text width=12.4cm, align=center] at (frame.north) {\textenglish{SocialMirror-AI — Personal Cognitive Mirror Dashboard (Prototype Mockup)}};
 
 % Left Column: Real-Time Feed Radar
 \node[card, below=0.7cm of frame.north west, anchor=north west, xshift=0.5cm, text width=5.6cm, minimum height=3.6cm] (c_radar) {
     \textenglish{%
-    \textbf{\color{NavyBlueDark}Session Feed Diagnostics}\\[4pt]
+    \textbf{\color{DarkPurple}Session Feed Diagnostics}\\[4pt]
     \scriptsize \textbf{Current Dwell Time:} 24.5 min\\[2pt]
-    \scriptsize \textbf{Upward Salience ($\comparisonScore$):} \textcolor{BrickRed}{\textbf{High (0.82)}}\\[2pt]
+    \scriptsize \textbf{Upward Salience ($\comparisonScore$):} \textcolor{AlertRose}{\textbf{High (0.82)}}\\[2pt]
     \scriptsize \textbf{Influencer Saturation ($\exposureIndex$):} 74\% Sponsored\\[6pt]
     \begin{tikzpicture}
-        \draw[SilverAccent, fill=LightBlueBg] (0,0) rectangle (4.6, 0.4);
-        \draw[fill=BrickRed] (0,0) rectangle (3.77, 0.4);
+        \draw[LavenderBorder, fill=LavenderLight] (0,0) rectangle (4.6, 0.4);
+        \draw[fill=AlertRose] (0,0) rectangle (3.77, 0.4);
         \node[font=\tiny\bfseries\color{white}] at (1.8, 0.2) {82\% Comparison Load};
     \end{tikzpicture}%
     }
@@ -261,14 +261,14 @@
 % Right Column: State Vector Trajectory
 \node[card, below=0.7cm of frame.north east, anchor=north east, xshift=-0.5cm, text width=5.6cm, minimum height=3.6cm] (c_state) {
     \textenglish{%
-    \textbf{\color{NavyBlueDark}State Vector Dynamics $\wellbeingVector(t)$}\\[4pt]
-    \scriptsize \textbf{State Self-Esteem ($S_t$):} 0.61 \textcolor{BrickRed}{($\downarrow 14\%$)}\\[2pt]
+    \textbf{\color{DarkPurple}State Vector Dynamics $\wellbeingVector(t)$}\\[4pt]
+    \scriptsize \textbf{State Self-Esteem ($S_t$):} 0.61 \textcolor{AlertRose}{($\downarrow 14\%$)}\\[2pt]
     \scriptsize \textbf{Positive Affect (PA):} 0.42 | \textbf{Negative Affect (NA):} 0.68\\[4pt]
     \begin{tikzpicture}[scale=0.9]
-        \draw[->, color=SlateGray, line width=0.7pt] (0,0) -- (4.4,0) node[right, font=\tiny] {$t$};
-        \draw[->, color=SlateGray, line width=0.7pt] (0,0) -- (0,1.2) node[above, font=\tiny] {$S$};
-        \draw[line width=1.2pt, color=AccentCyan] (0,1.0) .. controls (1.5,0.9) and (2.5,0.4) .. (4.0,0.3);
-        \draw[dashed, color=BrickRed] (2.2,0) -- (2.2,0.65) node[above, font=\tiny] {Doomscroll onset};
+        \draw[->, color=SlateMuted, line width=0.7pt] (0,0) -- (4.4,0) node[right, font=\tiny] {$t$};
+        \draw[->, color=SlateMuted, line width=0.7pt] (0,0) -- (0,1.2) node[above, font=\tiny] {$S$};
+        \draw[line width=1.3pt, color=PurpleAccent] (0,1.0) .. controls (1.5,0.9) and (2.5,0.4) .. (4.0,0.3);
+        \draw[dashed, color=AlertRose] (2.2,0) -- (2.2,0.65) node[above, font=\tiny, color=AlertRose] {Doomscroll onset};
     \end{tikzpicture}%
     }
 };
@@ -276,19 +276,19 @@
 % Bottom Full-Width Card: Reflective Insight & Socratic Dialogue
 \node[accentcard, below=0.5cm of c_radar.south west, anchor=north west, text width=12.0cm, minimum height=2.8cm] (c_insight) {
     \textenglish{%
-    \textbf{\color{AccentTeal}Metacognitive Reflection Scaffold (from \agentInterventionist{})}\\[4pt]
+    \textbf{\color{DarkPurple}Metacognitive Reflection Scaffold (from \agentInterventionist{})}\\[4pt]
     \small \textit{"Notice how the last 6 reels focused heavily on luxury travel and fitness milestones. We've detected a subtle dip in your momentary confidence since opening this tag."}\\[6pt]
     \begin{tikzpicture}
-        \node[rectangle, draw=AccentTeal, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\bfseries\color{NavyBlueDark}] (b1) {Take a 2-min Breath Pause};
-        \node[rectangle, draw=SlateGray, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateGray}, right=0.5cm of b1] (b2) {Mute Luxury Hashtags};
-        \node[rectangle, draw=SilverAccent, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateGray}, right=0.5cm of b2] (b3) {Switch to Grayscale Mode};
+        \node[rectangle, draw=RoyalPurple, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\bfseries\color{DarkPurple}] (b1) {Take a 2-min Breath Pause};
+        \node[rectangle, draw=SlateMuted, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateMuted}, right=0.5cm of b1] (b2) {Mute Luxury Hashtags};
+        \node[rectangle, draw=LavenderBorder, fill=white, rounded corners=1.5mm, inner sep=4pt, font=\scriptsize\color{SlateMuted}, right=0.5cm of b2] (b3) {Switch to Grayscale Mode};
     \end{tikzpicture}%
     }
 };
 
 \end{tikzpicture}
 \end{LTR}
-\caption{שרטוט ממשק "המראה הקוגניטיבית" (\textenglish{Cognitive Dashboard Wireframe}) והתובנה הרפלקטיבית}
+\caption{שרטוט ממשק "המראה הקוגניטיבית" (\textenglish{Cognitive Dashboard Wireframe}) והתובנה הרפלקטיבית (המחשת ממשק / Prototype Mockup)}
 \label{fig:cognitive_dashboard_wireframe}
 \end{figure}
 
