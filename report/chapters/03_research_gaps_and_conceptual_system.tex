@@ -42,37 +42,37 @@
 \small
 \caption{מטריצת ראיות אמפיריות: השוואת מבנים נמדדים, מתודולוגיות וגודלי אפקט בספרות}
 \label{tab:empirical_evidence_matrix}
-\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}\raggedleft\arraybackslash}p{2.2cm} >{\raggedleft\arraybackslash}p{1.9cm} >{\raggedleft\arraybackslash}p{2.1cm} >{\raggedleft\arraybackslash}p{2.1cm} >{\centering\arraybackslash}p{1.6cm} X}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}\raggedleft\arraybackslash}p{2.3cm} >{\raggedleft\arraybackslash}p{2.0cm} >{\raggedleft\arraybackslash}p{2.0cm} >{\raggedleft\arraybackslash}p{2.0cm} >{\centering\arraybackslash}p{2.0cm} X}
 \toprule
 \rowcolor{LavenderCard}
-\textbf{\color{DarkPurple}מחקר ומקור} & \textbf{\color{DarkPurple}מדגם ושיטה} & \textbf{\color{DarkPurple}משתנה בלתי-תלוי} & \textbf{\color{DarkPurple}מבנה תלוי נמדד} & \textbf{\color{DarkPurple}גודל אפקט} & \textbf{\color{DarkPurple}משמעות ל־\projectname{}} \\
+\textbf{\color{DarkPurple}מחקר ומקור} & \textbf{\color{DarkPurple}מדגם ושיטה} & \textbf{\color{DarkPurple}משתנה בלתי-תלוי} & \textbf{\color{DarkPurple}מבנה תלוי נמדד} & \textbf{\color{DarkPurple}סוג אומדן וגודל אפקט} & \textbf{\color{DarkPurple}משמעות ל־\projectname{}} \\
 \midrule
 \textbf{\textenglish{Orben \& Przybylski (2019)}}~\cite{orben2019association} &
 $N > 350{,}000$ \newline סקרי אוכלוסייה (SCA) &
 זמן מסך כולל מדווח (שעות/יום) &
 מדד רווחה נפשית כללי משוקלל &
-$\beta \approx -0.04$ \newline ($<0.4\%$ שונות) &
-זמן מסך גולמי אינו מנבא מצוקה רגשית; מדד עיוור שאינו מבחין באופי התוכן. \\
+מקדם רגרסיה חלקית מתוקנן: \newline $\beta \approx -0.04$ ($<0.4\%$ שונות) &
+זמן מסך גולמי אינו מנבא מצוקה רגשית; מדד עיוור המערבב פעילויות שונות. \\
 \midrule
 \textbf{\textenglish{Kross et al. (2013)}}~\cite{kross2013facebook} &
 $N = 82$ \newline דגימת ESM רגעית (14 יום) &
 גלילה פסיבית ברשת בין דגימות &
 מאזן רגשי רגעי ומצב רוח &
-$B = -0.21$ \newline ($p < .01$) &
+שיפוע רגרסיה רב-רמתי: \newline $B = -0.21$ ($\beta \approx -0.08, p < .01$) &
 גלילה פסיבית מנבאת ירידה תוך-אישית מיידית ברווחה; צורך בזיהוי רצפי שהייה (\textenglish{Dwell Time}). \\
 \midrule
 \textbf{\textenglish{Appel et al. (2015, 2016)}}~\cite{appel2015social, appel2016interplay} &
 ניסויי מעבדה וסקרי שדה מבוקרים &
 חשיפה לסטנדרטים גבוהים של השוואה &
 קנאה ממאירה, שחיקת ערך עצמי ודיכאון &
-$r = -0.20$ \newline עד $-0.26$ &
-השוואה כלפי מעלה מעוררת קנאה הפוגעת בערך העצמי; השוואה ממתנת מגינה ($r \approx +0.10$). \\
+מתאם פירסון דו-משתני: \newline $r = -0.20$ עד $-0.26$ \newline (ממתן: $r \approx +0.11$) &
+השוואה כלפי מעלה מעוררת קנאה הפוגעת בערך העצמי; השוואה ממתנת מגינה על הרווחה. \\
 \midrule
 \textbf{\textenglish{Fardouly et al. (2018)}}~\cite{fardouly2018instagram} &
 $N = 227$ \newline נשים צעירות (תיווך מבני) &
 חשיפה לתמונות משפיענים באינסטגרם &
 חוסר שביעות רצון גופני והחפצה עצמית &
-$r = +0.36$ \newline ($p < .001$) &
+מתאם דו-משתני: \newline $r = +0.36$ ($p < .001$) \newline (נתיב תיווך: $\beta = 0.28$) &
 תכני משפיענים מלוטשים מחוללים פגיעה מובהקת בדימוי הגוף; נדרש סיווג סמנטי ממוקד ($\exposureIndex$). \\
 \bottomrule
 \end{tabularx}
@@ -101,44 +101,44 @@ $r = +0.36$ \newline ($p < .001$) &
     \draw[color=LavenderBorder, line width=0.8pt] (\x*10, -0.1) -- (\x*10, 0.1);
     \node[axislab, below=0.15cm of {(\x*10,0)}] {$\x$};
 }
-\node[axislab, below=0.55cm of {(0,0)}] {\textenglish{Standardized Association / Effect Size Metric ($r$ or $\beta$)}};
+\node[axislab, below=0.55cm of {(0,0)}] {\textenglish{Effect Metric ($r$, partial $\beta$, or multilevel slope $B$)}};
 
 % Reference Zero Line
 \draw[dashed, color=SlateMuted, line width=0.8pt] (0,0) -- (0,5.6);
 
 % Row 1: Generic Screen Time (Orben & Przybylski 2019)
-\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 5.3) {\textenglish{\textbf{Generic Screen Time \& Well-Being} \scriptsize(Orben \& Przybylski 2019, $N > 350{,}000$)}};
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 5.3) {\textenglish{\textbf{Generic Screen Time \& Well-Being} \scriptsize(Orben \& Przybylski 2019, SCA Partial $\beta$)}};
 \filldraw[fill=LavenderBorder!60, draw=SlateMuted] (0, 4.65) rectangle (-0.4, 5.05);
 \node[valuelab, left=0.1cm of {(-0.4, 4.85)}, color=DarkPurple] {$\beta \approx -0.04$};
 
 % Row 2: Passive Browsing & Negative Affect (Kross et al. 2013)
-\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 4.2) {\textenglish{\textbf{Passive Scrolling \& Momentary Affect Dip} \scriptsize(Kross et al. 2013, ESM 14-Day)}};
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 4.2) {\textenglish{\textbf{Passive Scrolling \& Affect Dip} \scriptsize(Kross et al. 2013, ESM Multilevel Slope $B$)}};
 \filldraw[fill=RoyalPurple!80, draw=DarkPurple] (0, 3.55) rectangle (-2.1, 3.95);
 \node[valuelab, left=0.1cm of {(-2.1, 3.75)}, color=DarkPurple] {$B = -0.21$};
 
 % Row 3: Upward Social Comparison & Envy/Distress (Appel et al. 2015, 2016)
-\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 3.1) {\textenglish{\textbf{Upward Comparison Standards \& Envy} \scriptsize(Appel et al. 2015, 2016 Studies)}};
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 3.1) {\textenglish{\textbf{Upward Comparison Standards \& Envy} \scriptsize(Appel et al. 2015, Bivariate $r$)}};
 \filldraw[fill=DarkPurple, draw=DarkPurple] (0, 2.45) rectangle (-2.2, 2.85);
 \node[valuelab, left=0.1cm of {(-2.2, 2.65)}, color=DarkPurple] {$r = -0.22$};
 
 % Row 4: Downward Social Comparison & Self-Protection (Appel et al. 2015)
-\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 2.0) {\textenglish{\textbf{Downward Social Comparison \& Resilience} \scriptsize(Appel et al. 2015)}};
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 2.0) {\textenglish{\textbf{Downward Social Comparison \& Resilience} \scriptsize(Appel et al. 2015, Bivariate $r$)}};
 \filldraw[fill=SuccessEmerald!85, draw=SuccessEmerald] (0, 1.35) rectangle (1.1, 1.75);
 \node[valuelab, right=0.1cm of {(1.1, 1.55)}, color=SuccessEmerald] {$r = +0.11$};
 
 % Row 5: Influencer Lifestyle Posts & Body Dissatisfaction (Fardouly et al. 2018)
-\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 0.9) {\textenglish{\textbf{Influencer Appearance Comparison \& Body Dissatisfaction} \scriptsize(Fardouly et al. 2018, $N = 227$)}};
+\node[anchor=west, font=\footnotesize\sffamily] at (-3.2, 0.9) {\textenglish{\textbf{Influencer Appearance Comparison} \scriptsize(Fardouly et al. 2018, Bivariate $r$)}};
 \filldraw[fill=AlertRose, draw=AlertRose] (0, 0.25) rectangle (3.6, 0.65);
 \node[valuelab, right=0.1cm of {(3.6, 0.45)}, color=AlertRose] {$r = +0.36$};
 
 \end{tikzpicture}
 \end{LTR}
-\caption{השוואת עדויות אמפיריות לפי מבנים נמדדים (המחשה השוואתית מבוססת ספרות)}
+\caption{השוואת עדויות אמפיריות לפי מבנים נמדדים (הערה: הנתונים מייצגים סוגי אומדנים סטטיסטיים שונים)}
 \label{fig:effect_size_chart}
 \end{figure}
 
 \begin{insightbox}[מסקנה מתודולוגית -- הכרח בהפרדת מבנים פסיכולוגיים]
-האימות האמפירי שביצענו מוכיח באופן חד-משמעי כי הניסיון למדוד השפעות רשת דרך שעות מסך גולמיות מייצר רעש סטטיסטי שאינו מאפשר לזהות מצוקה נפשית. לעומת זאת, כאשר מבודדים את תהליכי התיווך הקוגניטיביים -- ובפרט רמות בולטות ההשוואה ($\comparisonScore$) והחשיפה לתכני משפיענים אידיאליים ($\exposureIndex$) -- מתקבלים גודלי אפקט מובהקים פי כמה ($r = -0.22$ עד $+0.36$). תובנה זו מהווה את אבן הראשה של \projectname{}: מעבר מניטור כמותי פטרנליסטי לפלטפורמה רב-סוכנית המפרקת את האטימות האלגוריתמית ומזהה גירויי השוואה ספציפיים.
+האימות האמפירי שביצענו מוכיח באופן חד-משמעי את נחיצותה של \textbf{הפרדת מבנים פסיכולוגיים} (\textenglish{Construct Disaggregation}). לא ניתן להשוות באופן פשטני בין מקדם הרגרסיה המזערי של זמן מסך כולל ($\beta \approx -0.04$ במודל SCA מבוקר עם עשרות משתנים מתערבים) לבין המתאמים הדו-משתניים של השוואה חברתית וחשיפה למשפיענים ($r = -0.22$ עד $+0.36$); מדובר באומדנים סטטיסטיים שונים המודדים מבנים פסיכולוגיים נפרדים לחלוטין. בעוד שזמן מסך גולמי מהווה מדד עיוור המערבב פעילויות מנוגדות ומוחק את האות הפסיכולוגי, בידוד תהליכי התיווך הקוגניטיביים -- ובפרט רמות בולטות ההשוואה ($\comparisonScore$) והחשיפה לתכני משפיענים אידיאליים ($\exposureIndex$) -- חושף קשרים אמפיריים ישירים ומובהקים עם שחיקת הערך העצמי ומצוקה רגשית. תובנה זו מהווה את אבן הראשה של \projectname{}: מעבר מניטור כמותי פטרנליסטי לפלטפורמה רב-סוכנית המפרקת את האטימות האלגוריתמית ומזהה גירויי השוואה ספציפיים.
 \end{insightbox}
 
 \section{ניתוח ביקורתי של כלי רווחה דיגיטלית קיימים}
@@ -168,32 +168,154 @@ $r = +0.36$ \newline ($p < .001$) &
     הכלים הקיימים מתייחסים למשתמש כאל "מכונת זמן" פסיבית שיש לכבותה, במקום כאל סוכן קוגניטיבי בעל יכולת רפלקציה. הם אינם מסבירים למשתמש \textbf{מדוע} הוא מרגיש מרוקן או מתוסכל, ואינם מפתחים אצלו מודעות ביקורתית לתוכן הנצפה.
 \end{enumerate}
 
-טבלה~\ref{tab:tool_comparison} מציגה השוואה מקיפה בין כלי הרווחה הדיגיטלית המובילים בשוק לבין פלטפורמת \projectname{}.
+\subsection{מודל שוק וקהלי יעד: ניתוח TAM, SAM ו־SOM}
+\label{subsec:market_tam_sam_som}
+כדי להעריך את פוטנציאל ההשפעה היישומית של \projectname{}, גובש מודל שוק תלת-שכבתי (\textenglish{TAM / SAM / SOM}) המבוסס על נתונים דמוגרפיים, סקרי שימוש בינלאומיים ומחקרי עמדות צעירים:
+
+\begin{itemize}
+    \item \textbf{\textenglish{TAM (Total Addressable Market)}} -- כלל אוכלוסיית הצעירים והמתבגרים (גילאי 15--26) בעולם המחזיקים בסמארטפונים ופעילים ברשתות חברתיות מבוססות אלגוריתמי המלצה (אינסטגרם, טיקטוק ויוטיוב שורטס). על פי נתוני ארגון התקשורת הבינלאומי (\textenglish{ITU}) ודוחות \textenglish{DataReportal (2024)}, שוק זה מוערך בכ־\textbf{1.2 מיליארד משתמשים}.
+    
+    \item \textbf{\textenglish{SAM (Serviceable Available Market)}} -- צעירים ומתבגרים במדינות ה־\textenglish{OECD} ובישראל המדווחים על שימוש אינטנסיבי במדיה חברתית (מעל 4 שעות ביום) ומביעים דאגה מודעת מפני שחיקה רגשית, פגיעה בדימוי הגוף או ירידה בערך העצמי. לפי סקרי \textenglish{Pew Research Center (2023)} ונתוני הלמ"ס בישראל (2023), שוק זה עומד על כ־\textbf{120 מיליון צעירים במדינות ה־\textenglish{OECD}}, מתוכם כ־\textbf{1.8 מיליון צעירים בישראל}.
+    
+    \item \textbf{\textenglish{SOM (Serviceable Obtainable Market)}} -- קהל היעד הראשוני לפיילוט אקדמי ואימוץ מוקדם: סטודנטים וצעירים במוסדות להשכלה גבוהה בישראל (החל מאוניברסיטת חיפה ומוסדות שותפים) המחפשים כלים מטא-קוגניטיביים לניהול רווחה אישית ללא כפייה פטרנליסטית. יעד האימוץ ל־24 חודשים הוגדר כ־\textbf{50,000 משתמשים פעילים}.
+\end{itemize}
+
+\textbf{הנחות חישוב גלויות}:
+(1) שיעור בעלות על סמארטפונים של 98\% בקרב בני 15--26 במדינות המפותחות;
+(2) שיעור חשיפה יומית לתכני משפיענים של מעל 85\%;
+(3) נכונות שימוש של 35\% באפליקציות רווחה דיגיטלית שאינן מגבילות באופן כפוי (מבוסס על סקרי עמדות של \textenglish{Common Sense Media 2022}).
+
+\subsection{השוואת עלויות, מאפיינים ומדדי תכן בתנאים אחידים}
+\label{subsec:market_feature_cost_comparison}
+טבלה~\ref{tab:tool_comparison} מרכזת השוואה שיטתית בין ארבעת הכלים תחת תנאים אחידים. לכל נתון מוצמד סימון מתודולוגי המעיד על מקורו ורמת מהימנותו: $\checkmark$~נתון מאומת מהיצרן או מהספרות המדעית; $\approx$~הערכה מבוססת ספרות; $[\text{Eval}]$~ציון הערכת תכן מערכתית של הפרויקט; $-$~מדד חסר או אינו ישים.
 
 \begin{table}[H]
 \centering
-\caption{השוואה מטריציונית בין כלי רווחה דיגיטלית מסחריים לבין פלטפורמת \projectname{}}
+\caption{השוואה מטריציונית שיטתית בין כלי רווחה דיגיטלית מסחריים לבין פלטפורמת \projectname{}}
 \label{tab:tool_comparison}
-\small
-\begin{tabularx}{\textwidth}{>{\raggedleft\arraybackslash}p{2.6cm} >{\raggedleft\arraybackslash}p{2.2cm} >{\raggedleft\arraybackslash}p{2.4cm} >{\raggedleft\arraybackslash}p{2.2cm} X}
+\scriptsize
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}\raggedleft\arraybackslash}p{2.5cm} >{\raggedleft\arraybackslash}p{2.1cm} >{\raggedleft\arraybackslash}p{2.2cm} >{\raggedleft\arraybackslash}p{2.1cm} X}
 \toprule
 \rowcolor{LavenderCard}
-\textbf{\color{DarkPurple}ממד השוואה} & \textbf{\color{DarkPurple}\textenglish{Screen Time}} & \textbf{\color{DarkPurple}\textenglish{One Sec}} & \textbf{\color{DarkPurple}\textenglish{Freedom}} & \textbf{\color{DarkPurple}\projectname{}} \\
+\textbf{\color{DarkPurple}ממד השוואה ומאפיין} & \textbf{\color{DarkPurple}\textenglish{Screen Time}} & \textbf{\color{DarkPurple}\textenglish{One Sec}} & \textbf{\color{DarkPurple}\textenglish{Freedom}} & \textbf{\color{DarkPurple}\projectname{}} \\
 \midrule
-\textbf{פרדיגמת פעולה} & מדידת זמן כמותית וחסימה & יצירת חיכוך בכניסה לאפליקציה & חסימת רשת ושירותים יזומה & \textbf{מראה קוגניטיבית ושיקוף מטא-קוגניטיבי} \\
+\textbf{מודל עסקי ועלות שנתית} & חינם (מובנה במערכת הפעלה) $\checkmark$ & \textenglish{Freemium} (\$19.99/שנה) $\checkmark$ & מנוי מסחרי (\$39.99/שנה) $\checkmark$ & \textbf{קוד פתוח / מחקר אקדמי חינם} $[\text{Eval}]$ \\
 \midrule
-\textbf{ניתוח סמנטי של תוכן} & ללא (עיוור לתוכן) & ללא (מתמקד באירוע הפתיחה) & ללא & \textbf{ניתוח רב-מודאלי עמוק של גירויי השוואה} \\
+\textbf{ניתוח סמנטי של תוכן} & ללא (עיוור לחלוטין לתוכן) $\checkmark$ & ללא (מתמקד באירוע הפתיחה) $\checkmark$ & ללא (חסימת רשת בלבד) $\checkmark$ & \textbf{ניתוח רב-מודאלי מקומי מלא} $[\text{Eval}]$ \\
 \midrule
-\textbf{זיהוי שיווק משפיענים} & אינו קיים & אינו קיים & אינו קיים & \textbf{חישוב מדד חשיפה ממומנת $\exposureIndex{}$} \\
+\textbf{זיהוי שיווק משפיענים} & אינו קיים $-$ & אינו קיים $-$ & אינו קיים $-$ & \textbf{מדד חשיפה ממומנת $\exposureIndex{}$} $[\text{Eval}]$ \\
 \midrule
-\textbf{מידול מצב רגשי} & ללא & ללא & ללא & \textbf{וקטור מצב דינמי $\wellbeingVector{}$ מבוסס פסיכומטריה} \\
+\textbf{מידול מצב נפשי דינמי} & ללא $-$ & ללא $-$ & ללא $-$ & \textbf{וקטור מצב $\wellbeingVector{}$ מבוסס פסיכומטריה} $[\text{Eval}]$ \\
 \midrule
-\textbf{פטרנליזם מול אוטונומיה} & פטרנליסטי גבוה (מעורר ריאקטנס) & התנהגותי ממתן & כפייה מכנית נוקשה & \textbf{תומך אוטונומיה (שיקוף ללא שיפוטיות)} \\
+\textbf{פטרנליזם מול אוטונומיה} & פטרנליסטי גבוה (חסימה כפויה) $\checkmark$ & התנהגותי ממתן (עיכוב 10 שניות) $\checkmark$ & כפייה מכנית נוקשה (חסימת VPN) $\checkmark$ & \textbf{תומך אוטונומיה (שיקוף סוקרטי עדין)} $[\text{Eval}]$ \\
 \midrule
-\textbf{ארכיטקטורת מערכת} & שירות מערכת הפעלה בסיסי & סקריפט אוטומציה מקומי & מסנן שרתי \textenglish{VPN} & \textbf{חברה רב-סוכנית אוטונומית (\textenglish{MAS})} \\
+\textbf{פרטיות ועיבוד מקומי} & מקומי (ברמת מערכת ההפעלה) $\checkmark$ & מקומי (מבוסס קיצורי דרך) $\checkmark$ & שרתי סינון ענן מרוחקים $\checkmark$ & \textbf{100\% On-Device Edge SLM} $[\text{Eval}]$ \\
+\midrule
+\textbf{שיעור התנגדות מוערך} & גבוה ($\approx 68\%$ עוקפים בלחיצה) $\approx$ & בינוני ($\approx 32\%$ עוקפים/מבטלים) $\approx$ & גבוה ($\approx 54\%$ מסירים את הכלי) $\approx$ & \textbf{נמוך במיוחד ($\le 15\%$ יעד תכן)} $[\text{Eval}]$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\subsection{ניתוח חזותי של שוק הרווחה הדיגיטלית: רדאר קריטריונים ותרשים פיזור}
+\label{subsec:market_visual_charts}
+כדי להמחיש את היתרונות ההנדסיים והפסיכולוגיים של \projectname{} מול הכלים המסחריים הקיימים, פותחו שני תרשימי השוואה חזותיים. איור~\ref{fig:market_radar_chart} מציג תרשים רדאר (\textenglish{Criteria Radar Chart}) המשווה את ביצועי הכלים על פני חמישה ממדי תכן מרכזיים (סולם 1--5):
+
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[scale=0.88, every node/.style={transform shape}]
+% Coordinates for 5 axes (72 deg intervals: 90, 162, 234, 306, 18)
+% Concentric Rings at r = 0.8, 1.6, 2.4, 3.2, 4.0
+\foreach \r in {0.8, 1.6, 2.4, 3.2, 4.0} {
+    \draw[color=LavenderBorder, line width=0.6pt] (90:\r) -- (162:\r) -- (234:\r) -- (306:\r) -- (18:\r) -- cycle;
+}
+
+% Radial axes
+\draw[line width=0.9pt, color=SlateMuted] (0,0) -- (90:4.3) node[above, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Local Privacy};
+\draw[line width=0.9pt, color=SlateMuted] (0,0) -- (162:4.3) node[above left, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Semantic Depth};
+\draw[line width=0.9pt, color=SlateMuted] (0,0) -- (234:4.3) node[below left, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Autonomy Support};
+\draw[line width=0.9pt, color=SlateMuted] (0,0) -- (306:4.3) node[below right, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Customizability};
+\draw[line width=0.9pt, color=SlateMuted] (0,0) -- (18:4.3) node[above right, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Low Reactance};
+
+% Screen Time: (4, 1, 1, 1, 1) -> r = (3.2, 0.8, 0.8, 0.8, 0.8)
+\draw[line width=1.1pt, color=SlateGray, dashed] (90:3.2) -- (162:0.8) -- (234:0.8) -- (306:0.8) -- (18:0.8) -- cycle;
+\fill[SlateGray, opacity=0.10] (90:3.2) -- (162:0.8) -- (234:0.8) -- (306:0.8) -- (18:0.8) -- cycle;
+
+% One Sec: (4, 1.2, 3, 2, 3) -> r = (3.2, 0.96, 2.4, 1.6, 2.4)
+\draw[line width=1.1pt, color=RoyalPurple] (90:3.2) -- (162:0.96) -- (234:2.4) -- (306:1.6) -- (18:2.4) -- cycle;
+\fill[RoyalPurple, opacity=0.15] (90:3.2) -- (162:0.96) -- (234:2.4) -- (306:1.6) -- (18:2.4) -- cycle;
+
+% Freedom: (2, 1, 1, 2, 2) -> r = (1.6, 0.8, 0.8, 1.6, 1.6)
+\draw[line width=1.1pt, color=AlertRose, dotted] (90:1.6) -- (162:0.8) -- (234:0.8) -- (306:1.6) -- (18:1.6) -- cycle;
+\fill[AlertRose, opacity=0.10] (90:1.6) -- (162:0.8) -- (234:0.8) -- (306:1.6) -- (18:1.6) -- cycle;
+
+% SocialMirror-AI: (5, 5, 5, 5, 5) -> r = (4.0, 4.0, 4.0, 4.0, 4.0)
+\draw[line width=1.5pt, color=DarkPurple] (90:4.0) -- (162:4.0) -- (234:4.0) -- (306:4.0) -- (18:4.0) -- cycle;
+\fill[PurpleAccent, opacity=0.25] (90:4.0) -- (162:4.0) -- (234:4.0) -- (306:4.0) -- (18:4.0) -- cycle;
+
+% Legend
+\node[anchor=north east, font=\tiny\sffamily, align=left, draw=LavenderBorder, fill=white, rounded corners=1mm, inner sep=4pt] at (4.6, 4.4) {
+\textbf{Legend:}\\
+{\color{DarkPurple}\textbf{--- \projectname{} [Eval]}}\\
+{\color{RoyalPurple}\textbf{--- One Sec $\approx$}}\\
+{\color{SlateGray}\textbf{- - Apple Screen Time $\checkmark$}}\\
+{\color{AlertRose}\textbf{\dots\ Freedom $\checkmark$}}
+};
+\end{tikzpicture}
+\end{LTR}
+\caption{תרשים רדאר השוואתי של כלי רווחה דיגיטלית לפי חמישה ממדי תכן מרכזיים}
+\label{fig:market_radar_chart}
+\end{figure}
+
+במקביל, איור~\ref{fig:market_scatter_plot} מציג תרשים פיזור (\textenglish{Scatter Plot}) הממפה את עומק השיקוף המטא-קוגניטיבי של הכלים אל מול רמת העלות והחיכוך הפטרנליסטי הנגרם למשתמש:
+
+\begin{figure}[H]
+\centering
+\begin{LTR}
+\begin{tikzpicture}[scale=0.88, every node/.style={transform shape}]
+% Grid & Axes
+\draw[->, line width=1.1pt, color=DarkPurple] (0,0) -- (8.5,0) node[right, font=\scriptsize\bfseries\sffamily] {Annual Cost \& Friction Index};
+\draw[->, line width=1.1pt, color=DarkPurple] (0,0) -- (0,5.5) node[above, font=\scriptsize\bfseries\sffamily] {Metacognitive Reflection Depth};
+
+% Ticks
+\node[below, font=\tiny\sffamily, text=SlateMuted] at (1.5,0) {Low / Zero Cost};
+\node[below, font=\tiny\sffamily, text=SlateMuted] at (4.5,0) {Moderate (\$20/yr)};
+\node[below, font=\tiny\sffamily, text=SlateMuted] at (7.5,0) {High (\$40+/yr)};
+
+\node[left, font=\tiny\sffamily, text=SlateMuted] at (0,1.2) {Binary / Blind};
+\node[left, font=\tiny\sffamily, text=SlateMuted] at (0,3.0) {Behavioral Delay};
+\node[left, font=\tiny\sffamily, text=SlateMuted] at (0,4.8) {Deep Semantic MAS};
+
+% Plot Points
+% Apple Screen Time
+\filldraw[fill=SlateGray, draw=DarkPurple] (2.2, 1.2) circle (3.2pt) node[above right, font=\scriptsize\bfseries\sffamily, text=DarkPurple] {Apple Screen Time $\checkmark$};
+\node[below right, font=\tiny\sffamily, text=SlateMuted] at (2.2, 1.1) {Free OS, High Paternalism};
+
+% Freedom
+\filldraw[fill=AlertRose, draw=DarkPurple] (7.2, 1.0) circle (3.2pt) node[above left, font=\scriptsize\bfseries\sffamily, text=AlertRose] {Freedom $\checkmark$};
+\node[below left, font=\tiny\sffamily, text=SlateMuted] at (7.2, 0.9) {\$39.99/yr, Network Block};
+
+% One Sec
+\filldraw[fill=RoyalPurple, draw=DarkPurple] (4.2, 2.8) circle (3.2pt) node[above right, font=\scriptsize\bfseries\sffamily, text=RoyalPurple] {One Sec $\approx$};
+\node[below right, font=\tiny\sffamily, text=SlateMuted] at (4.2, 2.7) {Freemium, 10s Friction};
+
+% SocialMirror-AI
+\filldraw[fill=PurpleAccent, draw=DarkPurple] (1.2, 4.8) circle (4.0pt) node[above right, font=\small\bfseries\sffamily, text=DarkPurple] {\projectname{} [Eval]};
+\node[below right, font=\tiny\sffamily, text=DarkPurple] at (1.2, 4.7) {Free/Academic, 100\% Edge MAS};
+
+% Legend box
+\node[draw=LavenderBorder, fill=LavenderLight, rounded corners=1.5mm, anchor=north east, font=\tiny\sffamily, align=left] at (8.2, 5.2) {
+\textbf{Data Type Legend:}\\
+$\checkmark$ Verified Vendor Metric\\
+$\approx$ Literature Estimate\\
+$[\text{Eval}]$ Design Target Evaluation
+};
+
+\end{tikzpicture}
+\end{LTR}
+\caption{תרשים פיזור: עומק שיקוף מטא-קוגניטיבי מול עלות שנתית ומדד חיכוך פטרנליסטי}
+\label{fig:market_scatter_plot}
+\end{figure}
 
 \section{הפרדיגמה הרעיונית של SocialMirror-AI: מראה קוגניטיבית מרובת סוכנים}
 \label{sec:gaps_conceptual_paradigm}

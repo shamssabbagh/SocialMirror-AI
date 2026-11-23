@@ -20,21 +20,78 @@
     תוסף דפדפן חוצה-פלטפורמות (\textenglish{Chrome/Firefox Manifest V3 Extension}) או אפליקציית דסקטופ מבוססת \textenglish{Electron/React}, המאפשרת ממשק חזותי עשיר, הצגת עקומות המצב הנפשי בזמן אמת, והענקת פיגומים מטא-קוגניטיביים עדינים.
 \end{enumerate}
 
-\section{שלבי הפיתוח, אבני דרך ותרשים גאנט}
+\section{מבנה פירוק עבודה (WBS), אבני דרך ותרשים גאנט}
 \label{sec:impl_milestones_gantt}
-תהליך הפיתוח המתוכנן של פרויקט \projectname{} מחולק לחמישה שלבים עוקבים, הנפרסים על פני תקופה של 12 חודשים:
+תהליך הפיתוח המתוכנן של פרויקט \projectname{} מאורגן בחמש חבילות עבודה מובנות (\textenglish{Work Packages - WPs}), הנפרסות על פני מחזור פיתוח שלם בן 14 שבועות סמסטריאליים (או לחלופין 12 חודשי מחקר מורחבים):
 
 \begin{enumerate}
-    \item \textbf{שלב 1: מחקר מכין, תיקוף מושגי והגדרת ארכיטקטורה (חודשים 1--2)} -- גיבוש הדוח המכין הנוכחי, אפיון שאלות המחקר, ניסוח מודל הנתונים וקטור המצב, ואימות המקורות האמפיריים.
-    \item \textbf{שלב 2: פיתוח אבות-טיפוס של סוכני הקלט והסיווג (חודשים 3--5)} -- בניית מנגנון הקליטה של \agentObserver{}, כתיבת הפרומפטים של \agentAnalyst{}, וכיול דיוק הסיווג הסמנטי של מדד $\comparisonScore{}$ כנגד מאגר נתונים מוזהב.
-    \item \textbf{שלב 3: מנוע הרפלקציה, הזיכרון הווקטורי ודינמיקת המצב (חודשים 6--7)} -- הטמעת מנגנון הזיכרון האפיזודי של \agentReflector{}, שילוב המשוואות המתמטיות של וקטור המצב $\wellbeingVector{}$, ופיתוח מנגנוני הניסוח של \agentInterventionist{}.
-    \item \textbf{שלב 4: הרצת מערך הסימולציה עם 20 הפרסונות ואיסוף נתונים (חודשים 8--9)} -- ביצוע הניסוי המבוקר בסביבת ה־\textenglish{Sandbox}, מדידת מדדי ה־\textenglish{DMR}, ואימות מול סולמות \textenglish{RSES} ו־\textenglish{PANAS}.
-    \item \textbf{שלב 5: ניסוי פיילוט משתמשים, ליטוש ממשק ודוח מסכם (חודשים 10--12)} -- בחינת ממשק "המראה הקוגניטיבית" בקרב קבוצת פיילוט של סטודנטים באוניברסיטת חיפה (בכפוף לאישור ועדת אתיקה), תיעוד הממצאים והגשת הדוח הסופי.
+    \item \textbf{\textenglish{WP1}: מפרט מושגי, תיקוף מתודולוגי וארכיטקטורה}
+    \begin{itemize}
+        \item \textbf{משימות}: \textenglish{T1.1} אפיון שאלות המחקר ומדדי היעד הכמותיים; \textenglish{T1.2} אימות ספרות אמפירית וכיול משוואות וקטור המצב $\wellbeingVector(t)$; \textenglish{T1.3} הגדרת סכמות \textenglish{JSON-RPC 2.0} ופרוטוקול התקשורת.
+        \item \textbf{תוצר מסירה (\textenglish{Deliverable D1})}: דוח מכין אקדמי שלם (מטלה 2) ומפרט דרישות הנדסי מתוקף.
+    \end{itemize}
+
+    \item \textbf{\textenglish{WP2}: תשתית קלט מקומית וסיווג סמנטי מרובה-סוכנים}
+    \begin{itemize}
+        \item \textbf{משימות}: \textenglish{T2.1} פיתוח תוסף דפדפן ומנגנון אנונימיזציה מקומי (\agentObserver{}); \textenglish{T2.2} כתיבת פרומפטים מערכתיים וכיול מדדי $\comparisonScore$ ו־$\exposureIndex$ (\agentAnalyst{}); \textenglish{T2.3} תיקוף דיוק סיווג ($F_1 \ge 0.85$) מול קורפוס מוזהב של 200 פוסטים מתויגים.
+        \item \textbf{תוצר מסירה (\textenglish{Deliverable D2})}: אב-טיפוס עובד של מודול קליטה וסיווג מקומי עם דוח ביצועים.
+    \end{itemize}
+
+    \item \textbf{\textenglish{WP3}: מנוע רפלקציה, זיכרון אפיזודי ומיקרו-התערבויות}
+    \begin{itemize}
+        \item \textbf{משימות}: \textenglish{T3.1} הטמעת מסד נתונים וקטורי מקומי (\textenglish{ChromaDB}) ופונקציית שליפה תלת-ממדית; \textenglish{T3.2} מימוש משוואות דעיכה ועדכון וקטור המצב $\wellbeingVector(t)$ (\agentReflector{}); \textenglish{T3.3} כיול מנגנון הניסוח הסוקרטי ומניעת ריאקטנס (\agentInterventionist{}).
+        \item \textbf{תוצר מסירה (\textenglish{Deliverable D3})}: ליבת מערכת \textenglish{MAS} מתואמת הפועלת מקומית בקצה.
+    \end{itemize}
+
+    \item \textbf{\textenglish{WP4}: מערך סימולציה מבוקר עם 20 פרסונות}
+    \begin{itemize}
+        \item \textbf{משימות}: \textenglish{T4.1} יצירת 20 פרסונות גנרטיביות על פני 4 ארכיטיפים פסיכולוגיים; \textenglish{T4.2} הרצת 1,800 ריצות סימולציה מבוקרות (30 חזרות $\times$ 3 תנאים); \textenglish{T4.3} חישוב שיעור בלימת שחיקה ($\text{DMR} \ge 40\%$) וניתוח מתאם מול שאלוני \textenglish{RSES} ו־\textenglish{PANAS}.
+        \item \textbf{תוצר מסירה (\textenglish{Deliverable D4})}: מסד נתוני סימולציה מלא ודוח אימות מתודולוגי מקיף.
+    \end{itemize}
+
+    \item \textbf{\textenglish{WP5}: ניסוי פיילוט משתמשים, לוח מחוונים ודוח מסכם}
+    \begin{itemize}
+        \item \textbf{משימות}: \textenglish{T5.1} הגשת בקשה וקבלת אישור ועדת אתיקה (\textenglish{IRB}) באוניברסיטת חיפה; \textenglish{T5.2} ניסוי פיילוט בקרב 50 סטודנטים ומדידת שביעות רצון ואי-חודרנות; \textenglish{T5.3} ניתוח סטטיסטי מסכם וכתיבת דוח גמר אקדמי.
+        \item \textbf{תוצר מסירה (\textenglish{Deliverable D5})}: פלטפורמת "מראה קוגניטיבית" פעילה ודוח מחקר מסכם.
+    \end{itemize}
 \end{enumerate}
 
-איור~\ref{fig:project_gantt_chart} מציג את תרשים הגאנט הכרונולוגי של שלבי הפיתוח ואבני הדרך המרכזיות של הפרויקט:
+\subsection{מטריצת אחריות תפעולית עתידית (RACI)}
+\label{subsec:impl_raci_matrix}
 
-\vspace{0.3cm}
+\begin{agentbox}{הערה מתודולוגית מנחה אודות מטריצת ה־RACI}
+חלוקת תפקידי ה־\textenglish{RACI} שלהלן מוצעת כמודל תפעולי ליישום עתידי בלבד, והיא כפופה לאישור שתי המגישות. הקרדיט על כתיבת הדוח המכין הנוכחי, המחקר האקדמי והגדרת הפרויקט הינו שוויוני ומשותף לחלוטין בין שמס סבאג ומלאק פרוג'ה.
+\end{agentbox}
+
+טבלה~\ref{tab:raci_matrix} מפרטת את הקצאת התפקידים המוצעת לחבילות העבודה: אחראי ביצוע (\textenglish{Responsible - R}), בעל אחריות כוללת (\textenglish{Accountable - A}), גורם נועץ (\textenglish{Consulted - C}), וגורם מעודכן (\textenglish{Informed - I}):
+
+\begin{table}[H]
+\centering
+\caption{מטריצת אחריות תפעולית מוצעת ליישום עתידי (RACI Matrix)}
+\label{tab:raci_matrix}
+\small
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}\raggedleft\arraybackslash}p{3.4cm} >{\centering\arraybackslash}p{2.6cm} >{\centering\arraybackslash}p{2.6cm} >{\centering\arraybackslash}p{2.6cm} >{\centering\arraybackslash}p{2.2cm}}
+\toprule
+\rowcolor{LavenderCard}
+\textbf{\color{DarkPurple}חבילת עבודה / משימה} & \textbf{\color{DarkPurple}שמס סבאג \newline {\tiny(פסיכולוגיה ומתודולוגיה)}} & \textbf{\color{DarkPurple}מלאק פרוג'ה \newline {\tiny(תקשורת, משפיענים וממשק)}} & \textbf{\color{DarkPurple}אחריות כוללת (A)} & \textbf{\color{DarkPurple}גורם נועץ (C) / מעודכן (I)} \\
+\midrule
+\textenglish{WP1}: מפרט ודוח מכין & \textenglish{R} & \textenglish{R} & משותף (\textenglish{A}) & מרצה הקורס (\textenglish{C}) \\
+\midrule
+\textenglish{WP2}: קליטה וסיווג משפיענים & \textenglish{C} & \textenglish{R} & מלאק (\textenglish{A}) & מרצה הקורס (\textenglish{I}) \\
+\midrule
+\textenglish{WP3}: מנוע רפלקציה ופסיכומטריה & \textenglish{R} & \textenglish{C} & שמס (\textenglish{A}) & מרצה הקורס (\textenglish{I}) \\
+\midrule
+\textenglish{WP4}: מערך סימולציה ופרסונות & \textenglish{R} & \textenglish{R} & משותף (\textenglish{A}) & מרצה הקורס (\textenglish{C}) \\
+\midrule
+\textenglish{WP5}: פיילוט משתמשים ודוח סופי & \textenglish{R} & \textenglish{R} & משותף (\textenglish{A}) & ועדת אתיקה / מרצה (\textenglish{C/A}) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{תרשים גאנט, אבני דרך והנתיב הקריטי}
+\label{subsec:impl_gantt_critical_path}
+איור~\ref{fig:project_gantt_chart} מציג את תרשים הגאנט הכרונולוגי של חמש חבילות העבודה, אבני הדרך ותוצרי המסירה (\textenglish{D1--D5}), תוך הדגשת \textbf{הנתיב הקריטי} (\textenglish{Critical Path}) המסומן בקו כפול אדום.
+
 \begin{figure}[H]
 \centering
 \begin{LTR}
@@ -42,69 +99,102 @@
     scale=0.82, every node/.style={transform shape},
     bar/.style={rectangle, rounded corners=1.5mm, line width=0.8pt, inner sep=4pt, font=\scriptsize\sffamily},
     timeline/.style={draw=LavenderBorder, line width=0.8pt},
-    phasebg/.style={fill=LavenderLight, draw=LavenderBorder, line width=0.7pt, rounded corners=2mm}
+    milestone/.style={diamond, draw=DarkPurple, fill=PurpleAccent, inner sep=2.5pt}
 ]
 
-% Time Axis Grid (Months 1 to 12)
-\foreach \m in {1,...,12} {
-    \draw[timeline] (\m*1.1, 0) -- (\m*1.1, 5.5);
-    \node[font=\tiny\bfseries\color{SlateMuted}, below=0.1cm of {(\m*1.1, 0)}] {M\m};
+% Time Axis Grid (Weeks 1 to 14)
+\foreach \w in {1,...,14} {
+    \draw[timeline] (\w*0.95, 0) -- (\w*0.95, 5.8);
+    \node[font=\tiny\bfseries\color{SlateMuted}, below=0.1cm of {(\w*0.95, 0)}] {W\w};
 }
-\draw[line width=1.1pt, color=DarkPurple] (1.1, 0) -- (13.2, 0);
+\draw[line width=1.1pt, color=DarkPurple] (0.95, 0) -- (14.25, 0);
 
-% Phase 1: Preparatory Research (M1-M2)
-\filldraw[fill=DarkPurple, draw=DarkPurple] (1.1, 4.6) rectangle (3.3, 5.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (3.5, 4.85) {Phase 1: Preparatory Specification \& Modeling};
+% Phase 1 / WP1 (W1-W3)
+\filldraw[fill=DarkPurple, draw=DarkPurple] (0.95, 4.8) rectangle (2.85, 5.3);
+\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (3.0, 5.05) {WP1: Specification \& Modeling};
+\node[milestone] at (2.85, 5.05) {};
+\node[above=2pt, font=\tiny\bfseries\color{DarkPurple}] at (2.85, 5.3) {D1};
 
-% Phase 2: Core Ingestion & LLM Classifier (M3-M5)
-\filldraw[fill=RoyalPurple, draw=RoyalPurple] (3.3, 3.6) rectangle (6.6, 4.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{RoyalPurple}] at (6.8, 3.85) {Phase 2: Observer \& Analyst Agent Prototyping};
+% Phase 2 / WP2 (W3-W6)
+\filldraw[fill=RoyalPurple, draw=RoyalPurple] (2.85, 3.8) rectangle (5.70, 4.3);
+\node[anchor=west, font=\scriptsize\bfseries\color{RoyalPurple}] at (5.85, 4.05) {WP2: Ingestion \& Classifier Prototyping};
+\node[milestone] at (5.70, 4.05) {};
+\node[above=2pt, font=\tiny\bfseries\color{DarkPurple}] at (5.70, 4.3) {D2};
 
-% Phase 3: Reflection Engine & Vector Memory (M6-M7)
-\filldraw[fill=PurpleAccent, draw=DarkPurple] (6.6, 2.6) rectangle (8.8, 3.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (9.0, 2.85) {Phase 3: Reflector \& Interventionist Synthesis};
+% Phase 3 / WP3 (W6-W9)
+\filldraw[fill=PurpleAccent, draw=DarkPurple] (5.70, 2.8) rectangle (8.55, 3.3);
+\node[anchor=west, font=\scriptsize\bfseries\color{DarkPurple}] at (8.70, 3.05) {WP3: Reflector \& Interventionist Synthesis};
+\node[milestone] at (8.55, 3.05) {};
+\node[above=2pt, font=\tiny\bfseries\color{DarkPurple}] at (8.55, 3.3) {D3};
 
-% Phase 4: Persona Simulation Experiments (M8-M9)
-\filldraw[fill=AlertRose, draw=AlertRose] (8.8, 1.6) rectangle (11.0, 2.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{AlertRose}] at (11.2, 1.85) {Phase 4: 20-Persona Simulation \& Evaluation};
+% Phase 4 / WP4 (W9-W11)
+\filldraw[fill=AlertRose, draw=AlertRose] (8.55, 1.8) rectangle (10.45, 2.3);
+\node[anchor=west, font=\scriptsize\bfseries\color{AlertRose}] at (10.60, 2.05) {WP4: 20-Persona Simulation Experiments};
+\node[milestone] at (10.45, 2.05) {};
+\node[above=2pt, font=\tiny\bfseries\color{DarkPurple}] at (10.45, 2.3) {D4};
 
-% Phase 5: Pilot Study & Final Thesis (M10-M12)
-\filldraw[fill=SuccessEmerald, draw=SuccessEmerald] (11.0, 0.6) rectangle (14.3, 1.1);
-\node[anchor=west, font=\scriptsize\bfseries\color{SuccessEmerald}] at (14.5, 0.85) {Phase 5: Pilot HCI Trials \& Final Thesis};
+% Phase 5 / WP5 (W11-W14)
+\filldraw[fill=SuccessEmerald, draw=SuccessEmerald] (10.45, 0.8) rectangle (13.30, 1.3);
+\node[anchor=west, font=\scriptsize\bfseries\color{SuccessEmerald}] at (13.45, 1.05) {WP5: Pilot Trials \& Final Report};
+\node[milestone] at (13.30, 1.05) {};
+\node[above=2pt, font=\tiny\bfseries\color{DarkPurple}] at (13.30, 1.3) {D5};
 
-% Dependency Connecting Lines
-\draw[->, line width=1.0pt, color=SlateMuted, dashed] (3.3, 4.6) -- (3.3, 4.1);
-\draw[->, line width=1.0pt, color=SlateMuted, dashed] (6.6, 3.6) -- (6.6, 3.1);
-\draw[->, line width=1.0pt, color=SlateMuted, dashed] (8.8, 2.6) -- (8.8, 2.1);
-\draw[->, line width=1.0pt, color=SlateMuted, dashed] (11.0, 1.6) -- (11.0, 1.1);
+% Critical Path Dependencies (Red Highlighted Line)
+\draw[->, line width=1.5pt, color=BrickRed] (2.85, 4.8) -- (2.85, 4.3);
+\draw[->, line width=1.5pt, color=BrickRed] (5.70, 3.8) -- (5.70, 3.3);
+\draw[->, line width=1.5pt, color=BrickRed] (8.55, 2.8) -- (8.55, 2.3);
+\draw[->, line width=1.5pt, color=BrickRed] (10.45, 1.8) -- (10.45, 1.3);
+
+% Legend
+\node[anchor=north west, font=\tiny\sffamily, align=left, fill=white, draw=LavenderBorder, rounded corners=1.5mm, inner sep=4pt] at (0.95, 2.5) {
+\textbf{Legend:}\\
+{\color{BrickRed}\textbf{=== Critical Path (WP1 $\to$ WP5)}}\\
+{\color{DarkPurple}$\blacklozenge$ Deliverable Milestone (D1--D5)}\\
+\textit{* 14-week schedule subject to Haifa lecturer confirmation}
+};
 
 \end{tikzpicture}
 \end{LTR}
-\caption{תרשים גאנט (\textenglish{Project Gantt Chart}) לחמשת שלבי הפיתוח, אבני הדרך והתלויות הכרונולוגיות (מפת דרכים מתוכננת)}
+\caption{תרשים גאנט לפרויקט \projectname{}: חבילות עבודה (WP1--WP5), תוצרי מסירה (D1--D5) והנתיב הקריטי (הערה: לוח הזמנים בן 14 שבועות סמסטריאליים כפוף לאישור המרצה באוניברסיטת חיפה)}
 \label{fig:project_gantt_chart}
 \end{figure}
 
-\section{מטריצת סיכונים טכנולוגיים והנדסיים ואסטרטגיות הפחתה}
+\section{מטריצת סיכונים כמותית ($5 \times 5$) ואסטרטגיות הפחתה}
 \label{sec:impl_risk_matrix}
-פיתוח מערכת מרובת סוכנים מתקדמת טומן בחובו שורה של אתגרים מתודולוגיים והנדסיים. טבלה~\ref{tab:risk_matrix} מנתחת את ארבעת סיכוני הליבה של הפרויקט ומציגה אסטרטגיות הפחתה מוגדרות ותוכניות מגירה:
+ניהול סיכונים בפרויקט \projectname{} מושתת על מתודולוגיית הערכה כמותית במטריצת $5 \times 5$. ציון הסיכון הכולל ($R$) מחושב כמכפלת סבירות ההתרחשות ($P \in [1, 5]$) בחומרת ההשפעה ($I \in [1, 5]$):
+\begin{equation}
+    R = P \times I \quad (1 \le R \le 25)
+\end{equation}
+
+הסולם הכמותי מוגדר כדלקמן:
+\begin{itemize}
+    \item \textbf{סבירות ($P$)}: 1 = נדירה מאוד ($<5\%$), 2 = נמוכה ($5\text{--}20\%$), 3 = בינונית ($20\text{--}50\%$), 4 = גבוהה ($50\text{--}80\%$), 5 = כמעט ודאית ($>80\%$).
+    \item \textbf{השפעה ($I$)}: 1 = זניחה, 2 = מתונה, 3 = משמעותית, 4 = חמורה, 5 = קריטית להמשך הפרויקט.
+    \item \textbf{סף סיכון קריטי}: כל סיכון שציונו $R \ge 12$ מוגדר כ\textbf{סיכון קריטי} ומסומן באדום, ומחייב תוכנית מניעה מוקדמת ותוכנית מגירה אופרטיבית מיידית.
+    \item \textbf{ציון שיורי ($R_{\text{res}}$)}: ציון הסיכון המחושב לאחר יישום פעולות המניעה והבקרה ($R_{\text{res}} = P_{\text{res}} \times I_{\text{res}}$).
+\end{itemize}
+
+טבלה~\ref{tab:risk_matrix} מפרטת את חמשת סיכוני הליבה של הפרויקט, את ציוני הסיכון הגולמיים והשיוריים, ואת תוכניות המניעה והמגירה:
 
 \begin{table}[H]
 \centering
-\caption{מטריצת סיכונים טכנולוגיים ומתודולוגיים ואסטרטגיות הפחתה}
+\caption{מטריצת סיכונים כמותית ($5 \times 5$), פעולות מניעה, תוכניות מגירה וציונים שיוריים}
 \label{tab:risk_matrix}
-\small
-\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{2.6cm} c c X p{2.6cm}}
+\scriptsize
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{1.1cm} >{\raggedleft\arraybackslash}p{2.3cm} >{\centering\arraybackslash}p{0.7cm} >{\centering\arraybackslash}p{0.7cm} >{\centering\arraybackslash}p{0.7cm} >{\centering\arraybackslash}p{1.1cm} X >{\raggedleft\arraybackslash}p{2.3cm} >{\centering\arraybackslash}p{0.8cm}}
 \toprule
 \rowcolor{LavenderCard}
-\textbf{\color{DarkPurple}תיאור הסיכון} & \textbf{\color{DarkPurple}חומרה} & \textbf{\color{DarkPurple}סבירות} & \textbf{\color{DarkPurple}אסטרטגיית הפחתה ומניעה} & \textbf{\color{DarkPurple}תוכנית מגירה} \\
+\textbf{\color{DarkPurple}מזהה} & \textbf{\color{DarkPurple}תיאור הסיכון} & \textbf{\color{DarkPurple}$P$} & \textbf{\color{DarkPurple}$I$} & \textbf{\color{DarkPurple}$R$} & \textbf{\color{DarkPurple}רמת סיכון} & \textbf{\color{DarkPurple}פעולת מניעה והפחתה} & \textbf{\color{DarkPurple}תוכנית מגירה} & \textbf{\color{DarkPurple}$R_{\text{res}}$} \\
 \midrule
-הזיות מודל שפה (\textenglish{Hallucinations}) בסיווג פסיכולוגי & גבוהה & בינונית & כפיית פלט מובנה מבוסס סכמת \textenglish{JSON Schema}, הגדרת רובריקות סיווג חד-משמעיות בפרומפט, וטמפרטורת דגימה נמוכה ($\tau = 0.2$). & כיול מחדש כנגד מאגר פוסטים מתויג ושימוש במודל שיפוט שני (\textenglish{Judge LLM}). \\
+\textenglish{RSK-01} & הזיות מודל שפה בסיווג פסיכולוגי & 3 & 4 & \textbf{\color{BrickRed}12} & \textbf{\color{BrickRed}קריטי} & כפיית פלט \textenglish{JSON Schema}, רובריקות סיווג חדות וטמפרטורה $\tau = 0.2$. & כיול מול מאגר 200 פוסטים ושימוש במודל שיפוט (\textenglish{Judge LLM}). & 3 \newline {\tiny($1 \times 3$)} \\
 \midrule
-זמני השהיה ועומס חישובי על מכשיר הקצה & בינונית & גבוהה & שימוש במודלי שפה מכומתים (\textenglish{4-bit Quantization}), הפעלת סוכן הניתוח במנות א-סינכרוניות (\textenglish{Batching}), ודילוג על פוסטים שחלפו במהירות. & העברת עיבוד כבד למודל שפה מבוזר מקומי ברשת הביתית. \\
+\textenglish{RSK-02} & שיהוי ועומס חישובי בקצה & 4 & 3 & \textbf{\color{BrickRed}12} & \textbf{\color{BrickRed}קריטי} & מודלי \textenglish{4-bit GGUF}, עיבוד באצוות (\textenglish{Batching}) וסינון יוריסטי מוקדם. & העברת עיבוד כבד למודל שפה מבוזר מקומי ברשת הביתית. & 4 \newline {\tiny($2 \times 2$)} \\
 \midrule
-התנגדות פסיכולוגית (\textenglish{Reactance}) ועייפות התראות & גבוהה & בינונית & ניסוח סוקרטי עדין, הגבלת תדירות ההתערבויות למקסימום 2 בשעה, ומתן שליטה מלאה למשתמש על סגנון השיקוף. & מעבר לתצוגה שקטה בלוח המחוונים ללא התראות קופצות. \\
+\textenglish{RSK-03} & התנגדות פסיכולוגית (\textenglish{Reactance}) & 3 & 4 & \textbf{\color{BrickRed}12} & \textbf{\color{BrickRed}קריטי} & שפה סוקרטית עדינה, מגבלת 2 התראות/שעה ושליטה מלאה של המשתמש. & מעבר לתצוגה שקטה בלוח המחוונים ללא התראות קופצות. & 3 \newline {\tiny($1 \times 3$)} \\
 \midrule
-שבירת מנגנון הקליטה עקב שינויי \textenglish{DOM} ברשתות & בינונית & גבוהה & בידוד שכבת הקלט לתוסף מודולרי, שימוש באלגוריתמי זיהוי מבוססי מטא-נתונים כלליים במקום שמות קלאסים ספציפיים. & עדכון מהיר של חוקי החילוץ באמצעות סקריפט תצורה מקוון. \\
+\textenglish{RSK-04} & שבירת קליטת \textenglish{DOM} ברשתות & 4 & 3 & \textbf{\color{BrickRed}12} & \textbf{\color{BrickRed}קריטי} & שימוש בסלקטורים מבוססי מטא-נתונים כלליים ובידוד שכבת הקלט לתוסף. & עדכון דינמי של חוקי החילוץ באמצעות קובץ קונפיגורציה מקומי. & 4 \newline {\tiny($2 \times 2$)} \\
+\midrule
+\textenglish{RSK-05} & עיכוב באישור ועדת אתיקה (\textenglish{IRB}) & 2 & 4 & 8 & בינוני & הגשת בקשה מוקדמת מבוססת פרוטוקול נתונים מקומי ללא איסוף מידע מזהה. & הרחבת מערך הסימולציה עם 40 פרסונות כחלופה עד לקבלת האישור. & 3 \newline {\tiny($1 \times 3$)} \\
 \bottomrule
 \end{tabularx}
 \end{table}

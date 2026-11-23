@@ -16,7 +16,7 @@
 הדוח האקדמי המלא הוכן ב-LaTeX באמצעות מנוע **XeLaTeX**, כולל טיפוגרפיה דו-כיוונית מושלמת (עברית ואנגלית), שפת עיצוב יוקרתית (SocialMirror Premium Theme), תרשימים וקטוריים ב-TikZ ומטריצות מחקריות מבוקרות.
 
 * **נתיב הקובץ במאגר**: [`report/main.pdf`](report/main.pdf)
-* **היקף הדוח**: **54 עמודים** מלאים ומעוצבים.
+* **היקף הדוח**: דוח מקיף ומעוצב בסטנדרט הוצאה לאור אקדמית, כולל כלל הנספחים ומטריצות התכן ההנדסיות.
 * **קישור ישיר לצפייה ב-GitHub (לאחר ביצוע Push)**:  
   👉 **[https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf](https://github.com/shamssabbagh/SocialMirror-AI/blob/main/report/main.pdf)**
 
