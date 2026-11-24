@@ -7,16 +7,17 @@
 \usepackage{geometry}
 \geometry{
     a4paper,
-    top=2.8cm,
-    bottom=2.5cm,
-    left=2.8cm,
-    right=2.8cm,
-    headheight=28pt,
-    headsep=15pt
+    top=2.2cm,
+    bottom=2.1cm,
+    left=2.2cm,
+    right=2.2cm,
+    headheight=32pt,
+    headsep=12pt
 }
 
 \usepackage{setspace}
-\onehalfspacing % 1.5 Line Spacing for Academic Readability
+\setstretch{1.08} % Compact and readable academic line spacing
+\setlength{\parskip}{2.5pt plus 1pt minus 0.5pt}
 
 % Mathematics & Equations (Rendered in Standard LTR Math Mode)
 \usepackage{amsmath}
@@ -90,6 +91,7 @@
 \usepackage{polyglossia}
 \setmainlanguage{hebrew}
 \setotherlanguage{english}
+\setcounter{tocdepth}{1}
 
 % Hebrew and English Fonts (Standard Windows TrueType/OpenType Fonts)
 \newfontfamily\hebrewfont{Arial}[Script=Hebrew]
@@ -164,91 +166,91 @@
 
 % Clean, Robust Lavender Callout Boxes (XeLaTeX RTL / bidi Compatible)
 \NewEnviron{objectivebox}[1][מטרות הפרויקט]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{LavenderBorder}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (2.5pt);} \space #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }
 
 \NewEnviron{insightbox}[1][תובנה מטא-קוגניטיבית מרכזית]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{RoyalPurple}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (2.5pt);} \space #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }
 
 \NewEnviron{summarybox}[1][סיכום הפרק]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{LavenderBorder}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (3pt);} \space #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{DarkPurple} \tikz[baseline=-0.5ex]{\fill[RoyalPurple] (0,0) circle (2.5pt);} \space #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }
 
 \NewEnviron{agentbox}[1]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{RoyalPurple}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{DarkPurple} #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{DarkPurple} #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }
 
 \NewEnviron{conceptbox}[1]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{LavenderBorder}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{DarkPurple} #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{DarkPurple} #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }
 
 \NewEnviron{ethicsbox}[1][הערת אתיקה וממשל אחראי בבינה מלאכותית]{%
-    \par\vspace{0.35cm}\noindent
+    \par\vspace{0.2cm}\noindent
     \begingroup
-    \setlength{\fboxsep}{10pt}%
-    \setlength{\fboxrule}{1.1pt}%
+    \setlength{\fboxsep}{7pt}%
+    \setlength{\fboxrule}{1.0pt}%
     \fcolorbox{AlertRose}{LavenderLight}{%
         \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}
             \setRTL\raggedleft
-            {\large\bfseries\color{AlertRose} #1}\par\vspace{0.2cm}%
+            {\normalsize\bfseries\color{AlertRose} #1}\par\vspace{0.15cm}%
             \BODY
         \end{minipage}%
     }%
-    \endgroup\par\vspace{0.35cm}%
+    \endgroup\par\vspace{0.2cm}%
 }

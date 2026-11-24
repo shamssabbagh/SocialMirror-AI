@@ -39,12 +39,12 @@
     \item \textbf{קובעי מדיניות ובריאות הציבור} -- רשויות רגולטוריות וארגוני בריאות עולמיים מזהירים מפני משבר בריאות הנפש הדיגיטלי. תובנות הפרויקט עשויות להוות בסיס להנחיות אתיות עבור חברות הטכנולוגיה.
 \end{itemize}
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 \begin{figure}[H]
 \centering
 \begin{LTR}
 \begin{tikzpicture}[
-    scale=0.86, every node/.style={transform shape},
+    scale=0.68, every node/.style={transform shape},
     stakeholder/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.4cm, font=\small\sffamily},
     platform/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, rounded corners=3mm, line width=1.4pt, align=center, inner sep=9pt, text width=4.0cm, font=\bfseries\sffamily, text=white},
     arrow/.style={-{Latex[length=2.8mm]}, line width=1.1pt, draw=AccentTeal},
@@ -74,12 +74,12 @@
 \label{sec:intro_pathway}
 כדי להבין את אופן הפעולה הפסיכולוגי של הפלטפורמה, יש למפות את המסלול הסיבתי-מתווך המקשר בין חשיפה לתכנים אידיאליים לבין התפתחות מצוקה רגשית. איור~\ref{fig:conceptual_pathway} ממחיש את ארבעת שלבי המסלול הקוגניטיבי המתווך, ואת נקודת ההתערבות המדויקת של פלטפורמת \projectname{}.
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 \begin{figure}[H]
 \centering
 \begin{LTR}
 \begin{tikzpicture}[
-    scale=0.80, every node/.style={transform shape},
+    scale=0.64, every node/.style={transform shape},
     box/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=3mm, line width=1.1pt, align=center, inner sep=8pt, text width=3.2cm, font=\small\sffamily},
     mirrorbox/.style={rectangle, draw=AccentCyan, fill=NavyBlueDark, rounded corners=3mm, line width=1.3pt, align=center, inner sep=8pt, text width=3.4cm, font=\bfseries\sffamily, text=white},
     arrow/.style={-{Latex[length=3mm]}, line width=1.2pt, draw=NavyBlueDark},
@@ -150,12 +150,12 @@
 
 איור~\ref{fig:rq_system_mapping} ממחיש את המיפוי בין שאלות המחקר, הנדבכים התיאורטיים ורכיבי הארכיטקטורה הרב-סוכנית של הפלטפורמה.
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 \begin{figure}[H]
 \centering
 \begin{LTR}
 \begin{tikzpicture}[
-    scale=0.84, every node/.style={transform shape},
+    scale=0.65, every node/.style={transform shape},
     rqnode/.style={rectangle, draw=NavyBlueDark, fill=LightBlueBg, rounded corners=2.5mm, line width=1.1pt, align=center, inner sep=7pt, text width=3.3cm, font=\small\sffamily},
     modulenode/.style={rectangle, draw=AccentTeal, fill=white, rounded corners=2.5mm, line width=1.2pt, align=center, inner sep=7pt, text width=3.4cm, font=\footnotesize\sffamily},
     arrow/.style={-{Latex[length=2.5mm]}, line width=1.1pt, draw=NavyBlueDark}
@@ -198,8 +198,9 @@
 \centering
 \caption{מפרט דרישות המערכת, יעדים כמותיים ושיטות אימות (הגדרת תכן מוקדמת)}
 \label{tab:system_requirements_spec}
-\scriptsize
-\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{1.2cm} >{\raggedleft\arraybackslash}p{2.0cm} X >{\centering\arraybackslash}p{2.6cm} >{\raggedleft\arraybackslash}p{2.6cm}}
+\fontsize{7.5pt}{9.2pt}\selectfont
+\renewcommand{\arraystretch}{0.85}
+\begin{tabularx}{\textwidth}{>{\bfseries\color{DarkPurple}}p{1.1cm} >{\raggedleft\arraybackslash}p{1.9cm} X >{\centering\arraybackslash}p{2.5cm} >{\raggedleft\arraybackslash}p{2.5cm}}
 \toprule
 \rowcolor{LavenderCard}
 \textbf{\color{DarkPurple}מזהה} & \textbf{\color{DarkPurple}סוג דרישה} & \textbf{\color{DarkPurple}תיאור הדרישה} & \textbf{\color{DarkPurple}ערך יעד כמותי} & \textbf{\color{DarkPurple}שיטת אימות} \\
@@ -230,12 +231,14 @@
 דוח אקדמי זה בנוי במבנה שיטתי ומודולרי המגשר בין תיאוריה פסיכולוגית מעמיקה להתוויית מערכת בינה מלאכותית רב-סוכנית עתידית:
 
 \begin{itemize}
-    \item \textbf{פרק 1 (מבוא, הגדרת הבעיה והקשר חברתי-טכנולוגי)} -- מציג את הרקע המבני למעבר מפלטפורמות שיתוף למנועי המלצה אלגוריתמיים, מגדיר את בעיית "האטימות הקוגניטיבית", משרטט את אקוסיסטם מחזיקי העניין, ומנסח את שאלות המחקר המנחות.
-    \item \textbf{פרק 2 (סקירת ספרות ומסגרת תיאורטית)} -- סוקר באופן מעמיק את תיאוריית ההשוואה החברתית של פסטינגר, תיאוריית הפער העצמי של היגינס, תיאוריית ההחפצה העצמית, מחקרים אמפיריים מרכזיים (מגמות אפידמיולוגיות, גלילה פסיבית, שיווק משפיענים), וסולמות פסיכומטריים מתוקפים.
-    \item \textbf{פרק 3 (פערי מחקר, ביקורת כלים קיימים והמסגרת המושגית)} -- מנתח את הפולמוס המדעי בין מתאם לסיבתיות (טוונגי מול אורבן), מציג השוואה כמותית של גודלי אפקט מתוך ספרות מאומתת, מבקר את כלי הרווחה הקיימים בשוק, ומציג את הרציונל לפיתוח מראה קוגניטיבית מרובת סוכנים.
-    \item \textbf{פרק 4 (ארכיטקטורה מפורטת של \textenglish{SocialMirror-AI} ועיצוב סוכני ה־\textenglish{AI})} -- מפרט את פילוסופיית המערכת, טופולוגיית השכבות ופרוטוקול תקשורת \textenglish{JSON-RPC 2.0}, מגדיר בפירוט את תפקידי ארבעת הסוכנים והפרומפטים שלהם, מפתח את המודל המתמטי הפורמלי של וקטור המצב $\wellbeingVector{}$, ומשרטט את ממשק המראה הקוגניטיבית (\textenglish{Dashboard Wireframe}).
-    \item \textbf{פרק 5 (מתודולוגיית מחקר, מערך סימולציה ומדדי הערכה)} -- מציג את מתודולוגיית הניסוי בסימולציה עם 20 פרסונות גנרטיביות המבוססות על 4 ארכיטיפים פסיכולוגיים, מפרט את פרוטוקול הפיד המבוקר, מגדיר מדדי הצלחה כמותיים ואיכותניים, ומתווה את פרוטוקול האתיקה המחקרית.
-    \item \textbf{פרק 6 (היתכנות טכנולוגית, מפת דרכים ליישום ומטריצת סיכונים)} -- מציג את המחסנית הטכנולוגית המוצעת (מודלי קצה מקומיים, \textenglish{LangGraph}, מסד נתונים וקטורי), פורס תרשים גאנט כרונולוגי לחמשת שלבי הפיתוח, ומנתח מטריצת סיכונים הנדסיים ואסטרטגיות הפחתה.
-    \item \textbf{פרק 7 (סיכום, תובנות ומבט לעתיד)} -- מסנתז את התובנות התיאורטיות וההנדסיות, בוחן את תרומת המחקר לקהילה המדעית, ומסכם את החזון להשבת הריבונות הקוגניטיבית למשתמש.
-    \item \textbf{נספחים} -- כוללים מפרט מלא של הפרומפטים המערכתיים, פריטי השאלונים הפסיכומטריים המתוקפים (\textenglish{RSES} ו־\textenglish{PANAS}), ורשימת תיוג אתית (\textenglish{IRB}).
+    \setlength{\itemsep}{1pt}
+    \setlength{\parskip}{0pt}
+    \item \textbf{פרק 1 (מבוא והקשר)} -- רקע מבני למנועי המלצה, אטימות קוגניטיבית, מחזיקי עניין וארבע שאלות המחקר.
+    \item \textbf{פרק 2 (סקירת ספרות)} -- תיאוריית ההשוואה החברתית, פער העצמי, ראיות אמפיריות וסולמות פסיכומטריים.
+    \item \textbf{פרק 3 (פערי מחקר וקונספט)} -- פולמוס מתאם-סיבתיות, ביקורת כלי רווחה קיימים והפרדיגמה הרעיונית של MAS.
+    \item \textbf{פרק 4 (ארכיטקטורה וסוכנים)} -- טופולוגיית שכבות, מפרט 4 הסוכנים, משוואות וקטור המצב $\wellbeingVector{}$ וממשק הדשבורד.
+    \item \textbf{פרק 5 (מתודולוגיה וסימולציה)} -- מערך ניסוי מבוקר עם 20 פרסונות, 3 תנאי פיד, מדדי הערכה ותיקוף IRB.
+    \item \textbf{פרק 6 (היתכנות ומפת דרכים)} -- מחסנית טכנולוגית בקצה, אבני דרך ותרשים גאנט, ומטריצת סיכונים הנדסית.
+    \item \textbf{פרק 7 (סיכום ומבט לעתיד)} -- סינתזה אינטגרטיבית, השבת הריבונות הקוגניטיבית למשתמש ואחריות אלגוריתמית.
+    \item \textbf{נספחים וביבליוגרפיה} -- מפרטי פרומפטים, פריטי שאלונים פסיכומטריים (\textenglish{RSES, PANAS}), צ'ק-ליסט אתי ומקורות.
 \end{itemize}

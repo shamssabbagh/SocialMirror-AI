@@ -55,12 +55,13 @@
 
 \newpage
 % תוכן עניינים ורשימות
+\setcounter{tocdepth}{1}
 \makeatletter
 \let\orig@l@chapter\l@chapter
 \renewcommand*\l@chapter[2]{%
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
-    \vskip 1.0em \@plus\p@
+    \vskip 0.4em \@plus\p@
     \setlength\@tempdima{2.4em}%
     \begingroup
       \parindent \z@ \rightskip \@pnumwidth
@@ -70,7 +71,7 @@
       \hskip -\leftskip
       \begingroup
         \renewcommand{\numberline}[1]{%
-          \tikz[baseline=-0.6ex]{\node[fill=RoyalPurple, text=white, rounded corners=1.8mm, inner sep=3.5pt, font=\bfseries\small]{##1};}\enspace%
+          \tikz[baseline=-0.6ex]{\node[fill=RoyalPurple, text=white, rounded corners=1.8mm, inner sep=3.0pt, font=\bfseries\small]{##1};}\enspace%
         }%
         {\color{DarkPurple}#1}%
       \endgroup
@@ -82,6 +83,7 @@
 
 {
   \hypersetup{linkcolor=DarkPurple}
+  \setlength{\parskip}{0pt}
   \tableofcontents
 }
 
@@ -90,9 +92,12 @@
 \makeatother
 
 \newpage
-{
-  \hypersetup{linkcolor=DarkPurple}
-  \listoffigures
-  \vspace{0.8cm}
-  \listoftables
-}
+\begingroup
+\small
+\let\clearpage\relax
+\let\newpage\relax
+\hypersetup{linkcolor=DarkPurple}
+\listoffigures
+\vspace{0.25cm}
+\listoftables
+\endgroup

@@ -1,0 +1,34 @@
+{
+  "simulation_metadata": {
+    "model_name": "SocialMirror-AI State Vector Prototype Simulation",
+    "version": "1.0.0",
+    "purpose": "Illustrative synthetic scenario comparing unmitigated feed, screen-time cutoff, and MAS cognitive mirror intervention",
+    "disclaimer": "Synthetic simulation scenario generated for academic conceptual illustration (Assignment 2, University of Haifa)"
+  },
+  "parameters": {
+    "steps": 30,
+    "dt": 1.0,
+    "initial_state": {
+      "self_esteem": 0.72,
+      "negative_affect": 0.25,
+      "reactance": 0.10
+    },
+    "stimuli": {
+      "base_comparison_salience": 0.40,
+      "upward_burst_start": 6,
+      "upward_burst_peak": 0.88,
+      "influencer_density_mean": 0.65
+    },
+    "intervention_thresholds": {
+      "theta_comparison_salience": 0.65,
+      "intervention_step": 12,
+      "screentime_cutoff_step": 18
+    },
+    "coefficients": {
+      "contrast_erosion_rate": 0.038,
+      "screentime_reactance_spike": 0.75,
+      "cognitive_reframing_recovery": 0.055,
+      "natural_homeostasis_rate": 0.015
+    }
+  }
+}

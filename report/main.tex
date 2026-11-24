@@ -126,8 +126,17 @@
 \clearpage
 \begin{english}
 \nocite{*}
+\begingroup
+\small
+\let\oldthebibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\itemsep}{1pt}%
+  \setlength{\parskip}{0pt}%
+}
 \bibliographystyle{IEEEtran}
 \bibliography{references}
+\endgroup
 \end{english}
 
 \end{document}
